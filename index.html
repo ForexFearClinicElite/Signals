@@ -11,11 +11,12 @@
         
         body { 
             font-family: 'Montserrat', sans-serif; 
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('pythagoras_building.jpg');
-            background-attachment: fixed;
-            background-position: center;
+            /* Updated background logic to show the full building image */
+            background-color: #000;
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pythagoras_building.jpg');
+            background-position: top center;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: contain; /* Ensures the whole building image is visible */
             color: white;
             margin: 0;
         }
@@ -23,7 +24,7 @@
         .font-cinzel { font-family: 'Cinzel', serif; }
         
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -61,11 +62,16 @@
             transform: scale(1.05); 
             box-shadow: 0 0 15px var(--gold); 
         }
+
+        /* Adjusting hero height because background is 'contain' */
+        .hero-section {
+            min-height: 80vh;
+        }
     </style>
 </head>
 <body>
 
-    <header class="h-screen flex flex-col items-center justify-center text-center px-4">
+    <header class="hero-section flex flex-col items-center justify-center text-center px-4 pt-20">
         <h1 class="font-cinzel text-5xl md:text-7xl tracking-[0.3em] gold-text uppercase font-bold mb-4">Pythagorean</h1>
         <h2 class="font-cinzel text-2xl md:text-4xl text-white tracking-[0.2em] uppercase opacity-90">Wealth Institute</h2>
         <div class="h-1 w-24 bg-[#C5A059] mt-6"></div>
@@ -73,16 +79,19 @@
 
     <main class="max-w-6xl mx-auto px-6 space-y-24 pb-32">
         
+        <!-- Video section with reduced size -->
         <section class="glass-card p-6 md:p-10 text-center">
             <h3 class="font-cinzel text-2xl mb-8 uppercase gold-text">Live Trade Verification</h3>
-            <div class="rounded-xl overflow-hidden border border-white/10 max-w-4xl mx-auto">
+            <div class="rounded-xl overflow-hidden border border-white/10 max-w-2xl mx-auto shadow-2xl">
                 <video controls autoplay muted loop playsinline class="w-full">
                     <source src="trading_proof.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
             </div>
         </section>
 
         <section class="grid md:grid-cols-3 gap-8">
+            <!-- Tier 1 -->
             <div class="glass-card p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30">
                 <h3 class="font-cinzel text-xl mb-4 uppercase">Elite Signals</h3>
                 <div class="text-4xl font-bold mb-6 gold-text">$180 <span class="text-sm font-light text-white/50">/ week</span></div>
@@ -94,7 +103,8 @@
                 <a href="https://t.me/ForexFearClinicSupport" class="btn-gold">Subscribe</a>
             </div>
 
-            <div class="glass-card p-8 flex flex-col text-center border-t-4 border-[#C5A059]">
+            <!-- Tier 2 -->
+            <div class="glass-card p-8 flex flex-col text-center border-t-4 border-[#C5A059] scale-105 bg-white/5">
                 <h3 class="font-cinzel text-xl mb-4 uppercase">Luxury Seminar</h3>
                 <div class="text-4xl font-bold mb-6 gold-text">$9,000</div>
                 <ul class="text-xs space-y-4 mb-10 text-white/70 flex-grow text-left">
@@ -105,6 +115,7 @@
                 <a href="https://wa.me/306984561055" class="btn-gold">Book Your Spot</a>
             </div>
 
+            <!-- Tier 3 -->
             <div class="glass-card p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30">
                 <h3 class="font-cinzel text-xl mb-4 uppercase">Algorithm IP</h3>
                 <div class="text-4xl font-bold mb-6 gold-text">$9,000,000</div>
@@ -117,6 +128,7 @@
             </div>
         </section>
 
+        <!-- About Section -->
         <section class="glass-card p-10 flex flex-col md:flex-row items-center gap-12">
             <img src="founder_visionary.jpg" alt="Founder" class="founder-circular">
             <div class="space-y-6 text-center md:text-left">
@@ -133,7 +145,7 @@
     <footer class="py-16 bg-black text-center border-t border-white/10">
         <h4 class="font-cinzel text-lg gold-text mb-6 uppercase">Pythagorean Wealth Institute</h4>
         <div class="max-w-3xl mx-auto px-6">
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest leading-loose">
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest leading-loose">
                 Risk Disclaimer: Trading in financial markets involves a significant risk of capital loss. Past performance is not indicative of future results. All quantitative models and signals are for educational and informational purposes only.
                 <br>© 2026. All Rights Reserved.
             </p>
