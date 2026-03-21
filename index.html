@@ -3,68 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pythagorean Wealth Institute</title>
+    <title>Pythagorean Wealth Institute | Luxury Quantitative Trading</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --gold: #C5A059; }
-        .font-cinzel { font-family: 'Cinzel', serif; }
-        .gold-text { color: var(--gold); }
+        :root { 
+            --gold: #C5A059; 
+            --light-gold: #F1D299;
+            --white-marble: #fcfcfc;
+        }
         
-        /* Ρύθμιση για να μικρύνει η φωτογραφία του ινστιτούτου */
-        .hero-section {
-            height: 50vh; /* Από 80vh ή 100vh, το κάναμε 50% της οθόνης */
-            min-height: 300px;
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: var(--white-marble); 
+            color: #1a1a1a; 
+            margin: 0; 
+        }
+
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        
+        .gold-text {
+            color: var(--gold);
+            background: linear-gradient(135deg, #A67C00 0%, #C5A059 50%, #A67C00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-bg {
+            background: linear-gradient(135deg, #C5A059 0%, #F1D299 50%, #C5A059 100%);
+        }
+
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(252,252,252,0) 50%, rgba(252,252,252,1) 100%);
+        }
+
+        .founder-img {
+            border: 8px solid white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .founder-img:hover {
+            transform: scale(1.02);
+        }
+
+        .price-card {
+            background: white;
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 3rem 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card:hover {
+            box-shadow: 0 30px 60px rgba(197, 160, 89, 0.15);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .btn-premium {
+            background: #1a1a1a;
+            color: white;
+            padding: 1.25rem 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            transition: 0.3s;
+            display: block;
+            text-align: center;
+        }
+
+        .btn-premium:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+        .video-container {
+            border: 4px solid white;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.15);
+            background: black;
+        }
+
+        .stat-box {
+            border-left: 1px solid rgba(197, 160, 89, 0.3);
+            padding-left: 1.5rem;
         }
     </style>
 </head>
-<body class="bg-[#fcfcfc] text-center font-sans">
+<body>
 
-    <header class="relative hero-section overflow-hidden shadow-lg">
-        <img src="pythagoras_building.jpg" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black/50 flex items-center justify-center px-4">
-            <h1 class="font-cinzel text-3xl md:text-5xl text-white tracking-widest uppercase border-b-2 border-[#C5A059] pb-4">
-                Pythagorean Wealth Institute
-            </h1>
+    <header class="hero-container">
+        <img src="pythagoras_building.jpg" alt="Pythagorean Wealth Institute Building" class="hero-img">
+        <div class="hero-overlay"></div>
+        <div class="absolute bottom-10 left-0 w-full text-center">
+            <h1 class="font-cinzel text-4xl md:text-6xl tracking-[0.2em] gold-text uppercase font-bold">Pythagorean Wealth Institute</h1>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto py-16 px-6">
-        <div class="mb-12">
-            <span class="gold-text font-bold tracking-[0.3em] uppercase text-sm">Quant Algorithm 3-6-9</span>
-            <h2 class="font-cinzel text-3xl text-gray-900 mt-2">Market Harmonics</h2>
-        </div>
-        
-        <div class="mb-20 rounded-xl overflow-hidden shadow-2xl bg-black border-2 border-[#C5A059]/20">
-            <video controls autoplay muted loop playsinline class="w-full">
-                <source src="trading_proof.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="flex flex-col md:flex-row items-center gap-12 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-            <div class="shrink-0">
-                <img src="founder_visionary.jpg" class="w-48 h-48 md:w-56 md:h-56 rounded-full border-4 border-[#C5A059] object-cover shadow-xl">
+    <section class="max-w-6xl mx-auto px-6 py-24">
+        <div class="flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-1/2">
+                <img src="founder_visionary.jpg" alt="Founder" class="founder-img w-full rounded-sm">
             </div>
-            <div class="text-left">
-                <h3 class="font-cinzel text-2xl gold-text mb-4 uppercase">The Visionary</h3>
-                <p class="text-gray-600 italic mb-4">"If you only knew the magnificence of the 3, 6 and 9, then you would have the key to the universe."</p>
-                <p class="text-gray-800 leading-relaxed">
-                    Με 16 χρόνια εμπειρίας στον προγραμματισμό ποσοτικών αλγορίθμων, ξεκλειδώνουμε τα μυστικά των αγορών μέσω της Πυθαγόρειας μαθηματικής αρμονίας.
+            <div class="w-full md:w-1/2 space-y-6">
+                <span class="text-[var(--gold)] font-bold tracking-widest text-sm uppercase">The Visionary</span>
+                <h2 class="font-cinzel text-4xl md:text-5xl text-gray-900 leading-tight">Mastering the <br><span class="gold-text">Harmonic Markets</span></h2>
+                <p class="text-lg font-light leading-relaxed text-gray-600">
+                    With 16 years of specialized research in quantitative programming, our founder has developed the mathematical formula that unlocks consistent profitability. At our institute, technology and the ancient wisdom of numbers converge with modern markets.
                 </p>
+                <div class="grid grid-cols-2 gap-8 pt-6">
+                    <div class="stat-box">
+                        <p class="text-2xl font-bold gold-text font-cinzel">16Y</p>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-400">Research & Expertise</p>
+                    </div>
+                    <div class="stat-box">
+                        <p class="text-2xl font-bold gold-text font-cinzel">Global</p>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-400">Institutional Reach</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer class="bg-stone-900 text-white py-16 mt-10">
-        <div class="max-w-2xl mx-auto px-6">
-            <h4 class="font-cinzel text-xl gold-text mb-6 uppercase tracking-widest">Join the Elite</h4>
-            <a href="https://t.me/ForexFearClinicSupport" class="inline-block bg-[#C5A059] text-white px-10 py-4 rounded-full font-bold hover:bg-[#A67C00] transition-all shadow-lg uppercase tracking-tighter">
-                Access Elite Signals via Telegram
-            </a>
-            <p class="mt-10 text-[10px] text-gray-500 tracking-widest uppercase">
-                © 2026 Pythagorean Wealth Institute. All Rights Reserved.
-            </p>
+    <section class="bg-stone-50 py-24 border-y border-stone-200">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="font-cinzel text-3xl md:text-4xl mb-4 uppercase gold-text">Latest Performance</h2>
+            <p class="text-xs tracking-[0.4em] uppercase text-gray-400 mb-12">Live Audit & Trade Verification</p>
+            
+            <div class="relative rounded-lg overflow-hidden video-container group">
+                <video controls autoplay muted loop playsinline poster="pythagoras_building.jpg" class="w-full">
+                    <source src="trading_proof.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 py-32">
+        <div class="text-center mb-20">
+            <h2 class="font-cinzel text-4xl md:text-6xl text-gray-900 uppercase tracking-widest mb-4">Institutional Access</h2>
+            <div class="h-1 w-24 gold-bg mx-auto"></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 items-stretch">
+            <div class="price-card flex flex-col">
+                <h3 class="font-cinzel text-xl mb-2 uppercase">Elite Signals</h3>
+                <p class="text-[10px] text-[var(--gold)] font-bold tracking-widest mb-10 uppercase">Private Feed Access</p>
+                <div class="text-4xl font-bold mb-10 font-cinzel">$180 <span class="text-sm font-light text-gray-400">/ week</span></div>
+                <ul class="text-xs space-y-4 mb-12 text-gray-500 flex-grow">
+                    <li class="flex items-center gap-2">◈ NAS100 & Nikkei 225 High-Frequency Setups</li>
+                    <li class="flex items-center gap-2">◈ 88%+ Verified Accuracy Rate</li>
+                    <li class="flex items-center gap-2">◈ Real-time Execution via Telegram</li>
+                </ul>
+                <a href="https://t.me/ForexFearClinicSupport" class="btn-premium">Subscribe Now</a>
+            </div>
+
+            <div class="price-card border-t-4 border-t-[var(--gold)] shadow-2xl flex flex-col">
+                <div class="absolute top-4 right-4 bg-[var(--gold)] text-white text-[9px] px-3 py-1 font-bold tracking-widest">MOST EXCLUSIVE</div>
+                <h3 class="font-cinzel text-xl mb-2 uppercase">Luxury Seminar</h3>
+                <p class="text-[10px] text-[var(--gold)] font-bold tracking-widest mb-10 uppercase">Bespoke Experience</p>
+                <div class="text-4xl font-bold mb-10 font-cinzel">$9,000</div>
+                <ul class="text-xs space-y-4 mb-12 text-gray-600 font-medium flex-grow">
+                    <li class="flex items-center gap-2">◈ 3 Days of Intensive Training</li>
+                    <li class="flex items-center gap-2">◈ Luxury Accommodation & Fine Dining</li>
+                    <li class="flex items-center gap-2">◈ Lifetime Access to Harmonic Engine Group</li>
+                </ul>
+                <a href="https://wa.me/306984561055" class="btn-premium !bg-[var(--gold)]">Secure Your Spot</a>
+            </div>
+
+            <div class="price-card flex flex-col">
+                <h3 class="font-cinzel text-xl mb-2 uppercase">Algorithm IP</h3>
+                <p class="text-[10px] text-[var(--gold)] font-bold tracking-widest mb-10 uppercase">Intellectual Property</p>
+                <div class="text-4xl font-bold mb-10 font-cinzel">$9,000,000</div>
+                <ul class="text-xs space-y-4 mb-12 text-gray-500 flex-grow">
+                    <li class="flex items-center gap-2">◈ Complete Source Code Acquisition</li>
+                    <li class="flex items-center gap-2">◈ Exclusive Global IP Rights</li>
+                    <li class="flex items-center gap-2">◈ Full Engineering Support & Deployment</li>
+                </ul>
+                <a href="https://wa.me/306984561055" class="btn-premium">Inquire for Purchase</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 bg-stone-900 text-white text-center">
+        <h4 class="font-cinzel text-lg tracking-[0.4em] gold-text mb-8 uppercase">Pythagorean Wealth Institute</h4>
+        <p class="text-[9px] text-gray-500 uppercase tracking-widest max-w-xl mx-auto px-6">
+            Trading carries substantial risk. All quantitative models are intended for institutional and professional grade participants. 
+            <br>© 2026. All Rights Reserved.
+        </p>
     </footer>
 
 </body>
