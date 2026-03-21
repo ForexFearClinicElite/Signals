@@ -1,147 +1,241 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pythagorean Wealth Institute | Luxury Quantitative Trading</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    :root { --gold: #C5A059; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pythagorean Wealth Institute | Luxury Quantitative Trading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --gold: #C5A059; 
+            --gold-light: #E0C08C;
+            --gold-dark: #8C6A30;
+        }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: #000;
+            /* Using the uploaded building image as the hero background */
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.75)), url('pythagoras_building.jpg');
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            margin: 0;
+            overflow-x: hidden;
+        }
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      color: white;
-    }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        
+        .glass-card {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-    .font-cinzel { font-family: 'Cinzel', serif; }
-    .gold-text {
-      color: var(--gold);
-      background: linear-gradient(135deg, #A67C00 0%, #C5A059 50%, #A67C00 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 8px rgba(0,0,0,0.5);
-    }
-    .founder-circular {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      border: 3px solid var(--gold);
-      object-fit: cover;
-      box-shadow: 0 0 30px rgba(197, 160, 89, 0.2);
-    }
-    .btn-gold {
-      background: var(--gold);
-      color: black;
-      padding: 0.8rem 2rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      border-radius: 50px;
-      transition: 0.3s;
-      display: inline-block;
-    }
-    .btn-gold:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px var(--gold);
-    }
-    .text-shadow-lg { text-shadow: 0 2px 15px rgba(0,0,0,0.5); }
-    .text-shadow-md { text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
-  </style>
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .video-card {
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+        }
+
+        .gold-text {
+            background: linear-gradient(135deg, #A67C00 0%, #C5A059 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .founder-circular {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            object-fit: cover;
+            box-shadow: 0 0 40px rgba(197, 160, 89, 0.2);
+            padding: 6px;
+            background: linear-gradient(45deg, var(--gold-dark), var(--gold-light));
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+            color: #000;
+            padding: 1.1rem 2.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 2px;
+            border-radius: 2px;
+            transition: 0.4s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-gold:hover { 
+            transform: scale(1.03); 
+            box-shadow: 0 0 25px rgba(197, 160, 89, 0.4); 
+            filter: brightness(1.1);
+        }
+
+        .hero-section {
+            padding-top: 22vh;
+            padding-bottom: 12vh;
+        }
+
+        .price-tag {
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section { padding-top: 15vh; }
+            .font-cinzel.text-8xl { font-size: 3.25rem; }
+            .glass-card.scale-105 { transform: scale(1); }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- HERO SECTION -->
-  <header class="relative h-screen flex flex-col items-center justify-center text-center px-4">
-    <!-- Background Image full view -->
-    <div class="absolute inset-0">
-      <img src="pythagoras_building.jpg" alt="Pythagorean Wealth Institute" class="w-full h-full object-contain">
-    </div>
+    <!-- Header / Hero -->
+    <header class="hero-section flex flex-col items-center justify-center text-center px-4 relative z-10">
+        <div class="mb-4 tracking-[0.6em] text-[10px] uppercase text-white/60 font-semibold">Mathematical Superiority Since 2010</div>
+        <h1 class="font-cinzel text-5xl md:text-8xl tracking-[0.25em] gold-text uppercase font-bold mb-2">Pythagorean</h1>
+        <h2 class="font-cinzel text-xl md:text-3xl text-white tracking-[0.4em] uppercase opacity-90">Wealth Institute</h2>
+        <div class="h-[2px] w-48 bg-gradient-to-r from-transparent via-[#C5A059] to-transparent mt-10"></div>
+    </header>
 
-    <!-- Optional light overlay for text readability -->
-    <div class="absolute inset-0 bg-black/10"></div>
+    <main class="max-w-6xl mx-auto px-6 space-y-24 pb-32 relative z-10">
+        
+        <!-- Live Proof Section -->
+        <section id="proof" class="video-card p-6 md:p-14 text-center">
+            <h3 class="font-cinzel text-2xl mb-2 uppercase gold-text">Live Trade Verification</h3>
+            <p class="text-xs tracking-widest text-white/40 mb-12 uppercase">Current Institutional Account Performance</p>
+            <div class="relative rounded-xl overflow-hidden border border-white/10 max-w-2xl mx-auto shadow-2xl bg-black">
+                <!-- Using uploaded trading_proof.mp4 -->
+                <video controls autoplay muted loop playsinline class="w-full shadow-inner">
+                    <source src="trading_proof.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
 
-    <!-- Hero Content -->
-    <div class="relative z-10 flex flex-col items-center text-center">
-      <h1 class="font-cinzel text-5xl md:text-7xl tracking-[0.3em] gold-text uppercase font-bold mb-4 text-shadow-lg">Pythagorean</h1>
-      <h2 class="font-cinzel text-2xl md:text-4xl text-white tracking-[0.2em] uppercase opacity-90 text-shadow-md">Wealth Institute</h2>
-      <div class="h-1 w-24 bg-[#C5A059] mt-6"></div>
-    </div>
-  </header>
+        <!-- Pricing Tiers -->
+        <section class="grid md:grid-cols-3 gap-8 items-stretch">
+            <!-- Tier 1: Signals -->
+            <div class="glass-card p-10 flex flex-col text-center">
+                <div class="mb-6">
+                    <h3 class="font-cinzel text-lg mb-1 uppercase tracking-widest">Elite Signals</h3>
+                    <p class="text-[10px] text-white/40 uppercase">High Frequency Terminal</p>
+                </div>
+                <div class="price-tag">
+                    <div class="text-4xl font-bold gold-text">$180</div>
+                    <div class="text-[10px] font-light text-white/50 uppercase tracking-tighter">Per Calendar Week</div>
+                </div>
+                <ul class="text-[11px] space-y-5 mb-12 text-white/60 flex-grow text-left leading-relaxed">
+                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> NAS100 & Nikkei 225 Quantitative Setups</li>
+                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> 88%+ Verified Algorithm Win Rate</li>
+                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Exclusive Telegram Execution Channel</li>
+                </ul>
+                <a href="https://t.me/ForexFearClinicSupport" class="btn-gold text-xs">Access Signals</a>
+            </div>
 
-  <main class="max-w-6xl mx-auto px-6 space-y-24 pb-32">
+            <!-- Tier 2: Seminar (Featured) -->
+            <div class="glass-card p-10 flex flex-col text-center border-t-4 border-[#C5A059] md:scale-105 bg-black/80 shadow-2xl">
+                <div class="mb-6">
+                    <span class="bg-[#C5A059] text-black text-[9px] px-4 py-1 rounded-sm uppercase font-bold tracking-widest mb-4 inline-block">Highly Exclusive</span>
+                    <h3 class="font-cinzel text-xl mb-1 uppercase tracking-widest">Luxury Seminar</h3>
+                    <p class="text-[10px] text-white/40 uppercase">Global Residency</p>
+                </div>
+                <div class="price-tag">
+                    <div class="text-5xl font-bold gold-text">$9,000</div>
+                    <div class="text-[10px] font-light text-white/50 uppercase tracking-tighter">Private One-on-One Mentorship</div>
+                </div>
+                <ul class="text-[11px] space-y-5 mb-12 text-white/80 flex-grow text-left leading-relaxed">
+                    <li class="flex items-start font-semibold text-white"><span class="text-[#C5A059] mr-2">◈</span> 3 Days Private Quantitative Strategy Training</li>
+                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Luxury 5-Star Accommodation & Fine Dining</li>
+                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Direct Source Logic for Harmonic Market Cycles</li>
+                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Lifetime Private Inner-Circle Group Access</li>
+                </ul>
+                <a href="https://wa.me/306984561055" class="btn-gold text-xs">Request Invitation</a>
+            </div>
 
-    <!-- VIDEO SECTION -->
-    <section class="p-6 md:p-10 text-center relative z-10">
-      <h3 class="font-cinzel text-2xl mb-8 uppercase gold-text">Live Trade Verification</h3>
-      <div class="rounded-xl overflow-hidden border border-white/10 max-w-2xl mx-auto shadow-2xl bg-black/80">
-        <video controls preload="metadata" class="w-full">
-          <source src="trading_proof.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </section>
+            <!-- Tier 3: IP -->
+            <div class="glass-card p-10 flex flex-col text-center">
+                <div class="mb-6">
+                    <h3 class="font-cinzel text-lg mb-1 uppercase tracking-widest">Algorithm IP</h3>
+                    <p class="text-[10px] text-white/40 uppercase">Institutional Technology</p>
+                </div>
+                <div class="price-tag">
+                    <div class="text-4xl font-bold gold-text">$9M</div>
+                    <div class="text-[10px] font-light text-white/50 uppercase tracking-tighter">Full Ownership Transfer</div>
+                </div>
+                <ul class="text-[11px] space-y-5 mb-12 text-white/60 flex-grow text-left leading-relaxed">
+                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Proprietary Source Code & Logic Architecture</li>
+                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Global IP Rights & Commercial Usage Licenses</li>
+                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Dedicated Engineering Support & AWS Deployment</li>
+                </ul>
+                <a href="https://wa.me/306984561055" class="btn-gold text-xs">Private Inquiry</a>
+            </div>
+        </section>
 
-    <!-- TIERS SECTION -->
-    <section class="grid md:grid-cols-3 gap-8">
-      <!-- Tier 1 -->
-      <div class="p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30 bg-black/50 rounded-xl">
-        <h3 class="font-cinzel text-xl mb-4 uppercase">Elite Signals</h3>
-        <div class="text-4xl font-bold mb-6 gold-text">$180 <span class="text-sm font-light text-white/50">/ week</span></div>
-        <ul class="text-xs space-y-4 mb-10 text-white/70 flex-grow text-left">
-          <li>◈ NAS100 & Nikkei 225 High-Frequency Setups</li>
-          <li>◈ Documented High-Probability Accuracy</li>
-          <li>◈ Real-time Telegram Execution</li>
-        </ul>
-        <a href="https://t.me/ForexFearClinicSupport" class="btn-gold">Subscribe</a>
-      </div>
-      <!-- Tier 2 -->
-      <div class="p-8 flex flex-col text-center border-t-4 border-[#C5A059] scale-105 bg-black/50 rounded-xl">
-        <h3 class="font-cinzel text-xl mb-4 uppercase">Luxury Seminar</h3>
-        <div class="text-4xl font-bold mb-6 gold-text">$9,000</div>
-        <ul class="text-xs space-y-4 mb-10 text-white/70 flex-grow text-left">
-          <li>◈ 3 Days of Intensive Quantitative Training</li>
-          <li>◈ Luxury Accommodation & Fine Dining Included</li>
-          <li>◈ Lifetime Exclusive Group Access</li>
-        </ul>
-        <a href="https://wa.me/306984561055" class="btn-gold">Book Your Spot</a>
-      </div>
-      <!-- Tier 3 -->
-      <div class="p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30 bg-black/50 rounded-xl">
-        <h3 class="font-cinzel text-xl mb-4 uppercase">Algorithm IP</h3>
-        <div class="text-4xl font-bold mb-6 gold-text">Private Acquisition</div>
-        <ul class="text-xs space-y-4 mb-10 text-white/70 flex-grow text-left">
-          <li>◈ Complete Source Code Acquisition</li>
-          <li>◈ Exclusive Global Intellectual Property Rights</li>
-          <li>◈ Full Engineering Support & Deployment</li>
-        </ul>
-        <a href="https://wa.me/306984561055" class="btn-gold">Inquire Now</a>
-      </div>
-    </section>
+        <!-- Visionary / About Section -->
+        <section class="glass-card p-10 md:p-20 flex flex-col md:flex-row items-center gap-16 overflow-hidden">
+            <div class="relative flex-shrink-0">
+                <!-- Using uploaded founder_visionary.jpg -->
+                <img src="founder_visionary.jpg" alt="The Visionary" class="founder-circular">
+                <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-black border border-[#C5A059]/40 px-5 py-1 rounded shadow-lg">
+                    <span class="text-[9px] uppercase tracking-[0.4em] gold-text font-bold">The Visionary</span>
+                </div>
+            </div>
 
-    <!-- ABOUT SECTION -->
-    <section class="p-10 flex flex-col md:flex-row items-center gap-12 bg-black/50 rounded-xl">
-      <img src="founder_visionary.jpg" alt="Founder" class="founder-circular">
-      <div class="space-y-6 text-center md:text-left">
-        <span class="gold-text font-bold tracking-widest text-sm uppercase">The Visionary</span>
-        <h2 class="font-cinzel text-4xl text-white">Mastering Harmonic Markets</h2>
-        <p class="text-lg font-light leading-relaxed text-white/80">
-          With 16 years of specialized research in quantitative programming, we have developed the mathematical formula that unlocks consistent profitability in global markets. Our approach merges high-level technology with the ancient wisdom of numbers.
-        </p>
-      </div>
-    </section>
+            <div class="space-y-6 text-center md:text-left flex-1">
+                <span class="text-[#C5A059] font-bold tracking-[0.5em] text-[10px] uppercase">Geometric Truth</span>
+                <h2 class="font-cinzel text-4xl text-white leading-tight">Mastering The <br><span class="gold-text">Harmonic Markets</span></h2>
+                <p class="text-base font-light leading-relaxed text-white/70">
+                    With over 16 years of exhaustive quantitative research, we have distilled market volatility into a singular mathematical truth. By merging ancient geometric principles with modern high-frequency programming, we offer a proprietary gateway to wealth that is as consistent as the numbers themselves.
+                </p>
+                <div class="pt-6">
+                    <p class="font-cinzel text-sm text-white/40 tracking-widest italic">— Mathematical Harmony in Motion</p>
+                </div>
+            </div>
+        </section>
 
-  </main>
+    </main>
 
-  <!-- FOOTER -->
-  <footer class="py-16 bg-black text-center border-t border-white/10">
-    <h4 class="font-cinzel text-lg gold-text mb-6 uppercase">Pythagorean Wealth Institute</h4>
-    <div class="max-w-3xl mx-auto px-6">
-      <p class="text-[10px] text-gray-400 uppercase tracking-widest leading-loose">
-        Risk Disclaimer: Trading in financial markets involves a significant risk of capital loss. Past performance is not indicative of future results. All quantitative models and signals are for educational and informational purposes only. <br>© 2026. All Rights Reserved.
-      </p>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer class="py-24 bg-[#050505] text-center border-t border-white/5 relative z-10">
+        <div class="mb-12">
+            <h4 class="font-cinzel text-2xl gold-text mb-2 uppercase tracking-[0.5em]">Pythagorean</h4>
+            <p class="text-[10px] uppercase tracking-[0.3em] text-white/40">Wealth Institute — Established 2010</p>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-10 mb-14 text-[11px] uppercase tracking-widest text-white/50">
+                <a href="#" class="hover:text-[#C5A059] transition-colors">Risk Disclosure</a>
+                <a href="#" class="hover:text-[#C5A059] transition-colors">Privacy Charter</a>
+                <a href="https://wa.me/306984561055" class="hover:text-[#C5A059] transition-colors">WhatsApp Support</a>
+                <a href="https://t.me/ForexFearClinicSupport" class="hover:text-[#C5A059] transition-colors">Telegram Intelligence</a>
+            </div>
+            
+            <p class="text-[9px] text-gray-700 uppercase tracking-[0.15em] leading-loose max-w-2xl mx-auto border-t border-white/5 pt-10">
+                Investment Warning: Leveraged trading involves significant risk of loss. The quantitative tools provided are for educational and institutional research purposes. We do not provide financial advice. Your capital is at risk. 
+                <br><span class="mt-6 block opacity-40">© 2026 Pythagorean Wealth Institute. Mastered in Mathematics.</span>
+            </p>
+        </div>
+    </footer>
 
 </body>
 </html>
