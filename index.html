@@ -12,19 +12,31 @@
             --turquoise: #40E0D0;
         }
         
+        /* ✅ FIXED BODY (no background image anymore) */
         body { 
             font-family: 'Montserrat', sans-serif; 
-            background-color: #000;
-
-            /* BLUE LUXURY OVERLAY + FULL BUILDING VISIBLE */
-            background-image: linear-gradient(rgba(0, 90, 140, 0.4), rgba(0, 40, 80, 0.7)), url('pythagoras_building.jpg');
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-attachment: fixed;
-
+            background: #021B2B;
             color: white;
             margin: 0;
+        }
+
+        /* ✅ BACKGROUND LAYER (NEW SYSTEM) */
+        .bg-fixed-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            background: 
+                linear-gradient(rgba(0, 150, 255, 0.35), rgba(0, 40, 90, 0.85)),
+                url('pythagoras_building.jpg');
+
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+
+            z-index: -1;
         }
 
         .font-cinzel { font-family: 'Cinzel', serif; }
@@ -37,7 +49,6 @@
             border-radius: 20px;
         }
 
-        /* CLEAN VIDEO CARD WITH TURQUOISE LUXURY TOUCH */
         .video-card {
             background: rgba(0, 30, 60, 0.7);
             border: 1px solid rgba(64, 224, 208, 0.3);
@@ -84,6 +95,9 @@
 </head>
 <body>
 
+    <!-- ✅ BACKGROUND LAYER INSERTED -->
+    <div class="bg-fixed-layer"></div>
+
     <header class="hero-section flex flex-col items-center justify-center text-center px-4">
         <h1 class="font-cinzel text-5xl md:text-7xl tracking-[0.3em] gold-text uppercase font-bold mb-4">Pythagorean</h1>
         <h2 class="font-cinzel text-2xl md:text-4xl text-white tracking-[0.2em] uppercase opacity-90">Wealth Institute</h2>
@@ -92,7 +106,6 @@
 
     <main class="max-w-6xl mx-auto px-6 space-y-24 pb-32">
         
-        <!-- Video section -->
         <section class="video-card p-6 md:p-10 text-center">
             <h3 class="font-cinzel text-2xl mb-8 uppercase gold-text">Live Trade Verification</h3>
             <div class="rounded-xl overflow-hidden border border-white/10 max-w-2xl mx-auto shadow-2xl bg-black">
@@ -104,7 +117,6 @@
         </section>
 
         <section class="grid md:grid-cols-3 gap-8">
-            <!-- Tier 1 -->
             <div class="glass-card p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30">
                 <h3 class="font-cinzel text-xl mb-4 uppercase">Elite Signals</h3>
                 <div class="text-4xl font-bold mb-6 gold-text">$180 <span class="text-sm font-light text-white/50">/ week</span></div>
@@ -116,7 +128,6 @@
                 <a href="https://t.me/ForexFearClinicSupport" class="btn-gold">Subscribe</a>
             </div>
 
-            <!-- Tier 2 -->
             <div class="glass-card p-8 flex flex-col text-center border-t-4 border-[#C5A059] scale-105 bg-white/5">
                 <h3 class="font-cinzel text-xl mb-4 uppercase">Luxury Seminar</h3>
                 <div class="text-4xl font-bold mb-6 gold-text">$9,000</div>
@@ -128,7 +139,6 @@
                 <a href="https://wa.me/306984561055" class="btn-gold">Book Your Spot</a>
             </div>
 
-            <!-- Tier 3 -->
             <div class="glass-card p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30">
                 <h3 class="font-cinzel text-xl mb-4 uppercase">Algorithm IP</h3>
                 <div class="text-4xl font-bold mb-6 gold-text">$9,000,000</div>
@@ -141,7 +151,6 @@
             </div>
         </section>
 
-        <!-- About Section -->
         <section class="glass-card p-10 flex flex-col md:flex-row items-center gap-12">
             <img src="founder_visionary.jpg" alt="Founder" class="founder-circular">
             <div class="space-y-6 text-center md:text-left">
