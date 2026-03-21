@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pythagorean Wealth Institute | Luxury Quantitative Trading</title>
+<title>Pythagorean Wealth Institute</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -11,8 +11,8 @@
 <style>
 :root { --gold: #C5A059; }
 
-body { 
-    font-family: 'Montserrat', sans-serif; 
+body {
+    font-family: 'Montserrat', sans-serif;
     background-color: #000;
     color: white;
     margin: 0;
@@ -21,46 +21,29 @@ body {
 .font-cinzel { font-family: 'Cinzel', serif; }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255,255,255,0.04);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 20px;
 }
 
 .video-card {
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0,0,0,0.25);
     border-radius: 20px;
 }
 
 .gold-text {
-    background: linear-gradient(135deg, #A67C00 0%, #C5A059 50%, #A67C00 100%);
+    background: linear-gradient(135deg,#A67C00,#C5A059,#A67C00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
-.founder-circular {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    border: 3px solid var(--gold);
-    object-fit: cover;
 }
 
 .btn-gold {
     background: var(--gold);
     color: black;
     padding: 0.8rem 2rem;
-    text-transform: uppercase;
-    font-weight: 700;
     border-radius: 50px;
-    transition: 0.3s;
-    display: inline-block;
-}
-
-.btn-gold:hover { 
-    transform: scale(1.05); 
-    box-shadow: 0 0 15px var(--gold); 
+    font-weight: bold;
 }
 
 video {
@@ -71,12 +54,12 @@ video {
 
 <body>
 
-<!-- 🔥 HERO WITH FULL BUILDING -->
+<!-- HERO -->
 <header class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden">
 
-    <img src="pythagoras_building.jpg" 
-         alt="Pythagorean Building"
-         class="absolute w-full h-full object-contain top-0 left-0 z-0">
+    <img src="pythagoras_building.jpg"
+         id="heroImage"
+         class="absolute w-full h-full object-contain top-0 left-0 z-0 will-change-transform">
 
     <div class="absolute inset-0 bg-black/40 z-10"></div>
 
@@ -96,63 +79,55 @@ video {
 
 <main class="max-w-6xl mx-auto px-6 space-y-24 pb-32">
 
-    <!-- VIDEO -->
-    <section class="video-card p-6 md:p-10 text-center">
-        <h3 class="font-cinzel text-2xl mb-8 uppercase gold-text">Live Trade Verification</h3>
+<!-- VIDEO -->
+<section class="video-card p-6 md:p-10 text-center">
+    <h3 class="font-cinzel text-2xl mb-8 uppercase gold-text">Live Trade Verification</h3>
 
-        <div class="rounded-xl overflow-hidden border border-white/10 max-w-md mx-auto shadow-2xl bg-black/70">
-            <video controls autoplay muted loop playsinline class="w-full rounded-xl">
-                <source src="trading_proof.mp4" type="video/mp4">
-            </video>
-        </div>
-    </section>
+    <div class="rounded-xl overflow-hidden border border-white/10 max-w-md mx-auto shadow-2xl bg-black/70">
+        <video controls autoplay muted loop playsinline class="w-full rounded-xl">
+            <source src="trading_proof.mp4" type="video/mp4">
+        </video>
+    </div>
+</section>
 
-    <!-- PRICING -->
-    <section class="grid md:grid-cols-3 gap-8">
+<!-- PRICING -->
+<section class="grid md:grid-cols-3 gap-8">
 
-        <div class="glass-card p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30">
-            <h3 class="font-cinzel text-xl mb-4 uppercase">Elite Signals</h3>
-            <div class="text-4xl font-bold mb-6 gold-text">$180 <span class="text-sm text-white/50">/ week</span></div>
-            <ul class="text-xs space-y-4 mb-10 text-white/70 text-left">
-                <li>◈ NAS100 & Nikkei 225 High-Frequency Setups</li>
-                <li>◈ 88%+ Accuracy</li>
-                <li>◈ Telegram Execution</li>
-            </ul>
-            <a href="https://t.me/ForexFearClinicSupport" class="btn-gold">Subscribe</a>
-        </div>
+<div class="glass-card p-8 text-center">
+    <h3 class="font-cinzel text-xl mb-4 uppercase">Elite Signals</h3>
+    <div class="text-4xl gold-text mb-6">$180</div>
+    <a href="#" class="btn-gold">Subscribe</a>
+</div>
 
-        <div class="glass-card p-8 flex flex-col text-center border-t-4 border-[#C5A059] scale-105 bg-white/5">
-            <h3 class="font-cinzel text-xl mb-4 uppercase">Luxury Seminar</h3>
-            <div class="text-4xl font-bold mb-6 gold-text">$9,000</div>
-            <ul class="text-xs space-y-4 mb-10 text-white/70 text-left">
-                <li>◈ 3 Days Intensive Training</li>
-                <li>◈ Luxury Experience</li>
-                <li>◈ Private Group Access</li>
-            </ul>
-            <a href="https://wa.me/306984561055" class="btn-gold">Book</a>
-        </div>
+<div class="glass-card p-8 text-center">
+    <h3 class="font-cinzel text-xl mb-4 uppercase">Seminar</h3>
+    <div class="text-4xl gold-text mb-6">$9000</div>
+    <a href="#" class="btn-gold">Book</a>
+</div>
 
-        <div class="glass-card p-8 flex flex-col text-center border-t-2 border-[#C5A059]/30">
-            <h3 class="font-cinzel text-xl mb-4 uppercase">Algorithm IP</h3>
-            <div class="text-4xl font-bold mb-6 gold-text">$9,000,000</div>
-            <ul class="text-xs space-y-4 mb-10 text-white/70 text-left">
-                <li>◈ Full Source Code</li>
-                <li>◈ Global Rights</li>
-                <li>◈ Engineering Support</li>
-            </ul>
-            <a href="https://wa.me/306984561055" class="btn-gold">Inquire</a>
-        </div>
+<div class="glass-card p-8 text-center">
+    <h3 class="font-cinzel text-xl mb-4 uppercase">Algorithm</h3>
+    <div class="text-4xl gold-text mb-6">$9M</div>
+    <a href="#" class="btn-gold">Contact</a>
+</div>
 
-    </section>
+</section>
 
 </main>
 
-<footer class="py-16 bg-black text-center border-t border-white/10">
-    <h4 class="font-cinzel text-lg gold-text mb-6 uppercase">Pythagorean Wealth Institute</h4>
-    <p class="text-[10px] text-gray-400 uppercase tracking-widest">
-        Trading involves risk. Past performance is not indicative of future results.
-    </p>
+<footer class="text-center py-10 border-t border-white/10">
+    <p class="text-xs text-gray-400">Trading involves risk.</p>
 </footer>
+
+<!-- PARALLAX SCRIPT -->
+<script>
+const heroImage = document.getElementById("heroImage");
+
+window.addEventListener("scroll", () => {
+    let offset = window.scrollY;
+    heroImage.style.transform = `translateY(${offset * -0.25}px)`;
+});
+</script>
 
 </body>
 </html>
