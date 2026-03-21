@@ -12,51 +12,37 @@
             --turquoise: #40E0D0;
         }
         
-        /* ✅ FIXED BODY (no background image anymore) */
+        /* ✅ PURE IMAGE BACKGROUND */
         body { 
             font-family: 'Montserrat', sans-serif; 
-            background: #021B2B;
-            color: white;
-            margin: 0;
-        }
-
-        /* ✅ BACKGROUND LAYER (NEW SYSTEM) */
-        .bg-fixed-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-
-            background: 
-                linear-gradient(rgba(0, 150, 255, 0.35), rgba(0, 40, 90, 0.85)),
-                url('pythagoras_building.jpg');
-
+            
+            background-image: url('pythagoras_building.jpg');
             background-position: center;
             background-repeat: no-repeat;
-            background-size: contain;
+            background-size: cover;
+            background-attachment: fixed;
 
-            z-index: -1;
+            color: white;
+            margin: 0;
         }
 
         .font-cinzel { font-family: 'Cinzel', serif; }
         
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(64, 224, 208, 0.15);
+            background: rgba(0, 0, 0, 0.55); /* λίγο πιο dark για να διαβάζεται */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
         }
 
         .video-card {
-            background: rgba(0, 30, 60, 0.7);
-            border: 1px solid rgba(64, 224, 208, 0.3);
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
         }
 
         .gold-text {
-            color: var(--gold);
             background: linear-gradient(135deg, #A67C00 0%, #C5A059 50%, #A67C00 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -68,7 +54,6 @@
             border-radius: 50%;
             border: 3px solid var(--gold);
             object-fit: cover;
-            box-shadow: 0 0 30px rgba(197, 160, 89, 0.2);
         }
 
         .btn-gold {
@@ -84,7 +69,7 @@
 
         .btn-gold:hover { 
             transform: scale(1.05); 
-            box-shadow: 0 0 15px var(--gold), 0 0 25px var(--turquoise); 
+            box-shadow: 0 0 15px var(--gold); 
         }
 
         .hero-section {
@@ -95,13 +80,10 @@
 </head>
 <body>
 
-    <!-- ✅ BACKGROUND LAYER INSERTED -->
-    <div class="bg-fixed-layer"></div>
-
     <header class="hero-section flex flex-col items-center justify-center text-center px-4">
         <h1 class="font-cinzel text-5xl md:text-7xl tracking-[0.3em] gold-text uppercase font-bold mb-4">Pythagorean</h1>
         <h2 class="font-cinzel text-2xl md:text-4xl text-white tracking-[0.2em] uppercase opacity-90">Wealth Institute</h2>
-        <div class="h-1 w-24 bg-gradient-to-r from-[#C5A059] to-[#40E0D0] mt-6"></div>
+        <div class="h-1 w-24 bg-[#C5A059] mt-6"></div>
     </header>
 
     <main class="max-w-6xl mx-auto px-6 space-y-24 pb-32">
@@ -111,7 +93,6 @@
             <div class="rounded-xl overflow-hidden border border-white/10 max-w-2xl mx-auto shadow-2xl bg-black">
                 <video controls autoplay muted loop playsinline class="w-full">
                     <source src="trading_proof.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
                 </video>
             </div>
         </section>
@@ -151,28 +132,7 @@
             </div>
         </section>
 
-        <section class="glass-card p-10 flex flex-col md:flex-row items-center gap-12">
-            <img src="founder_visionary.jpg" alt="Founder" class="founder-circular">
-            <div class="space-y-6 text-center md:text-left">
-                <span class="gold-text font-bold tracking-widest text-sm uppercase">The Visionary</span>
-                <h2 class="font-cinzel text-4xl text-white">Mastering Harmonic Markets</h2>
-                <p class="text-lg font-light leading-relaxed text-white/80">
-                    With 16 years of specialized research in quantitative programming, we have developed the mathematical formula that unlocks consistent profitability in global markets. Our approach merges high-level technology with the ancient wisdom of numbers.
-                </p>
-            </div>
-        </section>
-
     </main>
-
-    <footer class="py-16 bg-black text-center border-t border-white/10">
-        <h4 class="font-cinzel text-lg gold-text mb-6 uppercase">Pythagorean Wealth Institute</h4>
-        <div class="max-w-3xl mx-auto px-6">
-            <p class="text-[10px] text-gray-400 uppercase tracking-widest leading-loose">
-                Risk Disclaimer: Trading in financial markets involves a significant risk of capital loss. Past performance is not indicative of future results. All quantitative models and signals are for educational and informational purposes only.
-                <br>© 2026. All Rights Reserved.
-            </p>
-        </div>
-    </footer>
 
 </body>
 </html>
