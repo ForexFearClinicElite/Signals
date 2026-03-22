@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pythagorean Wealth Institute | Luxury Quantitative Trading</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { 
@@ -16,7 +17,7 @@
         body { 
             font-family: 'Montserrat', sans-serif; 
             background-color: #000;
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.75)), url('pythagoras_building.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('pythagoras_building.jpg');
             background-position: center top;
             background-repeat: no-repeat;
             background-size: cover;
@@ -26,13 +27,24 @@
             overflow-x: hidden;
         }
 
+        /* 3D Canvas Styling */
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+
         .font-cinzel { font-family: 'Cinzel', serif; }
         
         .glass-card {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(197, 160, 89, 0.1);
             border-radius: 24px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -40,14 +52,14 @@
         .glass-card:hover {
             transform: translateY(-8px);
             border-color: var(--gold);
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.75);
         }
 
         .video-card {
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.9);
             border: 1px solid rgba(197, 160, 89, 0.3);
             border-radius: 24px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.9);
         }
 
         .gold-text {
@@ -89,8 +101,10 @@
         }
 
         .hero-section {
-            padding-top: 22vh;
+            padding-top: 25vh;
             padding-bottom: 12vh;
+            position: relative;
+            z-index: 10;
         }
 
         .price-tag {
@@ -100,16 +114,19 @@
         }
 
         @media (max-width: 768px) {
-            .hero-section { padding-top: 15vh; }
-            .font-cinzel.text-8xl { font-size: 3.25rem; }
-            .glass-card.scale-105 { transform: scale(1); }
+            .hero-section { padding-top: 18vh; }
+            .font-cinzel.text-8xl { font-size: 3.5rem; }
+            #canvas-container { height: 40vh; }
         }
     </style>
 </head>
 <body>
 
+    <!-- 3D Animation Background -->
+    <div id="canvas-container"></div>
+
     <!-- Header / Hero -->
-    <header class="hero-section flex flex-col items-center justify-center text-center px-4 relative z-10">
+    <header class="hero-section flex flex-col items-center justify-center text-center px-4">
         <div class="mb-4 tracking-[0.6em] text-[10px] uppercase text-white/60 font-semibold">Mathematical Superiority Since 2010</div>
         <h1 class="font-cinzel text-5xl md:text-8xl tracking-[0.25em] gold-text uppercase font-bold mb-2">Pythagorean</h1>
         <h2 class="font-cinzel text-xl md:text-3xl text-white tracking-[0.4em] uppercase opacity-90">Wealth Institute</h2>
@@ -217,17 +234,14 @@
                 <p class="text-white/40 text-xs uppercase tracking-[0.3em] mb-12">Discreet Professional Inquiries</p>
                 
                 <div class="grid md:grid-cols-3 gap-12">
-                    <!-- Phone -->
                     <div class="space-y-3">
                         <span class="text-[10px] text-[#C5A059] uppercase tracking-widest font-bold block">Private Line</span>
                         <a href="tel:+306984561055" class="text-lg font-light hover:text-[#C5A059] transition">+30 698 456 1055</a>
                     </div>
-                    <!-- Email -->
                     <div class="space-y-3">
                         <span class="text-[10px] text-[#C5A059] uppercase tracking-widest font-bold block">Digital Correspondence</span>
                         <a href="mailto:private@pythagorean-institute.com" class="text-lg font-light hover:text-[#C5A059] transition">Inquire via Email</a>
                     </div>
-                    <!-- Telegram/Line -->
                     <div class="space-y-3">
                         <span class="text-[10px] text-[#C5A059] uppercase tracking-widest font-bold block">Secure Encryption</span>
                         <a href="https://t.me/ForexFearClinicSupport" class="text-lg font-light hover:text-[#C5A059] transition">Telegram Secure</a>
@@ -263,6 +277,95 @@
             </p>
         </div>
     </footer>
+
+    <script>
+        let scene, camera, renderer, tetrahedron, particles;
+
+        function init3D() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight * 0.6), 0.1, 1000);
+            
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            // Create Tetrahedron (The Pythagorean Holy Form)
+            const geometry = new THREE.TetrahedronGeometry(2, 0);
+            const material = new THREE.MeshPhongMaterial({
+                color: 0xC5A059,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.6,
+                shininess: 100
+            });
+            tetrahedron = new THREE.Mesh(geometry, material);
+            scene.add(tetrahedron);
+
+            // Add inner solid core for luxury feel
+            const coreGeometry = new THREE.TetrahedronGeometry(0.8, 0);
+            const coreMaterial = new THREE.MeshPhongMaterial({
+                color: 0xC5A059,
+                transparent: true,
+                opacity: 0.2
+            });
+            const core = new THREE.Mesh(coreGeometry, coreMaterial);
+            tetrahedron.add(core);
+
+            // Lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+
+            const pointLight = new THREE.PointLight(0xC5A059, 2);
+            pointLight.position.set(5, 5, 5);
+            scene.add(pointLight);
+
+            camera.position.z = 5;
+
+            // Handle Mouse Interaction
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = (e.clientX / window.innerWidth) - 0.5;
+                const mouseY = (e.clientY / window.innerHeight) - 0.5;
+                
+                // Subtle reaction to mouse
+                gsap_animate(tetrahedron.rotation, {
+                    x: mouseY * 2,
+                    y: mouseX * 2,
+                    duration: 2
+                });
+            });
+
+            animate();
+        }
+
+        // Simple animation helper since we don't have GSAP external lib
+        function gsap_animate(obj, target) {
+            obj.x += (target.x - obj.x) * 0.05;
+            obj.y += (target.y - obj.y) * 0.05;
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Constant slow rotation
+            tetrahedron.rotation.y += 0.005;
+            tetrahedron.rotation.x += 0.002;
+            
+            // Pulsing scale effect
+            const scale = 1 + Math.sin(Date.now() * 0.001) * 0.05;
+            tetrahedron.scale.set(scale, scale, scale);
+
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / (window.innerHeight * 0.6);
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+        });
+
+        window.onload = init3D;
+    </script>
 
 </body>
 </html>
