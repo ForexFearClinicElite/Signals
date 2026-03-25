@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+YPE html>
 <html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forex Fear Clinic Elite | 369 Tesla Algorithm</title>
+    <title>Voula Alpha | Structured Forex & Crypto Execution</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,17 +11,19 @@
         :root {
             --gold: #D4AF37;
             --gold-light: #E8C547;
-            --navy-dark: #0a0e1a;
+            --navy-dark: #050505;
             --navy: #0f1629;
             --navy-light: #1a2342;
+            --wealth-green: #10b981;
         }
         
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-dark) 100%);
+            background: linear-gradient(135deg, var(--navy-dark) 0%, #0a0a0a 50%, var(--navy-dark) 100%);
             color: white;
             margin: 0;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         
         .font-serif { font-family: 'Cormorant Garamond', serif; }
@@ -34,12 +36,12 @@
         }
         
         .gold-border {
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             box-shadow: 0 0 30px rgba(212, 175, 55, 0.05);
         }
         
         .luxury-panel {
-            background: linear-gradient(145deg, rgba(26, 35, 66, 0.8) 0%, rgba(15, 22, 41, 0.9) 100%);
+            background: linear-gradient(145deg, rgba(26, 35, 66, 0.4) 0%, rgba(15, 22, 41, 0.6) 100%);
             backdrop-filter: blur(10px);
         }
         
@@ -48,6 +50,7 @@
             transition: all 0.4s ease;
             color: black !important;
             text-decoration: none;
+            display: inline-block;
         }
         
         .cta-button:hover {
@@ -55,10 +58,9 @@
             box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
         }
 
-        /* Updated for circular image */
         .hero-image-container {
             position: relative;
-            border-radius: 9999px; /* Full circle */
+            border-radius: 9999px;
             overflow: hidden;
             border: 2px solid var(--gold);
             width: 280px; 
@@ -75,175 +77,178 @@
             border-radius: 9999px;
             background: linear-gradient(to bottom, transparent 60%, rgba(10, 14, 26, 0.4) 100%);
         }
-        
-        .qr-box {
-            background: white;
-            padding: 10px;
-            border-radius: 12px;
-            width: 160px;
-            height: 160px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-        }
-
-        .floating-element {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
 
         .disclaimer-text {
             font-size: 0.75rem;
             line-height: 1.6;
-            opacity: 0.5;
+            opacity: 0.4;
             max-width: 800px;
             margin: 0 auto;
             text-align: justify;
         }
+
+        .result-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .result-item:last-child { border-bottom: none; }
     </style>
 </head>
 <body class="min-h-full">
 
-    <!-- Decorative BG -->
     <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10">
         <div class="absolute top-20 left-10 w-64 h-64 rounded-full opacity-10" style="background: radial-gradient(circle, var(--gold) 0%, transparent 70%);"></div>
     </div>
 
-    <!-- Navigation -->
     <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-white/5">
-        <div class="font-serif text-xl md:text-2xl font-bold gold-gradient tracking-widest uppercase">Forex Fear Clinic Elite</div>
+        <div class="flex items-center gap-3">
+            <div class="font-serif text-xl md:text-2xl font-bold gold-gradient tracking-widest uppercase">Voula Alpha</div>
+            <div class="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase px-2 py-1 bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 rounded">Signals</div>
+        </div>
         <div class="hidden md:flex gap-8 text-[10px] uppercase tracking-[0.3em] opacity-60">
-            <a href="#strategy" class="hover:text-[var(--gold)] transition-colors text-white">Philosophy</a>
-            <a href="#institutional" class="hover:text-[var(--gold)] transition-colors text-white">Institutional</a>
-            <a href="#connect" class="hover:text-[var(--gold)] transition-colors text-white">Contact</a>
+            <a href="#results" class="hover:text-[var(--gold)] transition-colors text-white">Results</a>
+            <a href="#pricing" class="hover:text-[var(--gold)] transition-colors text-white">Access</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="max-w-7xl mx-auto px-6 py-16 lg:py-24">
         <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-            
-            <!-- Photo Left (Now Circular) -->
-            <div class="w-full lg:w-5/12 flex justify-center">
-                <div class="hero-image-container shadow-2xl">
-                    <img src="photo.jpg" alt="Voula - Algorithm Developer" class="w-full h-full object-cover grayscale-[10%]" loading="lazy">
+            <div class="w-full lg:w-5/12 flex justify-center text-center">
+                <div>
+                    <div class="hero-image-container shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=800&auto=format&fit=crop" alt="Voula Alpha" class="w-full h-full object-cover grayscale-[10%]" loading="lazy">
+                    </div>
+                    <p class="text-[10px] uppercase tracking-[0.4em] opacity-50 mt-6 gold-gradient font-bold">
+                        Voula — 16+ years in forex & crypto markets
+                    </p>
                 </div>
             </div>
 
-            <!-- Content Right -->
             <div class="w-full lg:w-7/12 space-y-8 text-center lg:text-left">
                 <div>
-                    <span class="text-xs tracking-[0.4em] uppercase opacity-60 font-bold text-[var(--gold)]">Proprietary Quantitative Engine</span>
+                    <span class="text-xs tracking-[0.4em] uppercase opacity-60 font-bold text-[var(--gold)]">Precision Trading & Consistent Execution</span>
                 </div>
                 <h1 class="font-serif text-5xl md:text-7xl font-light leading-tight gold-gradient">
-                    369 Tesla <br>Frequency Algorithm
+                    Controlled Risk.<br>Structured Results.
                 </h1>
-                <div class="space-y-4">
-                    <p class="text-xl md:text-2xl font-light opacity-90 border-l-0 lg:border-l-2 border-[var(--gold)]/30 lg:pl-6">
-                        The Mathematical Edge in Forex Trading.
-                    </p>
-                    <p class="text-sm opacity-70 italic">
-                        Developed by <span class="font-bold text-[var(--gold)]">Voula</span>, with 16 years of expertise in Programming & Quant Analysis.
+
+                <div class="space-y-6 border-l-0 lg:border-l-2 border-[var(--gold)]/30 lg:pl-8">
+                    <div class="space-y-2">
+                        <p class="text-xl md:text-2xl font-light uppercase tracking-widest text-white/90">
+                            This is not for beginners.
+                        </p>
+                        <p class="text-sm text-[var(--gold)] opacity-80 italic font-medium">
+                            Most traders blow accounts chasing entries. I built this to protect capital first.
+                        </p>
+                    </div>
+                    <p class="text-sm opacity-60 leading-relaxed max-w-xl lg:pl-24">
+                        This is for traders who understand risk. Not for gamblers. If you are looking for hype or overtrading — this is not for you.
                     </p>
                 </div>
                 
                 <div class="pt-6">
-                    <a href="#connect" class="inline-block cta-button px-10 py-5 rounded-sm font-bold tracking-widest text-xs uppercase shadow-xl">
-                        Get 48-Hour Signals Access — $90
+                    <a href="#pricing" class="cta-button px-10 py-5 rounded-sm font-bold tracking-widest text-xs uppercase shadow-xl">
+                        Get Daily Access Now
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Strategy Section -->
-    <section id="strategy" class="py-24 bg-black/20">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="floating-element mb-12 flex justify-center">
-                <svg width="80" height="80" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" stroke="var(--gold)" stroke-width="0.5" fill="none" opacity="0.5"/>
-                    <text x="50" y="55" text-anchor="middle" fill="var(--gold)" font-family="Cormorant Garamond" font-size="16">369</text>
-                </svg>
+    <section class="py-12 bg-black/40 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="space-y-1">
+                <p class="font-serif text-2xl gold-gradient">16+ Years</p>
+                <p class="text-[9px] uppercase tracking-widest opacity-50">Trading Experience</p>
             </div>
-            <h2 class="font-serif text-4xl gold-gradient mb-8 italic">"If you only knew the magnificence of the 3, 6 and 9..."</h2>
-            <p class="text-lg font-light leading-relaxed opacity-80 italic mb-4">
-                Our algorithm integrates Quantum Arithmetic and Harmonic Frequencies to identify market cycles with surgical precision.
+            <div class="space-y-1">
+                <p class="font-serif text-2xl gold-gradient">Quality over Quantity</p>
+                <p class="text-[9px] uppercase tracking-widest opacity-50">Not Hype or Noise</p>
+            </div>
+            <div class="space-y-1">
+                <p class="font-serif text-2xl gold-gradient">Transparency</p>
+                <p class="text-[9px] uppercase tracking-widest opacity-50">Wins & Losses Shared</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="results" class="py-24 bg-black/10">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-5xl gold-gradient italic mb-4">Recent Results</h2>
+                <p class="text-xs uppercase tracking-[0.3em] opacity-50">Verified Live Execution</p>
+            </div>
+            
+            <div class="luxury-panel gold-border rounded-xl overflow-hidden">
+                <div class="result-item">
+                    <div class="flex flex-col">
+                        <span class="font-bold text-sm">EUR/USD</span>
+                        <span class="text-[10px] opacity-40 uppercase tracking-widest">Intraday Setup</span>
+                    </div>
+                    <span class="text-emerald-400 font-bold tracking-tighter">TP HIT ✅ +45 PIPS</span>
+                </div>
+                <div class="result-item">
+                    <div class="flex flex-col">
+                        <span class="font-bold text-sm">GBP/JPY</span>
+                        <span class="text-[10px] opacity-40 uppercase tracking-widest">Momentum Break</span>
+                    </div>
+                    <span class="text-emerald-400 font-bold tracking-tighter">TP HIT ✅ +60 PIPS</span>
+                </div>
+                <div class="result-item">
+                    <div class="flex flex-col">
+                        <span class="font-bold text-sm">BTC/USD</span>
+                        <span class="text-[10px] opacity-40 uppercase tracking-widest">Volatility Play</span>
+                    </div>
+                    <span class="text-rose-500 font-bold tracking-tighter">SL HIT ❌ -1.0%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="max-w-7xl mx-auto px-6 py-32">
+        <div class="max-w-2xl mx-auto text-center space-y-16">
+            <h2 class="font-serif text-5xl gold-gradient italic">Day Pass Access</h2>
+            
+            <div class="luxury-panel gold-border rounded-2xl p-12 relative overflow-hidden flex flex-col items-center shadow-[0_0_60px_rgba(212,175,55,0.15)]">
+                <div class="mb-8">
+                    <span class="text-[10px] uppercase tracking-widest opacity-60">Professional Trial</span>
+                    <p class="font-serif text-7xl gold-gradient mt-4">€9 <span class="text-2xl opacity-40">/ day</span></p>
+                </div>
+                
+                <ul class="space-y-5 text-sm font-light opacity-90 mb-12 text-left w-full max-w-sm border-y border-white/5 py-8">
+                    <li class="flex items-center gap-4"><i data-lucide="clock" class="w-5 h-5 text-[var(--gold)]"></i> 24-hour full signal access</li>
+                    <li class="flex items-center gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-[var(--gold)]"></i> All intraday setups & entry points</li>
+                    <li class="flex items-center gap-4"><i data-lucide="bell" class="w-5 h-5 text-[var(--gold)]"></i> Real-time Telegram alerts</li>
+                    <li class="flex items-center gap-4"><i data-lucide="shield" class="w-5 h-5 text-[var(--gold)]"></i> Protected risk management parameters</li>
+                </ul>
+
+                <a href="https://whop.com/voula-alpha/one-day-access-a1" target="_blank" class="cta-button block w-full py-6 rounded-sm font-bold tracking-[0.2em] text-sm uppercase shadow-2xl">
+                    Get 1-Day Access Now
+                </a>
+                
+                <p class="text-[10px] uppercase tracking-[0.2em] opacity-40 mt-8">
+                    Instant Delivery via Whop
+                </p>
+            </div>
+
+            <p class="text-xs opacity-50 max-w-md mx-auto leading-relaxed">
+                This plan is designed for serious traders looking to test our execution quality before committing further.
             </p>
-            <div class="h-px w-24 bg-[var(--gold)] mx-auto opacity-40"></div>
         </div>
     </section>
 
-    <!-- Institutional Offerings -->
-    <section id="institutional" class="max-w-7xl mx-auto px-6 py-32">
-        <div class="grid md:grid-cols-2 gap-10">
-            <!-- Panel 1 -->
-            <div class="luxury-panel gold-border rounded-2xl p-12 relative overflow-hidden">
-                <h3 class="font-serif text-3xl gold-gradient mb-4 italic">Institutional Licensing</h3>
-                <p class="text-xs gold-text uppercase tracking-widest mb-8 opacity-60">Performance-Based Model</p>
-                <ul class="space-y-4 text-sm font-light opacity-80">
-                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-[var(--gold)]"></i> Upfront Licensing Payment</li>
-                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-[var(--gold)]"></i> 20-30% Performance Allocation</li>
-                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-[var(--gold)]"></i> Full Real-time Node Implementation</li>
-                </ul>
-            </div>
-
-            <!-- Panel 2 -->
-            <div class="luxury-panel gold-border rounded-2xl p-12 border-[var(--gold)]/50 shadow-[0_0_50px_rgba(212,175,55,0.1)]">
-                <h3 class="font-serif text-3xl gold-gradient mb-4 italic">Full IP Transfer</h3>
-                <p class="text-xs gold-text uppercase tracking-widest mb-8 opacity-60">Total Acquisition</p>
-                <ul class="space-y-4 text-sm font-light opacity-80">
-                    <li class="flex items-center gap-3"><i data-lucide="crown" class="w-4 h-4 text-[var(--gold)]"></i> Complete IP Ownership</li>
-                    <li class="flex items-center gap-3"><i data-lucide="crown" class="w-4 h-4 text-[var(--gold)]"></i> Source Code Migration</li>
-                    <li class="flex items-center gap-3"><i data-lucide="crown" class="w-4 h-4 text-[var(--gold)]"></i> Tier-1 Global Integration</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Connect Section -->
-    <section id="connect" class="max-w-7xl mx-auto px-6 py-32 text-center">
-        <h2 class="font-serif text-4xl gold-gradient mb-16 italic">Secure Your Exclusive Edge</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <!-- LINE -->
-            <div class="space-y-4">
-                <p class="text-[10px] tracking-widest uppercase opacity-50">LINE</p>
-                <div class="qr-box shadow-xl transition-transform hover:scale-105">
-                    <img src="line.png" alt="LINE QR" loading="lazy">
-                </div>
-            </div>
-            <!-- Telegram -->
-            <div class="space-y-4">
-                <p class="text-[10px] tracking-widest uppercase opacity-50">Telegram</p>
-                <div class="qr-box shadow-xl transition-transform hover:scale-105">
-                    <img src="telegram.png" alt="Telegram QR" loading="lazy">
-                </div>
-            </div>
-            <!-- WhatsApp -->
-            <div class="space-y-4">
-                <p class="text-[10px] tracking-widest uppercase opacity-50">WhatsApp</p>
-                <div class="qr-box shadow-xl transition-transform hover:scale-105">
-                    <img src="WhatsUp.png" alt="WhatsApp QR" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Disclaimer Section -->
-    <section class="max-w-7xl mx-auto px-6 py-12 border-t border-white/5 bg-black/10">
+    <section class="max-w-7xl mx-auto px-6 py-12 border-t border-white/5 bg-black/20">
         <div class="disclaimer-text">
             <p class="font-bold mb-2 uppercase tracking-widest text-[var(--gold)] opacity-80">Risk Disclaimer:</p>
-            Trading foreign exchange (Forex) and financial derivatives carries a high level of risk and may not be suitable for all investors. The use of the 369 Tesla Frequency algorithm is provided for educational and informational purposes only. Past performance is not indicative of future results. Forex Fear Clinic Elite and its creators bear no responsibility for any financial losses that may result from the use of the provided signals or strategies. It is recommended that you consult with an independent financial advisor before making any investment.
+            Trading foreign exchange (Forex), cryptocurrencies, and financial derivatives carries a high level of risk. Voula Alpha provides signals for educational purposes only. Past performance is not indicative of future results.
         </div>
     </section>
 
     <footer class="py-12 text-center opacity-30 text-[9px] tracking-[0.5em] uppercase">
-        © 2026 Forex Fear Clinic Elite. Strictly Confidential.
+        © 2026 Voula Alpha. Professional Trading Service.
     </footer>
 
     <script>
