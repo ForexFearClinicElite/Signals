@@ -1,382 +1,255 @@
-<!DOCTYPE html> 
-<html lang="el">
+<!DOCTYPE html>
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pythagorean Wealth Institute | Luxury Quantitative Trading</title>
+    <title>Forex Fear Clinic Elite | 369 Tesla Algorithm</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --gold: #C5A059; 
-            --gold-light: #E0C08C;
-            --gold-dark: #8C6A30;
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #E8C547;
+            --navy-dark: #0a0e1a;
+            --navy: #0f1629;
+            --navy-light: #1a2342;
         }
         
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: #000;
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('pythagoras_building.jpg');
-            background-position: center top;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-dark) 100%);
             color: white;
             margin: 0;
             overflow-x: hidden;
         }
-
-        /* 3D Canvas Styling */
-        #canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 65vh;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .font-cinzel { font-family: 'Cinzel', serif; }
         
-        .glass-card {
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(197, 160, 89, 0.1);
-            border-radius: 24px;
-            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%; /* Make all cards same height */
-        }
-
-        .glass-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold);
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .video-card {
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            border-radius: 24px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.9);
-        }
-
-        .gold-text {
-            background: linear-gradient(135deg, #A67C00 0%, #C5A059 50%, #FFD700 100%);
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: inline-block;
+            background-clip: text;
+        }
+        
+        .gold-border {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.05);
+        }
+        
+        .luxury-panel {
+            background: linear-gradient(145deg, rgba(26, 35, 66, 0.8) 0%, rgba(15, 22, 41, 0.9) 100%);
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+            transition: all 0.4s ease;
+            color: black !important;
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
         }
 
-        .founder-circular {
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            border: 2px solid var(--gold);
-            object-fit: cover;
-            box-shadow: 0 0 40px rgba(197, 160, 89, 0.2);
-            padding: 6px;
-            background: linear-gradient(45deg, var(--gold-dark), var(--gold-light));
-        }
-
-        .btn-gold {
-            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-dark) 100%);
-            color: #000;
-            padding: 1.1rem 2.5rem;
-            text-transform: uppercase;
-            font-weight: 800;
-            letter-spacing: 2px;
-            border-radius: 2px;
-            transition: 0.4s;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            text-align: center;
-        }
-
-        .btn-gold:hover { 
-            box-shadow: 0 0 25px rgba(197, 160, 89, 0.4); 
-            filter: brightness(1.1);
-        }
-
-        .hero-section {
-            padding-top: 25vh;
-            padding-bottom: 12vh;
+        /* Updated for circular image */
+        .hero-image-container {
             position: relative;
-            z-index: 10;
+            border-radius: 9999px; /* Full circle */
+            overflow: hidden;
+            border: 2px solid var(--gold);
+            width: 280px; 
+            height: 280px;
+            margin: 0 auto;
+            background: #111;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
         }
 
-        .price-tag {
-            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
-            padding-bottom: 1.25rem;
-            margin-bottom: 1.5rem;
+        .hero-image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            background: linear-gradient(to bottom, transparent 60%, rgba(10, 14, 26, 0.4) 100%);
+        }
+        
+        .qr-box {
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            width: 160px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
         }
 
-        @media (max-width: 768px) {
-            .hero-section { padding-top: 20vh; }
-            .font-cinzel.text-8xl { font-size: 3.5rem; }
-            #canvas-container { height: 45vh; }
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .disclaimer-text {
+            font-size: 0.75rem;
+            line-height: 1.6;
+            opacity: 0.5;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: justify;
         }
     </style>
 </head>
-<body>
+<body class="min-h-full">
 
-    <!-- 3D Tetraktys Animation Background -->
-    <div id="canvas-container"></div>
+    <!-- Decorative BG -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10">
+        <div class="absolute top-20 left-10 w-64 h-64 rounded-full opacity-10" style="background: radial-gradient(circle, var(--gold) 0%, transparent 70%);"></div>
+    </div>
 
-    <!-- Header / Hero -->
-    <header class="hero-section flex flex-col items-center justify-center text-center px-4">
-        <div class="mb-4 tracking-[0.6em] text-[10px] uppercase text-white/60 font-semibold">Mathematical Superiority Since 2010</div>
-        <h1 class="font-cinzel text-5xl md:text-8xl tracking-[0.25em] gold-text uppercase font-bold mb-2">Pythagorean</h1>
-        <h2 class="font-cinzel text-xl md:text-3xl text-white tracking-[0.4em] uppercase opacity-90">Wealth Institute</h2>
-        <div class="h-[2px] w-48 bg-gradient-to-r from-transparent via-[#C5A059] to-transparent mt-10"></div>
-    </header>
-
-    <main class="max-w-6xl mx-auto px-6 space-y-24 pb-32 relative z-10">
-        
-        <!-- Live Proof Section -->
-        <section id="proof" class="video-card p-6 md:p-14 text-center">
-            <h3 class="font-cinzel text-2xl mb-2 uppercase gold-text">Live Trade Verification</h3>
-            <p class="text-xs tracking-widest text-white/40 mb-12 uppercase">Current Institutional Account Performance</p>
-            <div class="relative rounded-xl overflow-hidden border border-white/10 max-w-2xl mx-auto shadow-2xl bg-black">
-                <video controls autoplay muted loop playsinline class="w-full shadow-inner">
-                    <source src="trading_proof.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </section>
-
-        <!-- Pricing Tiers -->
-        <section class="grid md:grid-cols-3 gap-8 items-stretch">
-            <!-- Tier 1: Signals -->
-            <div class="glass-card p-10">
-                <div class="text-center mb-6">
-                    <h3 class="font-cinzel text-lg mb-1 uppercase tracking-widest">Elite Signals</h3>
-                    <p class="text-[10px] text-white/40 uppercase">High Frequency Terminal</p>
-                </div>
-                <div class="price-tag text-center">
-                    <div class="text-4xl font-bold gold-text">$180</div>
-                    <div class="text-[10px] font-light text-white/50 uppercase tracking-tighter">Per Calendar Week</div>
-                </div>
-                <ul class="text-[11px] space-y-5 mb-12 text-white/60 flex-grow text-left leading-relaxed">
-                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Global Indices & Major FX Quantitative Setups</li>
-                    <li class="flex items-start font-semibold text-white"><span class="text-[#C5A059] mr-2">◈</span> 93.7% Verified Accuracy (Last 7 Days)</li>
-                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Exclusive Telegram Execution Channel</li>
-                </ul>
-                <div class="mt-auto">
-                    <a href="https://t.me/ForexFearClinicSupport" class="btn-gold text-xs">Access Signals</a>
-                </div>
-            </div>
-
-            <!-- Tier 2: Seminar -->
-            <div class="glass-card p-10 border-t-2 border-[#C5A059]/50">
-                <div class="text-center mb-6">
-                    <span class="bg-[#C5A059] text-black text-[9px] px-4 py-1 rounded-sm uppercase font-bold tracking-widest mb-4 inline-block">Highly Exclusive</span>
-                    <h3 class="font-cinzel text-xl mb-1 uppercase tracking-widest">Luxury Seminar</h3>
-                    <p class="text-[10px] text-white/40 uppercase">Global Residency</p>
-                </div>
-                <div class="price-tag text-center">
-                    <div class="text-5xl font-bold gold-text">$9,000</div>
-                    <div class="text-[10px] font-light text-white/50 uppercase tracking-tighter">Private One-on-One Mentorship</div>
-                </div>
-                <ul class="text-[11px] space-y-5 mb-12 text-white/80 flex-grow text-left leading-relaxed">
-                    <li class="flex items-start font-semibold text-white"><span class="text-[#C5A059] mr-2">◈</span> 3 Days Private Quantitative Strategy Training</li>
-                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Luxury 5-Star Accommodation & Fine Dining</li>
-                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Direct Source Logic for Harmonic Market Cycles</li>
-                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Lifetime Private Inner-Circle Group Access</li>
-                </ul>
-                <div class="mt-auto">
-                    <a href="https://wa.me/306984561055" class="btn-gold text-xs">Request Invitation</a>
-                </div>
-            </div>
-
-            <!-- Tier 3: IP -->
-            <div class="glass-card p-10">
-                <div class="text-center mb-6">
-                    <h3 class="font-cinzel text-lg mb-1 uppercase tracking-widest">Algorithm IP</h3>
-                    <p class="text-[10px] text-white/40 uppercase">Institutional Technology</p>
-                </div>
-                <div class="price-tag text-center">
-                    <div class="text-4xl font-bold gold-text">$9M</div>
-                    <div class="text-[10px] font-light text-white/50 uppercase tracking-tighter">Full Ownership Transfer</div>
-                </div>
-                <ul class="text-[11px] space-y-5 mb-12 text-white/60 flex-grow text-left leading-relaxed">
-                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Proprietary Source Code & Logic Architecture</li>
-                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Global IP Rights & Commercial Usage Licenses</li>
-                    <li class="flex items-start"><span class="text-[#C5A059] mr-2">◈</span> Dedicated Engineering Support & AWS Deployment</li>
-                </ul>
-                <div class="mt-auto">
-                    <a href="https://wa.me/306984561055" class="btn-gold text-xs">Private Inquiry</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Visionary / About Section -->
-        <section class="glass-card p-10 md:p-20 flex flex-col md:flex-row items-center gap-16 overflow-hidden">
-            <div class="relative flex-shrink-0">
-                <img src="founder_visionary.jpg" alt="The Visionary" class="founder-circular">
-                <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-black border border-[#C5A059]/40 px-5 py-1 rounded shadow-lg">
-                    <span class="text-[9px] uppercase tracking-[0.4em] gold-text font-bold">The Visionary</span>
-                </div>
-            </div>
-
-            <div class="space-y-6 text-center md:text-left flex-1">
-                <span class="text-[#C5A059] font-bold tracking-[0.5em] text-[10px] uppercase">Geometric Truth</span>
-                <h2 class="font-cinzel text-4xl text-white leading-tight">Mastering The <br><span class="gold-text">Harmonic Markets</span></h2>
-                <p class="text-base font-light leading-relaxed text-white/70">
-                    With over 16 years of exhaustive quantitative research, we have distilled market volatility into a single mathematical truth. By merging ancient geometric principles with modern high-frequency programming, we offer a proprietary gateway to wealth that is as consistent as numbers themselves.
-                </p>
-                <div class="pt-6">
-                    <p class="font-cinzel text-sm text-white/40 tracking-widest italic">— Mathematical Harmony in Motion</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Private Concierge Contact Section -->
-        <section class="max-w-4xl mx-auto">
-            <div class="glass-card p-12 text-center border-b-2 border-[#C5A059]/30">
-                <h3 class="font-cinzel text-3xl mb-4 gold-text uppercase tracking-widest">Private Concierge</h3>
-                <p class="text-white/40 text-xs uppercase tracking-[0.3em] mb-12">Discreet Professional Inquiries</p>
-                
-                <div class="grid md:grid-cols-3 gap-12">
-                    <div class="space-y-3">
-                        <span class="text-[10px] text-[#C5A059] uppercase tracking-widest font-bold block">Private Line</span>
-                        <a href="tel:+306984561055" class="text-lg font-light hover:text-[#C5A059] transition">+30 698 456 1055</a>
-                    </div>
-                    <div class="space-y-3">
-                        <span class="text-[10px] text-[#C5A059] uppercase tracking-widest font-bold block">Digital Correspondence</span>
-                        <a href="mailto:private@pythagorean-institute.com" class="text-lg font-light hover:text-[#C5A059] transition">Inquire via Email</a>
-                    </div>
-                    <div class="space-y-3">
-                        <span class="text-[10px] text-[#C5A059] uppercase tracking-widest font-bold block">Secure Encryption</span>
-                        <a href="https://t.me/ForexFearClinicSupport" class="text-lg font-light hover:text-[#C5A059] transition">Telegram Secure</a>
-                    </div>
-                </div>
-
-                <div class="mt-16 pt-8 border-t border-white/5">
-                    <p class="text-[9px] text-white/30 uppercase tracking-[0.4em]">Athens · Dubai · London</p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-24 bg-[#050505] text-center border-t border-white/5 relative z-10">
-        <div class="mb-12">
-            <h4 class="font-cinzel text-2xl gold-text mb-2 uppercase tracking-[0.5em]">Pythagorean</h4>
-            <p class="text-[10px] uppercase tracking-[0.3em] text-white/40">Wealth Institute — Established 2010</p>
+    <!-- Navigation -->
+    <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-white/5">
+        <div class="font-serif text-xl md:text-2xl font-bold gold-gradient tracking-widest uppercase">Forex Fear Clinic Elite</div>
+        <div class="hidden md:flex gap-8 text-[10px] uppercase tracking-[0.3em] opacity-60">
+            <a href="#strategy" class="hover:text-[var(--gold)] transition-colors text-white">Philosophy</a>
+            <a href="#institutional" class="hover:text-[var(--gold)] transition-colors text-white">Institutional</a>
+            <a href="#connect" class="hover:text-[var(--gold)] transition-colors text-white">Contact</a>
         </div>
-        
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="flex flex-wrap justify-center gap-10 mb-14 text-[11px] uppercase tracking-widest text-white/50">
-                <a href="#" class="hover:text-[#C5A059] transition-colors">Risk Disclosure</a>
-                <a href="#" class="hover:text-[#C5A059] transition-colors">Privacy Charter</a>
-                <a href="https://wa.me/306984561055" class="hover:text-[#C5A059] transition-colors">WhatsApp Support</a>
-                <a href="https://t.me/ForexFearClinicSupport" class="hover:text-[#C5A059] transition-colors">Telegram Intelligence</a>
-            </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-6 py-16 lg:py-24">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             
-            <p class="text-[9px] text-gray-700 uppercase tracking-[0.15em] leading-loose max-w-2xl mx-auto border-t border-white/5 pt-10">
-                Investment Warning: Leveraged trading involves significant risk of loss. The quantitative tools provided are for educational and institutional research purposes. We do not provide financial advice. Your capital is at risk. 
-                <br><span class="mt-6 block opacity-40">© 2026 Pythagorean Wealth Institute. Mastered in Mathematics.</span>
-            </p>
+            <!-- Photo Left (Now Circular) -->
+            <div class="w-full lg:w-5/12 flex justify-center">
+                <div class="hero-image-container shadow-2xl">
+                    <img src="photo.jpg" alt="Voula - Algorithm Developer" class="w-full h-full object-cover grayscale-[10%]" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Content Right -->
+            <div class="w-full lg:w-7/12 space-y-8 text-center lg:text-left">
+                <div>
+                    <span class="text-xs tracking-[0.4em] uppercase opacity-60 font-bold text-[var(--gold)]">Proprietary Quantitative Engine</span>
+                </div>
+                <h1 class="font-serif text-5xl md:text-7xl font-light leading-tight gold-gradient">
+                    369 Tesla <br>Frequency Algorithm
+                </h1>
+                <div class="space-y-4">
+                    <p class="text-xl md:text-2xl font-light opacity-90 border-l-0 lg:border-l-2 border-[var(--gold)]/30 lg:pl-6">
+                        The Mathematical Edge in Forex Trading.
+                    </p>
+                    <p class="text-sm opacity-70 italic">
+                        Developed by <span class="font-bold text-[var(--gold)]">Voula</span>, with 16 years of expertise in Programming & Quant Analysis.
+                    </p>
+                </div>
+                
+                <div class="pt-6">
+                    <a href="#connect" class="inline-block cta-button px-10 py-5 rounded-sm font-bold tracking-widest text-xs uppercase shadow-xl">
+                        Get 48-Hour Signals Access — $90
+                    </a>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section id="strategy" class="py-24 bg-black/20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="floating-element mb-12 flex justify-center">
+                <svg width="80" height="80" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" stroke="var(--gold)" stroke-width="0.5" fill="none" opacity="0.5"/>
+                    <text x="50" y="55" text-anchor="middle" fill="var(--gold)" font-family="Cormorant Garamond" font-size="16">369</text>
+                </svg>
+            </div>
+            <h2 class="font-serif text-4xl gold-gradient mb-8 italic">"If you only knew the magnificence of the 3, 6 and 9..."</h2>
+            <p class="text-lg font-light leading-relaxed opacity-80 italic mb-4">
+                Our algorithm integrates Quantum Arithmetic and Harmonic Frequencies to identify market cycles with surgical precision.
+            </p>
+            <div class="h-px w-24 bg-[var(--gold)] mx-auto opacity-40"></div>
+        </div>
+    </section>
+
+    <!-- Institutional Offerings -->
+    <section id="institutional" class="max-w-7xl mx-auto px-6 py-32">
+        <div class="grid md:grid-cols-2 gap-10">
+            <!-- Panel 1 -->
+            <div class="luxury-panel gold-border rounded-2xl p-12 relative overflow-hidden">
+                <h3 class="font-serif text-3xl gold-gradient mb-4 italic">Institutional Licensing</h3>
+                <p class="text-xs gold-text uppercase tracking-widest mb-8 opacity-60">Performance-Based Model</p>
+                <ul class="space-y-4 text-sm font-light opacity-80">
+                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-[var(--gold)]"></i> Upfront Licensing Payment</li>
+                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-[var(--gold)]"></i> 20-30% Performance Allocation</li>
+                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-[var(--gold)]"></i> Full Real-time Node Implementation</li>
+                </ul>
+            </div>
+
+            <!-- Panel 2 -->
+            <div class="luxury-panel gold-border rounded-2xl p-12 border-[var(--gold)]/50 shadow-[0_0_50px_rgba(212,175,55,0.1)]">
+                <h3 class="font-serif text-3xl gold-gradient mb-4 italic">Full IP Transfer</h3>
+                <p class="text-xs gold-text uppercase tracking-widest mb-8 opacity-60">Total Acquisition</p>
+                <ul class="space-y-4 text-sm font-light opacity-80">
+                    <li class="flex items-center gap-3"><i data-lucide="crown" class="w-4 h-4 text-[var(--gold)]"></i> Complete IP Ownership</li>
+                    <li class="flex items-center gap-3"><i data-lucide="crown" class="w-4 h-4 text-[var(--gold)]"></i> Source Code Migration</li>
+                    <li class="flex items-center gap-3"><i data-lucide="crown" class="w-4 h-4 text-[var(--gold)]"></i> Tier-1 Global Integration</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect Section -->
+    <section id="connect" class="max-w-7xl mx-auto px-6 py-32 text-center">
+        <h2 class="font-serif text-4xl gold-gradient mb-16 italic">Secure Your Exclusive Edge</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- LINE -->
+            <div class="space-y-4">
+                <p class="text-[10px] tracking-widest uppercase opacity-50">LINE</p>
+                <div class="qr-box shadow-xl transition-transform hover:scale-105">
+                    <img src="line.png" alt="LINE QR" loading="lazy">
+                </div>
+            </div>
+            <!-- Telegram -->
+            <div class="space-y-4">
+                <p class="text-[10px] tracking-widest uppercase opacity-50">Telegram</p>
+                <div class="qr-box shadow-xl transition-transform hover:scale-105">
+                    <img src="telegram.png" alt="Telegram QR" loading="lazy">
+                </div>
+            </div>
+            <!-- WhatsApp -->
+            <div class="space-y-4">
+                <p class="text-[10px] tracking-widest uppercase opacity-50">WhatsApp</p>
+                <div class="qr-box shadow-xl transition-transform hover:scale-105">
+                    <img src="WhatsUp.png" alt="WhatsApp QR" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer Section -->
+    <section class="max-w-7xl mx-auto px-6 py-12 border-t border-white/5 bg-black/10">
+        <div class="disclaimer-text">
+            <p class="font-bold mb-2 uppercase tracking-widest text-[var(--gold)] opacity-80">Risk Disclaimer:</p>
+            Trading foreign exchange (Forex) and financial derivatives carries a high level of risk and may not be suitable for all investors. The use of the 369 Tesla Frequency algorithm is provided for educational and informational purposes only. Past performance is not indicative of future results. Forex Fear Clinic Elite and its creators bear no responsibility for any financial losses that may result from the use of the provided signals or strategies. It is recommended that you consult with an independent financial advisor before making any investment.
+        </div>
+    </section>
+
+    <footer class="py-12 text-center opacity-30 text-[9px] tracking-[0.5em] uppercase">
+        © 2026 Forex Fear Clinic Elite. Strictly Confidential.
     </footer>
 
     <script>
-        let scene, camera, renderer, tetraktysGroup;
-
-        function init3D() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / (window.innerHeight * 0.65), 0.1, 1000);
-            
-            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight * 0.65);
-            renderer.setPixelRatio(window.devicePixelRatio);
-            document.getElementById('canvas-container').appendChild(renderer.domElement);
-
-            tetraktysGroup = new THREE.Group();
-            scene.add(tetraktysGroup);
-
-            // Create the Tetraktys of the Decad (10 Monads)
-            const sphereGeom = new THREE.SphereGeometry(0.12, 32, 32);
-            const sphereMat = new THREE.MeshPhongMaterial({ 
-                color: 0xC5A059, 
-                emissive: 0x8C6A30,
-                shininess: 100 
-            });
-
-            const points = [];
-            const rows = 4;
-            const spacing = 0.8;
-
-            for (let r = 0; r < rows; r++) {
-                for (let i = 0; i <= r; i++) {
-                    const sphere = new THREE.Mesh(sphereGeom, sphereMat);
-                    const x = (i - r / 2) * spacing;
-                    const y = (rows - 1 - r) * spacing - (rows * spacing) / 3;
-                    const z = 0;
-                    
-                    sphere.position.set(x, y, z);
-                    tetraktysGroup.add(sphere);
-                    points.push(new THREE.Vector3(x, y, z));
-                }
-            }
-
-            const lineMat = new THREE.LineBasicMaterial({ color: 0xC5A059, transparent: true, opacity: 0.3 });
-            points.forEach((p1, i) => {
-                points.forEach((p2, j) => {
-                    if (i < j && p1.distanceTo(p2) < spacing * 1.1) {
-                        const geometry = new THREE.BufferGeometry().setFromPoints([p1, p2]);
-                        const line = new THREE.Line(geometry, lineMat);
-                        tetraktysGroup.add(line);
-                    }
-                });
-            });
-
-            scene.add(new THREE.AmbientLight(0xffffff, 0.4));
-            const pLight = new THREE.PointLight(0xC5A059, 1.5);
-            pLight.position.set(5, 5, 5);
-            scene.add(pLight);
-
-            camera.position.z = 5;
-
-            document.addEventListener('mousemove', (e) => {
-                const mouseX = (e.clientX / window.innerWidth) - 0.5;
-                const mouseY = (e.clientY / window.innerHeight) - 0.5;
-                tetraktysGroup.rotation.y += mouseX * 0.05;
-                tetraktysGroup.rotation.x += mouseY * 0.05;
-            });
-
-            animate();
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            tetraktysGroup.rotation.y += 0.008;
-            const time = Date.now() * 0.002;
-            tetraktysGroup.children.forEach((child, i) => {
-                if (child.type === 'Mesh') {
-                    const s = 1 + Math.sin(time + i) * 0.1;
-                    child.scale.set(s, s, s);
-                }
-            });
-            renderer.render(scene, camera);
-        }
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / (window.innerHeight * 0.65);
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight * 0.65);
+        window.addEventListener('DOMContentLoaded', (event) => {
+            lucide.createIcons();
         });
-
-        window.onload = init3D;
     </script>
-
 </body>
 </html>
