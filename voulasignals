@@ -229,8 +229,8 @@
                     <li class="flex items-center gap-4"><i data-lucide="shield" class="w-5 h-5 text-[var(--gold)]"></i> Protected risk management parameters</li>
                 </ul>
 
-                <!-- Updated Whop Link για Πληρωμή -->
-                <a href="https://whop.com/voula-alpha/1-day-access-professional-signal" target="_blank" class="cta-button block w-full py-6 rounded-sm font-bold tracking-[0.2em] text-sm uppercase shadow-2xl">
+                <!-- Updated Whop Link για Πληρωμή (Corrected with trailing slash) -->
+                <a href="https://whop.com/voula-alpha/1-day-access-professional-signal/" target="_blank" class="cta-button block w-full py-6 rounded-sm font-bold tracking-[0.2em] text-sm uppercase shadow-2xl">
                     Get 1-Day Access Now
                 </a>
                 
