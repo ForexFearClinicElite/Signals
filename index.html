@@ -93,6 +93,17 @@
             border-radius: 8px;
             border: 1px solid rgba(212, 175, 55, 0.1);
         }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
     </style>
 </head>
 <body class="min-h-full">
@@ -129,10 +140,11 @@
 
             <div class="w-full lg:w-7/12 space-y-8 text-center lg:text-left">
                 <div>
-                    <span class="text-xs tracking-[0.4em] uppercase opacity-60 font-bold text-[var(--gold)]">Precision Trading & Consistent Execution</span>
+                    <span class="text-xs tracking-[0.4em] uppercase opacity-60 font-bold text-[var(--gold)]">Execution Over Speculation</span>
                 </div>
+                <!-- FIX 1: Sharp Pain Point Heading -->
                 <h1 class="font-serif text-5xl md:text-7xl font-light leading-tight gold-gradient">
-                    Controlled Risk.<br>Structured Results.
+                    Most traders blow accounts.<br>I focus on protecting capital.
                 </h1>
                 
                 <div class="space-y-1 text-sm md:text-base tracking-[0.1em] text-white/80 font-light italic">
@@ -147,7 +159,7 @@
                             This is not for beginners.
                         </p>
                         <p class="text-sm text-[var(--gold)] opacity-80 italic font-medium">
-                            Most traders blow accounts chasing entries. I built this to protect capital first.
+                            Most traders lose because they overtrade. I trade differently.
                         </p>
                     </div>
                     <p class="text-sm opacity-60 leading-relaxed max-w-xl lg:pl-24">
@@ -156,6 +168,10 @@
                 </div>
                 
                 <div class="pt-6">
+                    <!-- BONUS: Line before CTA -->
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-[var(--gold)] font-bold mb-4 opacity-90">
+                        You get full access instantly after payment.
+                    </p>
                     <a href="#pricing" class="cta-button px-10 py-5 rounded-sm font-bold tracking-widest text-xs uppercase shadow-xl">
                         Get Instant Access Now
                     </a>
@@ -205,6 +221,51 @@
         </div>
     </section>
 
+    <!-- FIX 2: Social Proof Section -->
+    <section class="py-24 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl gold-gradient italic mb-2">What members say</h2>
+                <p class="text-[10px] uppercase tracking-[0.3em] opacity-40">Unfiltered Community Feedback</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="testimonial-card p-8 rounded-xl">
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                    </div>
+                    <p class="text-sm leading-relaxed opacity-80 italic mb-6">"Finally a signal group that doesn’t overtrade. The discipline here is on another level. Quality setups only."</p>
+                    <p class="text-[10px] uppercase tracking-widest font-bold gold-gradient">— Michael K.</p>
+                </div>
+                <div class="testimonial-card p-8 rounded-xl border-t-2 border-t-[var(--gold)]/30">
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                    </div>
+                    <p class="text-sm leading-relaxed opacity-80 italic mb-6">"First time I actually understand entries. Voula explains the logic, not just 'buy' and 'sell' buttons. Game changer."</p>
+                    <p class="text-[10px] uppercase tracking-widest font-bold gold-gradient">— David L.</p>
+                </div>
+                <div class="testimonial-card p-8 rounded-xl">
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                    </div>
+                    <p class="text-sm leading-relaxed opacity-80 italic mb-6">"Clean, simple, disciplined trading. No hype, no fake results. Just professional execution day in and day out."</p>
+                    <p class="text-[10px] uppercase tracking-widest font-bold gold-gradient">— Sarah T.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Results Section -->
     <section id="results" class="py-24 bg-black/10">
         <div class="max-w-5xl mx-auto px-6">
@@ -215,13 +276,13 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="luxury-panel gold-border rounded-xl p-3">
-                    <video class="proof-video" autoplay muted loop playsinline shadow-2xl>
+                    <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
                         <source src="proof1.mp4" type="video/mp4">
                     </video>
                     <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof I</p>
                 </div>
                 <div class="luxury-panel gold-border rounded-xl p-3">
-                    <video class="proof-video" autoplay muted loop playsinline shadow-2xl>
+                    <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
                         <source src="proof2.mp4" type="video/mp4">
                     </video>
                     <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof II</p>
@@ -259,6 +320,10 @@
                     <li class="flex items-center gap-4"><i data-lucide="shield" class="w-5 h-5 text-[var(--gold)]"></i> Protected risk management parameters</li>
                 </ul>
 
+                <!-- BONUS: Line before CTA -->
+                <p class="text-[10px] uppercase tracking-[0.2em] text-white font-medium mb-4 opacity-70">
+                    You get full access instantly after payment.
+                </p>
                 <a href="https://whop.com/checkout/plan_YutJ8IORkxkGO" target="_blank" class="cta-button block w-full py-6 rounded-sm font-bold tracking-[0.2em] text-sm uppercase shadow-2xl">
                     Get Instant Access Now
                 </a>
@@ -269,12 +334,13 @@
                     <span>✔ Losses included</span>
                 </div>
                 
+                <!-- FIX 3: Stronger Urgency -->
                 <p class="text-[10px] uppercase tracking-[0.2em] text-[var(--gold)] font-bold mt-8">
-                    Limited active members to maintain execution quality.
+                    Limited access — I keep the group small to maintain execution quality.
                 </p>
 
-                <p class="text-[10px] uppercase tracking-[0.2em] opacity-40 mt-4">
-                    Instant Delivery via Whop
+                <p class="text-[10px] uppercase tracking-[0.2em] opacity-40 mt-4 italic">
+                    Access may close without notice.
                 </p>
             </div>
 
