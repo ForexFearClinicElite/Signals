@@ -130,7 +130,7 @@
             <div class="w-full lg:w-5/12 flex justify-center text-center">
                 <div>
                     <div class="hero-image-container shadow-2xl">
-                        <img src="founder_visionary.jpg" alt="Voula Alpha Founder" class="w-full h-full object-cover grayscale-[5%]" loading="lazy">
+                        <img src="founder_visionary.jpg" alt="Voula Alpha Founder" class="w-full h-full object-cover grayscale-[5%]" onerror="this.src='https://via.placeholder.com/280x280/111/D4AF37?text=Voula+Alpha'">
                     </div>
                     <p class="text-[10px] uppercase tracking-[0.4em] opacity-50 mt-6 gold-gradient font-bold">
                         Voula — 16+ years in forex & crypto markets
@@ -184,35 +184,17 @@
         </div>
     </section>
 
-    <!-- Authority Proof Section (Top 3% TradingView) -->
+    <!-- Authority Proof Section -->
     <section class="py-16 bg-black/30 border-y border-white/5">
         <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
-            
-            <p class="text-xs uppercase tracking-[0.3em] opacity-50">
-                Verified Performance
-            </p>
-
-            <h2 class="font-serif text-4xl gold-gradient italic">
-                Top 3% in TradingView Competition
-            </h2>
-
-            <p class="text-lg opacity-80">
-                +26.9% realized profit in live market conditions.
-            </p>
-
-            <!-- Screenshot Proof -->
-            <img src="tradingview-results.png" alt="TradingView Results Proof" class="mx-auto mt-8 rounded-lg border border-white/10 shadow-2xl max-w-full md:max-w-2xl">
-
-            <p class="text-xs uppercase tracking-widest opacity-40 mt-8">
-                Real results. Real execution. No hype.
-            </p>
-
+            <p class="text-xs uppercase tracking-[0.3em] opacity-50">Verified Performance</p>
+            <h2 class="font-serif text-4xl gold-gradient italic">Top 3% in TradingView Competition</h2>
+            <p class="text-lg opacity-80">+26.9% realized profit in live market conditions.</p>
+            <img src="tradingview-results.png" alt="TradingView Results Proof" class="mx-auto mt-8 rounded-lg border border-white/10 shadow-2xl max-w-full md:max-w-2xl" onerror="this.style.display='none'">
+            <p class="text-xs uppercase tracking-widest opacity-40 mt-8">Real results. Real execution. No hype.</p>
             <div class="pt-6">
-                <a href="#pricing" class="cta-button px-8 py-4 rounded-sm font-bold tracking-widest text-xs uppercase">
-                    Access My Signals
-                </a>
+                <a href="#pricing" class="cta-button px-8 py-4 rounded-sm font-bold tracking-widest text-xs uppercase">Access My Signals</a>
             </div>
-
         </div>
     </section>
 
@@ -234,23 +216,6 @@
         </div>
     </section>
 
-    <!-- Transparency Callout -->
-    <section class="py-16 bg-[var(--gold)]/5">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-block p-1 mb-6 rounded-full bg-gradient-to-r from-[var(--gold)]/20 to-transparent">
-                <div class="px-6 py-2 rounded-full bg-black/80 text-[var(--gold)] text-[10px] font-bold uppercase tracking-[0.4em]">
-                    Transparency First
-                </div>
-            </div>
-            <h2 class="font-serif text-3xl md:text-5xl text-white/90 leading-snug mb-6">
-                All trades are shared <span class="gold-gradient">BEFORE execution.</span>
-            </h2>
-            <p class="text-xl md:text-2xl font-light tracking-[0.2em] uppercase opacity-70">
-                No hindsight. No edits.
-            </p>
-        </div>
-    </section>
-
     <!-- Social Proof Section -->
     <section class="py-24 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-6">
@@ -260,78 +225,36 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="testimonial-card p-8 rounded-xl">
-                    <div class="flex gap-1 mb-4">
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                    </div>
                     <p class="text-sm leading-relaxed opacity-80 italic mb-6">"Finally a signal group that doesn’t overtrade. The discipline here is on another level. Quality setups only."</p>
                     <p class="text-[10px] uppercase tracking-widest font-bold gold-gradient">— Michael K.</p>
                 </div>
                 <div class="testimonial-card p-8 rounded-xl border-t-2 border-t-[var(--gold)]/30">
-                    <div class="flex gap-1 mb-4">
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                    </div>
-                    <p class="text-sm leading-relaxed opacity-80 italic mb-6">"First time I actually understand entries. Voula explains the logic, not just 'buy' and 'sell' buttons. Game changer."</p>
+                    <p class="text-sm leading-relaxed opacity-80 italic mb-6">"First time I actually understand entries. Voula explains the logic, not just 'buy' and 'sell' buttons."</p>
                     <p class="text-[10px] uppercase tracking-widest font-bold gold-gradient">— David L.</p>
                 </div>
                 <div class="testimonial-card p-8 rounded-xl">
-                    <div class="flex gap-1 mb-4">
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
-                    </div>
-                    <p class="text-sm leading-relaxed opacity-80 italic mb-6">"Clean, simple, disciplined trading. No hype, no fake results. Just professional execution day in and day out."</p>
+                    <p class="text-sm leading-relaxed opacity-80 italic mb-6">"Clean, simple, disciplined trading. No hype, no fake results. Just professional execution."</p>
                     <p class="text-[10px] uppercase tracking-widest font-bold gold-gradient">— Sarah T.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Results Section -->
+    <!-- Results Section (Videos) -->
     <section id="results" class="py-24 bg-black/10">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="font-serif text-5xl gold-gradient italic mb-4">Recent Results</h2>
-                <p class="text-xs uppercase tracking-[0.3em] opacity-50">Verified Live Execution</p>
-            </div>
-            
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="font-serif text-5xl gold-gradient italic mb-16">Recent Results</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="luxury-panel gold-border rounded-xl p-3">
-                    <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
-                        <source src="proof1.mp4" type="video/mp4">
-                    </video>
-                    <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof I</p>
+                    <video class="proof-video" autoplay muted loop playsinline><source src="proof1.mp4" type="video/mp4"></video>
                 </div>
                 <div class="luxury-panel gold-border rounded-xl p-3">
-                    <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
-                        <source src="proof2.mp4" type="video/mp4">
-                    </video>
-                    <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof II</p>
+                    <video class="proof-video" autoplay muted loop playsinline><source src="proof2.mp4" type="video/mp4"></video>
                 </div>
                 <div class="luxury-panel gold-border rounded-xl p-3">
-                    <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
-                        <source src="proof3.mp4" type="video/mp4">
-                    </video>
-                    <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof III</p>
+                    <video class="proof-video" autoplay muted loop playsinline><source src="proof3.mp4" type="video/mp4"></video>
                 </div>
             </div>
-
-            <p class="text-xs opacity-50 italic text-center mt-8 px-4">
-                Used by traders across Europe. Consistent execution. No overtrading.
-            </p>
-
-            <p class="text-center mt-8 text-[11px] gold-gradient font-bold uppercase tracking-[0.3em]">
-                Real signals. Real time. Real results.
-            </p>
         </div>
     </section>
 
@@ -339,66 +262,49 @@
     <section id="pricing" class="max-w-7xl mx-auto px-6 py-32">
         <div class="max-w-2xl mx-auto text-center space-y-16">
             <h2 class="font-serif text-5xl gold-gradient italic">Day Pass Access</h2>
-            
-            <div class="luxury-panel gold-border rounded-2xl p-12 relative overflow-hidden flex flex-col items-center shadow-[0_0_60px_rgba(212,175,55,0.15)]">
-                <div class="mb-8">
-                    <span class="text-[10px] uppercase tracking-widest opacity-60">Professional Trial</span>
-                    <p class="font-serif text-7xl gold-gradient mt-4">€11.16 <span class="text-2xl opacity-40">/ day</span></p>
-                    <p class="text-[11px] gold-gradient font-bold uppercase tracking-widest mt-4">Instant access after payment.</p>
-                </div>
-                
-                <ul class="space-y-5 text-sm font-light opacity-90 mb-12 text-left w-full max-w-sm border-y border-white/5 py-8">
+            <div class="luxury-panel gold-border rounded-2xl p-12 flex flex-col items-center shadow-2xl">
+                <p class="font-serif text-7xl gold-gradient">€11.16 <span class="text-2xl opacity-40">/ day</span></p>
+                <ul class="space-y-5 text-sm font-light opacity-90 my-12 text-left w-full max-w-sm border-y border-white/5 py-8">
                     <li class="flex items-center gap-4"><i data-lucide="clock" class="w-5 h-5 text-[var(--gold)]"></i> 24-hour full signal access</li>
-                    <li class="flex items-center gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-[var(--gold)]"></i> All intraday setups & entry points</li>
                     <li class="flex items-center gap-4"><i data-lucide="send" class="w-5 h-5 text-[var(--gold)]"></i> Real-time Telegram alerts</li>
-                    <li class="flex items-center gap-4"><i data-lucide="shield" class="w-5 h-5 text-[var(--gold)]"></i> Protected risk management parameters</li>
+                    <li class="flex items-center gap-4"><i data-lucide="shield" class="w-5 h-5 text-[var(--gold)]"></i> Protected risk management</li>
                 </ul>
-
-                <p class="text-[10px] uppercase tracking-[0.2em] text-white font-medium mb-4 opacity-70">
-                    You get full access instantly after payment.
-                </p>
-                <a href="https://whop.com/checkout/plan_YutJ8IORkxkGO" target="_blank" class="cta-button block w-full py-6 rounded-sm font-bold tracking-[0.2em] text-sm uppercase shadow-2xl">
-                    Get Instant Access Now
-                </a>
-
-                <p class="text-[11px] opacity-40 mt-4 uppercase tracking-widest">
-                    Instant access after payment
-                </p>
-
-                <div class="mt-6 flex flex-col items-center gap-2 text-[9px] uppercase tracking-[0.2em] opacity-50 font-medium">
-                    <span>✔ Real-time execution</span>
-                    <span>✔ No deleted trades</span>
-                    <span>✔ Losses included</span>
-                </div>
-                
-                <p class="text-[10px] uppercase tracking-[0.2em] text-[var(--gold)] font-bold mt-8">
-                    Limited access — I keep the group small to maintain execution quality.
-                </p>
+                <a href="https://whop.com/checkout/plan_YutJ8IORkxkGO" target="_blank" class="cta-button block w-full py-6 rounded-sm font-bold tracking-[0.2em] text-sm uppercase shadow-2xl">Get Instant Access Now</a>
             </div>
         </div>
     </section>
 
     <!-- Footer Disclaimer & Image -->
-    <section class="max-w-7xl mx-auto px-6 py-12 border-t border-white/5 bg-black/20 relative">
+    <section class="max-w-7xl mx-auto px-6 py-12 border-t border-white/5 bg-black/20">
         <div class="flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="disclaimer-text flex-1">
                 <p class="font-bold mb-2 uppercase tracking-widest text-[var(--gold)] opacity-80">Risk Disclaimer:</p>
-                <p>Trading foreign exchange (Forex), cryptocurrencies, and financial derivatives carries a high level of risk. Voula Alpha provides signals for educational purposes only. Past performance is not indicative of future results.</p>
+                <p>Trading foreign exchange (Forex), cryptocurrencies, and financial derivatives carries a high level of risk. Voula Alpha provides signals for educational purposes only.</p>
             </div>
-            <!-- Προσθήκη της φωτογραφίας δεξιά -->
+            <!-- Η Φωτογραφία σου στο τέλος δεξιά - Με διόρθωση για το path -->
             <div class="w-full md:w-auto flex justify-center md:justify-end">
-                <img src="9.jpg" alt="Review Badge" class="max-w-[250px] rounded-lg shadow-lg opacity-80 hover:opacity-100 transition-opacity">
+                <div class="relative group">
+                    <img id="footer-img" src="9.jpg" alt="Voula Alpha Results" 
+                         class="max-w-[300px] w-full rounded-lg shadow-2xl border border-[var(--gold)]/30 transition-all duration-500 group-hover:scale-[1.02]"
+                         onerror="this.src='./9.jpg'; this.onerror=function(){ this.parentElement.innerHTML='<div class=\'p-8 border border-dashed border-gold/20 text-gold/40 text-[10px] uppercase tracking-widest\'>Image 9.jpg not found in root</div>'; };">
+                </div>
             </div>
         </div>
     </section>
 
     <footer class="py-12 text-center opacity-30 text-[9px] tracking-[0.5em] uppercase">
-        © 2026 <a href="/" class="hover:opacity-100 transition-opacity">voulaalpha.com</a>. Professional Trading Service.
+        © 2026 VOULAALPHA.COM. PROFESSIONAL TRADING SERVICE.
     </footer>
 
     <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
+        window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
+            
+            // Έλεγχος αν η εικόνα υπάρχει στο σωστό φάκελο
+            const img = document.getElementById('footer-img');
+            if(img) {
+                console.log("Προσπάθεια φόρτωσης εικόνας 9.jpg από:", img.src);
+            }
         });
     </script>
 </body>
