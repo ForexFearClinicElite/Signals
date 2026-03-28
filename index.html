@@ -22,6 +22,7 @@
             background: linear-gradient(135deg, var(--navy-dark) 0%, #0a0a0a 50%, var(--navy-dark) 100%);
             color: white;
             margin: 0;
+            padding: 0;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
@@ -105,47 +106,41 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        /* Fixed Rating Badge Overlay */
-        .rating-badge-fixed {
+        /* Fixed Rating Badge Styles */
+        .fixed-rating-badge {
             position: fixed;
-            bottom: 20px;
             right: 20px;
-            z-index: 9999;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 4px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            bottom: 20px;
+            width: 150px;
+            z-index: 50;
+            pointer-events: auto;
             transition: transform 0.3s ease;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
         }
         
-        .rating-badge-fixed:hover {
+        .fixed-rating-badge:hover {
             transform: scale(1.05);
         }
 
-        .rating-badge-fixed img {
-            width: 150px;
-            height: auto;
-            display: block;
-            border-radius: 6px;
-        }
-
         @media (max-width: 768px) {
-            .rating-badge-fixed img {
-                width: 110px;
+            .fixed-rating-badge {
+                width: 100px;
+                right: 10px;
+                bottom: 10px;
+                opacity: 0.8;
             }
         }
     </style>
 </head>
 <body class="min-h-full">
 
-    <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10">
-        <div class="absolute top-20 left-10 w-64 h-64 rounded-full opacity-10" style="background: radial-gradient(circle, var(--gold) 0%, transparent 70%);"></div>
+    <!-- Fixed Floating Badge -->
+    <div class="fixed-rating-badge">
+        <img src="9.jpg" alt="Rating Badge" class="w-full h-auto rounded-lg border border-white/10">
     </div>
 
-    <!-- Floating Rating Badge -->
-    <div class="rating-badge-fixed">
-        <img src="9.jpg" alt="Rating Proof" onerror="this.src='9.210 rating based on 1368 reviews in the last 3 months..jpg'">
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10">
+        <div class="absolute top-20 left-10 w-64 h-64 rounded-full opacity-10" style="background: radial-gradient(circle, var(--gold) 0%, transparent 70%);"></div>
     </div>
 
     <!-- Πλοήγηση -->
@@ -220,23 +215,34 @@
         </div>
     </section>
 
-    <!-- Authority Proof Section -->
+    <!-- Authority Proof Section (Top 3% TradingView) -->
     <section class="py-16 bg-black/30 border-y border-white/5">
         <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
-            <p class="text-xs uppercase tracking-[0.3em] opacity-50">Verified Performance</p>
+            
+            <p class="text-xs uppercase tracking-[0.3em] opacity-50">
+                Verified Performance
+            </p>
+
             <h2 class="font-serif text-4xl gold-gradient italic">
                 Top 3% in TradingView Competition
             </h2>
+
             <p class="text-lg opacity-80">
                 +26.9% realized profit in live market conditions.
             </p>
+
             <img src="tradingview-results.png" alt="TradingView Results Proof" class="mx-auto mt-8 rounded-lg border border-white/10 shadow-2xl max-w-full md:max-w-2xl">
-            <p class="text-xs uppercase tracking-widest opacity-40 mt-8">Real results. Real execution. No hype.</p>
+
+            <p class="text-xs uppercase tracking-widest opacity-40 mt-8">
+                Real results. Real execution. No hype.
+            </p>
+
             <div class="pt-6">
                 <a href="#pricing" class="cta-button px-8 py-4 rounded-sm font-bold tracking-widest text-xs uppercase">
                     Access My Signals
                 </a>
             </div>
+
         </div>
     </section>
 
@@ -327,26 +333,35 @@
                 <h2 class="font-serif text-5xl gold-gradient italic mb-4">Recent Results</h2>
                 <p class="text-xs uppercase tracking-[0.3em] opacity-50">Verified Live Execution</p>
             </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="luxury-panel gold-border rounded-xl p-3">
-                    <video class="proof-video" autoplay muted loop playsinline>
+                    <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
                         <source src="proof1.mp4" type="video/mp4">
                     </video>
                     <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof I</p>
                 </div>
                 <div class="luxury-panel gold-border rounded-xl p-3">
-                    <video class="proof-video" autoplay muted loop playsinline>
+                    <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
                         <source src="proof2.mp4" type="video/mp4">
                     </video>
                     <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof II</p>
                 </div>
                 <div class="luxury-panel gold-border rounded-xl p-3">
-                    <video class="proof-video" autoplay muted loop playsinline>
+                    <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
                         <source src="proof3.mp4" type="video/mp4">
                     </video>
                     <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof III</p>
                 </div>
             </div>
+
+            <p class="text-xs opacity-50 italic text-center mt-8 px-4">
+                Used by traders across Europe. Consistent execution. No overtrading.
+            </p>
+
+            <p class="text-center mt-8 text-[11px] gold-gradient font-bold uppercase tracking-[0.3em]">
+                Real signals. Real time. Real results.
+            </p>
         </div>
     </section>
 
@@ -354,21 +369,41 @@
     <section id="pricing" class="max-w-7xl mx-auto px-6 py-32">
         <div class="max-w-2xl mx-auto text-center space-y-16">
             <h2 class="font-serif text-5xl gold-gradient italic">Day Pass Access</h2>
+            
             <div class="luxury-panel gold-border rounded-2xl p-12 relative overflow-hidden flex flex-col items-center shadow-[0_0_60px_rgba(212,175,55,0.15)]">
                 <div class="mb-8">
                     <span class="text-[10px] uppercase tracking-widest opacity-60">Professional Trial</span>
                     <p class="font-serif text-7xl gold-gradient mt-4">€11.16 <span class="text-2xl opacity-40">/ day</span></p>
                     <p class="text-[11px] gold-gradient font-bold uppercase tracking-widest mt-4">Instant access after payment.</p>
                 </div>
+                
                 <ul class="space-y-5 text-sm font-light opacity-90 mb-12 text-left w-full max-w-sm border-y border-white/5 py-8">
                     <li class="flex items-center gap-4"><i data-lucide="clock" class="w-5 h-5 text-[var(--gold)]"></i> 24-hour full signal access</li>
                     <li class="flex items-center gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-[var(--gold)]"></i> All intraday setups & entry points</li>
                     <li class="flex items-center gap-4"><i data-lucide="send" class="w-5 h-5 text-[var(--gold)]"></i> Real-time Telegram alerts</li>
                     <li class="flex items-center gap-4"><i data-lucide="shield" class="w-5 h-5 text-[var(--gold)]"></i> Protected risk management parameters</li>
                 </ul>
+
+                <p class="text-[10px] uppercase tracking-[0.2em] text-white font-medium mb-4 opacity-70">
+                    You get full access instantly after payment.
+                </p>
                 <a href="https://whop.com/checkout/plan_YutJ8IORkxkGO" target="_blank" class="cta-button block w-full py-6 rounded-sm font-bold tracking-[0.2em] text-sm uppercase shadow-2xl">
                     Get Instant Access Now
                 </a>
+
+                <p class="text-[11px] opacity-40 mt-4 uppercase tracking-widest">
+                    Instant access after payment
+                </p>
+
+                <div class="mt-6 flex flex-col items-center gap-2 text-[9px] uppercase tracking-[0.2em] opacity-50 font-medium">
+                    <span>✔ Real-time execution</span>
+                    <span>✔ No deleted trades</span>
+                    <span>✔ Losses included</span>
+                </div>
+                
+                <p class="text-[10px] uppercase tracking-[0.2em] text-[var(--gold)] font-bold mt-8">
+                    Limited access — I keep the group small to maintain execution quality.
+                </p>
             </div>
         </div>
     </section>
@@ -377,7 +412,7 @@
     <section class="max-w-7xl mx-auto px-6 py-12 border-t border-white/5 bg-black/20">
         <div class="disclaimer-text">
             <p class="font-bold mb-2 uppercase tracking-widest text-[var(--gold)] opacity-80">Risk Disclaimer:</p>
-            Trading foreign exchange (Forex), cryptocurrencies, and financial derivatives carries a high level of risk. Voula Alpha provides signals for educational purposes only. Past performance is not indicative of future results.
+            <p>Trading foreign exchange (Forex), cryptocurrencies, and financial derivatives carries a high level of risk. Voula Alpha provides signals for educational purposes only. Past performance is not indicative of future results.</p>
         </div>
     </section>
 
