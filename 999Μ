@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="el" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voula Alpha | Structured Forex & Crypto Execution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #E8C547;
+            --navy-dark: #050505;
+            --navy: #0f1629;
+            --navy-light: #1a2342;
+            --wealth-green: #10b981;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, #0a0a0a 50%, var(--navy-dark) 100%);
+            color: white;
+            margin: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gold-border {
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.05);
+        }
+        
+        .luxury-panel {
+            background: linear-gradient(145deg, rgba(26, 35, 66, 0.4) 0%, rgba(15, 22, 41, 0.6) 100%);
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+            transition: all 0.4s ease;
+            color: black !important;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .hero-image-container {
+            position: relative;
+            border-radius: 9999px;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+            width: 280px; 
+            height: 280px;
+            margin: 0 auto;
+            background: #111;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .hero-image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            background: linear-gradient(to bottom, transparent 60%, rgba(10, 14, 26, 0.4) 100%);
+        }
+
+        .disclaimer-text {
+            font-size: 0.75rem;
+            line-height: 1.6;
+            opacity: 0.4;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: justify;
+        }
+
+        .proof-video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-full">
+
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10">
+        <div class="absolute top-20 left-10 w-64 h-64 rounded-full opacity-10" style="background: radial-gradient(circle, var(--gold) 0%, transparent 70%);"></div>
+    </div>
+
+    <!-- Πλοήγηση -->
+    <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-white/5">
+        <a href="/" class="flex items-center gap-3">
+            <div class="font-serif text-xl md:text-2xl font-bold gold-gradient tracking-widest uppercase">Voula Alpha</div>
+            <div class="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase px-2 py-1 bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 rounded">Signals</div>
+        </a>
+        <div class="hidden md:flex gap-8 text-[10px] uppercase tracking-[0.3em] opacity-60">
+            <a href="#results" class="hover:text-[var(--gold)] transition-colors text-white">Results</a>
+            <a href="#pricing" class="hover:text-[var(--gold)] transition-colors text-white">Access</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-6 py-16 lg:py-24">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div class="w-full lg:w-5/12 flex justify-center text-center">
+                <div>
+                    <div class="hero-image-container shadow-2xl">
+                        <img src="founder_visionary.jpg" alt="Voula Alpha Founder" class="w-full h-full object-cover grayscale-[5%]" loading="lazy">
+                    </div>
+                    <p class="text-[10px] uppercase tracking-[0.4em] opacity-50 mt-6 gold-gradient font-bold">
+                        Voula — 16+ years in forex & crypto markets
+                    </p>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-7/12 space-y-8 text-center lg:text-left">
+                <div>
+                    <span class="text-xs tracking-[0.4em] uppercase opacity-60 font-bold text-[var(--gold)]">Execution Over Speculation</span>
+                </div>
+                <h1 class="font-serif text-5xl md:text-7xl font-light leading-tight gold-gradient">
+                    Most traders blow accounts.<br>I focus on protecting capital.
+                </h1>
+                
+                <div class="space-y-1 text-sm md:text-base tracking-[0.1em] text-white/80 font-light italic">
+                    <p>Daily forex & crypto signals.</p>
+                    <p>1–3 high probability setups per day.</p>
+                    <p>Delivered live via Telegram.</p>
+                </div>
+
+                <div class="space-y-6 border-l-0 lg:border-l-2 border-[var(--gold)]/30 lg:pl-8">
+                    <div class="space-y-2">
+                        <p class="text-xl md:text-2xl font-light uppercase tracking-widest text-white/90">
+                            Controlled Risk. Structured Results.
+                        </p>
+                        <p class="text-sm text-[var(--gold)] opacity-80 italic font-medium">
+                            Most traders lose because they overtrade. I trade differently.
+                        </p>
+                    </div>
+                    <p class="text-sm opacity-60 leading-relaxed max-w-xl lg:pl-24">
+                        This is for traders who understand risk. Not for gamblers. If you are looking for hype or overtrading — this is not for you.
+                    </p>
+                </div>
+                
+                <div class="pt-6">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-[var(--gold)] font-bold mb-4 opacity-90">
+                        You get full access instantly after payment.
+                    </p>
+                    <a href="#pricing" class="cta-button px-10 py-5 rounded-sm font-bold tracking-widest text-xs uppercase shadow-xl">
+                        Get Instant Access Now
+                    </a>
+                    
+                    <div class="mt-4 flex flex-col items-center lg:items-start gap-2 text-[10px] uppercase tracking-[0.2em] opacity-60 font-medium">
+                        <span class="flex items-center gap-2">✔ Real-time execution</span>
+                        <span class="flex items-center gap-2">✔ No deleted trades</span>
+                        <span class="flex items-center gap-2">✔ Losses included</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authority Proof Section (Top 3% TradingView) -->
+    <section class="py-16 bg-black/30 border-y border-white/5">
+        <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
+            
+            <p class="text-xs uppercase tracking-[0.3em] opacity-50">
+                Verified Performance
+            </p>
+
+            <h2 class="font-serif text-4xl gold-gradient italic">
+                Top 3% in TradingView Competition
+            </h2>
+
+            <p class="text-lg opacity-80">
+                +26.9% realized profit in live market conditions.
+            </p>
+
+            <!-- Screenshot Proof - Χρησιμοποιούμε απλό όνομα αρχείου -->
+            <img src="tradingview-results.png" alt="TradingView Results Proof" class="mx-auto mt-8 rounded-lg border border-white/10 shadow-2xl max-w-full md:max-w-2xl">
+
+            <p class="text-xs uppercase tracking-widest opacity-40 mt-8">
+                Real results. Real execution. No hype.
+            </p>
+
+            <div class="pt-6">
+                <a href="#pricing" class="cta-button px-8 py-4 rounded-sm font-bold tracking-widest text-xs uppercase">
+                    Access My Signals
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Στατιστικά Εμπειρίας -->
+    <section class="py-12 bg-black/40 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="space-y-1">
+                <p class="font-serif text-2xl gold-gradient">16+ Years</p>
+                <p class="text-[9px] uppercase tracking-widest opacity-50">Trading Experience</p>
+            </div>
+            <div class="space-y-1">
+                <p class="font-serif text-2xl gold-gradient">Quality over Quantity</p>
+                <p class="text-[9px] uppercase tracking-widest opacity-50">Not Hype or Noise</p>
+            </div>
+            <div class="space-y-1">
+                <p class="font-serif text-2xl gold-gradient">Transparency</p>
+                <p class="text-[9px] uppercase tracking-widest opacity-50">Wins & Losses Shared</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency Callout -->
+    <section class="py-16 bg-[var(--gold)]/5">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-block p-1 mb-6 rounded-full bg-gradient-to-r from-[var(--gold)]/20 to-transparent">
+                <div class="px-6 py-2 rounded-full bg-black/80 text-[var(--gold)] text-[10px] font-bold uppercase tracking-[0.4em]">
+                    Transparency First
+                </div>
+            </div>
+            <h2 class="font-serif text-3xl md:text-5xl text-white/90 leading-snug mb-6">
+                All trades are shared <span class="gold-gradient">BEFORE execution.</span>
+            </h2>
+            <p class="text-xl md:text-2xl font-light tracking-[0.2em] uppercase opacity-70">
+                No hindsight. No edits.
+            </p>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-24 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl gold-gradient italic mb-2">What members say</h2>
+                <p class="text-[10px] uppercase tracking-[0.3em] opacity-40">Unfiltered Community Feedback</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="testimonial-card p-8 rounded-xl">
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                    </div>
+                    <p class="text-sm leading-relaxed opacity-80 italic mb-6">"Finally a signal group that doesn’t overtrade. The discipline here is on another level. Quality setups only."</p>
+                    <p class="text-[10px] uppercase tracking-widest font-bold gold-gradient">— Michael K.</p>
+                </div>
+                <div class="testimonial-card p-8 rounded-xl border-t-2 border-t-[var(--gold)]/30">
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                    </div>
+                    <p class="text-sm leading-relaxed opacity-80 italic mb-6">"First time I actually understand entries. Voula explains the logic, not just 'buy' and 'sell' buttons. Game changer."</p>
+                    <p class="text-[10px] uppercase tracking-widest font-bold gold-gradient">— David L.</p>
+                </div>
+                <div class="testimonial-card p-8 rounded-xl">
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                    </div>
+                    <p class="text-sm leading-relaxed opacity-80 italic mb-6">"Clean, simple, disciplined trading. No hype, no fake results. Just professional execution day in and day out."</p>
+                    <p class="text-[10px] uppercase tracking-widest font-bold gold-gradient">— Sarah T.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="py-24 bg-black/10">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-5xl gold-gradient italic mb-4">Recent Results</h2>
+                <p class="text-xs uppercase tracking-[0.3em] opacity-50">Verified Live Execution</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="luxury-panel gold-border rounded-xl p-3">
+                    <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
+                        <source src="proof1.mp4" type="video/mp4">
+                    </video>
+                    <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof I</p>
+                </div>
+                <div class="luxury-panel gold-border rounded-xl p-3">
+                    <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
+                        <source src="proof2.mp4" type="video/mp4">
+                    </video>
+                    <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof II</p>
+                </div>
+                <div class="luxury-panel gold-border rounded-xl p-3">
+                    <video class="proof-video" autoplay muted loop playsinline shadow-2xl">
+                        <source src="proof3.mp4" type="video/mp4">
+                    </video>
+                    <p class="text-[10px] text-center mt-3 opacity-50 uppercase tracking-widest">Execution Proof III</p>
+                </div>
+            </div>
+
+            <p class="text-xs opacity-50 italic text-center mt-8 px-4">
+                Used by traders across Europe. Consistent execution. No overtrading.
+            </p>
+
+            <p class="text-center mt-8 text-[11px] gold-gradient font-bold uppercase tracking-[0.3em]">
+                Real signals. Real time. Real results.
+            </p>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="max-w-7xl mx-auto px-6 py-32">
+        <div class="max-w-2xl mx-auto text-center space-y-16">
+            <h2 class="font-serif text-5xl gold-gradient italic">Day Pass Access</h2>
+            
+            <div class="luxury-panel gold-border rounded-2xl p-12 relative overflow-hidden flex flex-col items-center shadow-[0_0_60px_rgba(212,175,55,0.15)]">
+                <div class="mb-8">
+                    <span class="text-[10px] uppercase tracking-widest opacity-60">Professional Trial</span>
+                    <p class="font-serif text-7xl gold-gradient mt-4">€11.16 <span class="text-2xl opacity-40">/ day</span></p>
+                    <p class="text-[11px] gold-gradient font-bold uppercase tracking-widest mt-4">Instant access after payment.</p>
+                </div>
+                
+                <ul class="space-y-5 text-sm font-light opacity-90 mb-12 text-left w-full max-w-sm border-y border-white/5 py-8">
+                    <li class="flex items-center gap-4"><i data-lucide="clock" class="w-5 h-5 text-[var(--gold)]"></i> 24-hour full signal access</li>
+                    <li class="flex items-center gap-4"><i data-lucide="check-circle" class="w-5 h-5 text-[var(--gold)]"></i> All intraday setups & entry points</li>
+                    <li class="flex items-center gap-4"><i data-lucide="send" class="w-5 h-5 text-[var(--gold)]"></i> Real-time Telegram alerts</li>
+                    <li class="flex items-center gap-4"><i data-lucide="shield" class="w-5 h-5 text-[var(--gold)]"></i> Protected risk management parameters</li>
+                </ul>
+
+                <p class="text-[10px] uppercase tracking-[0.2em] text-white font-medium mb-4 opacity-70">
+                    You get full access instantly after payment.
+                </p>
+                <a href="https://whop.com/checkout/plan_YutJ8IORkxkGO" target="_blank" class="cta-button block w-full py-6 rounded-sm font-bold tracking-[0.2em] text-sm uppercase shadow-2xl">
+                    Get Instant Access Now
+                </a>
+
+                <p class="text-[11px] opacity-40 mt-4 uppercase tracking-widest">
+                    Instant access after payment
+                </p>
+
+                <div class="mt-6 flex flex-col items-center gap-2 text-[9px] uppercase tracking-[0.2em] opacity-50 font-medium">
+                    <span>✔ Real-time execution</span>
+                    <span>✔ No deleted trades</span>
+                    <span>✔ Losses included</span>
+                </div>
+                
+                <p class="text-[10px] uppercase tracking-[0.2em] text-[var(--gold)] font-bold mt-8">
+                    Limited access — I keep the group small to maintain execution quality.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Disclaimer -->
+    <section class="max-w-7xl mx-auto px-6 py-12 border-t border-white/5 bg-black/20">
+        <div class="disclaimer-text">
+            <p class="font-bold mb-2 uppercase tracking-widest text-[var(--gold)] opacity-80">Risk Disclaimer:</p>
+            Trading foreign exchange (Forex), cryptocurrencies, and financial derivatives carries a high level of risk. Voula Alpha provides signals for educational purposes only. Past performance is not indicative of future results.
+        </div>
+    </section>
+
+    <footer class="py-12 text-center opacity-30 text-[9px] tracking-[0.5em] uppercase">
+        © 2026 <a href="/" class="hover:opacity-100 transition-opacity">voulaalpha.com</a>. Professional Trading Service.
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
