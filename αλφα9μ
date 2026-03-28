@@ -114,8 +114,9 @@
             height: auto;
             z-index: 50;
             filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));
-            pointer-events: none;
-            opacity: 0.9;
+            pointer-events: auto; /* Επιτρέπουμε το hover αν χρειαστεί */
+            opacity: 0.95;
+            display: block;
         }
         @media (max-width: 768px) {
             .rating-badge-fixed {
@@ -132,8 +133,8 @@
         <div class="absolute top-20 left-10 w-64 h-64 rounded-full opacity-10" style="background: radial-gradient(circle, var(--gold) 0%, transparent 70%);"></div>
     </div>
 
-    <!-- Rating Image Fixed Positioning -->
-    <img src="9.210 rating based on 1368 reviews in the last 3 months..jpg" alt="Voula Alpha Rating" class="rating-badge-fixed">
+    <!-- Rating Image Fixed Positioning - Updated with new filename '9.jpg' -->
+    <img src="9.jpg" alt="Voula Alpha Rating" class="rating-badge-fixed" onerror="this.style.display='none'">
 
     <!-- Πλοήγηση -->
     <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-white/5">
@@ -416,6 +417,13 @@
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
             lucide.createIcons();
+            
+            // Προσθήκη timestamp για να αναγκάσουμε τον browser να φορτώσει την εικόνα από την αρχή
+            const ratingImg = document.querySelector('.rating-badge-fixed');
+            if (ratingImg) {
+                const currentSrc = ratingImg.getAttribute('src');
+                ratingImg.setAttribute('src', currentSrc + '?v=' + new Date().getTime());
+            }
         });
     </script>
 </body>
