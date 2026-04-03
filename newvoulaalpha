@@ -94,9 +94,9 @@
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <!-- Video Background -->
+    <!-- Video Background - Fixed filename to be standard -->
     <video autoplay muted loop playsinline preload="auto" id="bg-video">
-        <source src="voulaalpha .mp4" type="video/mp4">
+        <source src="voulaalpha.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
 
