@@ -28,9 +28,9 @@
     <div class="overlay"></div>
 
     <!-- STICKY CTA FOR MOBILE -->
-    <div class="md:hidden fixed bottom-0 left-0 w-full p-4 z-50 bg-black/90 backdrop-blur-lg border-t border-[var(--gold)]/20">
+    <div class="md:hidden fixed bottom-0 left-0 w-full p-4 z-50 bg-black/90 backdrop-blur-lg border-t border-[var(--gold)]/20 text-center">
         <a href="https://selar.com/51555l6229" class="cta-button block w-full py-4 rounded-xl text-center text-lg">
-            JOIN FOR $1 NOW
+            JOIN FOR <span class="dynamic-price">5,000 NGN</span> NOW
         </a>
     </div>
 
@@ -52,14 +52,16 @@
             </p>
 
             <div class="bg-white/5 border border-[var(--gold)]/30 p-8 rounded-[2rem] backdrop-blur-md">
-                <h3 class="text-2xl font-bold mb-4 italic text-white">Test My Edge for $1</h3>
+                <h3 class="text-2xl font-bold mb-4 italic text-white font-playfair">
+                    Test My Edge for <span class="dynamic-price text-[var(--gold)] text-3xl">5,000 NGN</span>
+                </h3>
                 <a href="https://selar.com/51555l6229" class="cta-button py-5 px-14 rounded-full text-2xl w-full inline-block">
                     GET THE NEXT SIGNAL →
                 </a>
-                <p class="mt-4 text-[11px] text-gray-400 font-bold uppercase flex items-center justify-center gap-2">
-                    <span class="text-green-500">●</span> Instant Access: MTN MoMo, Airtel Money, & Bank Transfer
+                <p id="currency-note" class="mt-4 text-[11px] text-gray-400 font-bold uppercase flex items-center justify-center gap-2">
+                    <!-- Dynamic content will be injected here -->
+                    <span class="text-green-500">●</span> Instant Access: EFT, Card, & Mobile Pay via Selar
                 </p>
-                <!-- Audit Trail Context for Bulletproof Section -->
                 <div class="mt-4 pt-4 border-t border-white/5">
                     <p class="text-[10px] text-gray-500 tracking-tighter uppercase font-bold">
                         Audit Trail: All trades are timestamped publicly before execution on TikTok
@@ -92,9 +94,6 @@
                         <p class="text-sm text-gray-400">
                             <strong>Note:</strong> Some weeks are negative. The focus is consistency over weeks — not single trades.
                         </p>
-                        <p class="text-sm text-gray-500 italic">
-                            Typically 5–10 high-quality setups per week. Results vary based on individual risk settings.
-                        </p>
                     </div>
                 </div>
                 <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
@@ -109,7 +108,7 @@
         <section class="space-y-8">
             <div class="text-center">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4">Recent Performance Tracker</h2>
-                <p class="text-gray-400">Every trade is publicly timestamped on TikTok before execution. Private group access is for real-time alerts only.</p>
+                <p class="text-gray-400">Every trade is publicly timestamped on TikTok before execution.</p>
             </div>
             
             <div class="section-card overflow-hidden">
@@ -119,154 +118,152 @@
                     <div>Result</div>
                     <div class="text-right">Risk-Reward</div>
                 </div>
-                <!-- Trade Row 1 -->
                 <div class="trade-row grid grid-cols-2 md:grid-cols-4 items-center">
                     <div class="font-bold text-white">NAS100 <span class="text-green-500">Long</span></div>
-                    <div>
-                        <span class="bg-green-600 text-white text-[10px] px-3 py-1 rounded-full font-black animate-pulse shadow-[0_0_15px_rgba(22,163,74,0.5)]">
-                            PROFIT +$1,420*
-                        </span>
-                    </div>
+                    <div><span class="bg-green-600 text-white text-[10px] px-3 py-1 rounded-full font-black animate-pulse">PROFIT +$1,420*</span></div>
                     <div class="hidden md:block text-gray-400">Mar 24, 2026</div>
                     <div class="text-right text-green-500 font-bold">+2.4R</div>
                 </div>
-                <!-- Trade Row 2 -->
                 <div class="trade-row grid grid-cols-2 md:grid-cols-4 items-center">
                     <div class="font-bold text-white">XAUUSD <span class="text-red-500">Short</span></div>
                     <div><span class="bg-red-500/20 text-red-500 text-[10px] px-2 py-1 rounded">SL HIT</span></div>
                     <div class="hidden md:block text-gray-400">Mar 22, 2026</div>
                     <div class="text-right text-red-500 font-bold">-1.0R</div>
                 </div>
-                <!-- Trade Row 3 -->
                 <div class="trade-row grid grid-cols-2 md:grid-cols-4 items-center">
                     <div class="font-bold text-white">BTCUSD <span class="text-green-500">Long</span></div>
-                    <div>
-                        <span class="bg-green-600 text-white text-[10px] px-3 py-1 rounded-full font-black animate-pulse shadow-[0_0_15px_rgba(22,163,74,0.5)]">
-                            PROFIT +$890*
-                        </span>
-                    </div>
+                    <div><span class="bg-green-600 text-white text-[10px] px-3 py-1 rounded-full font-black animate-pulse">PROFIT +$890*</span></div>
                     <div class="hidden md:block text-gray-400">Mar 21, 2026</div>
                     <div class="text-right text-green-500 font-bold">+1.8R</div>
                 </div>
                 <div class="mt-6 flex flex-col items-center">
-                    <p class="text-[10px] text-gray-600 text-center italic uppercase tracking-widest">Logged immediately after execution • No edits allowed</p>
                     <p class="text-[9px] text-gray-500 italic mt-4 uppercase text-center">
-                        *Results reflect trade performance on a standard account size. Actual profits/losses depend on your account balance and risk management settings.
-                    </p>
-                    <p class="text-xs text-gray-500 italic mt-4">
-                        Last losing streak: -3 trades in a row (Feb 2026)
+                        *Results reflect trade performance on a standard account size. 
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- 4. NEW IDENTITY SECTION -->
+        <!-- 4. IDENTITY SECTION (Updated with Dynamic Price) -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="section-card border-[var(--gold)]/20 bg-black/40 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
-                </div>
-                <h3 class="text-2xl font-black text-[var(--gold)] italic mb-4 uppercase">Why only $1?</h3>
+                <h3 class="text-2xl font-black text-[var(--gold)] italic mb-4 uppercase">
+                    Why only <span class="dynamic-price text-white">5,000 NGN</span>?
+                </h3>
                 <p class="text-gray-300 text-sm leading-relaxed font-medium">
-                    Most "gurus" charge $500 for a course because they make money from <span class="text-white font-bold underline">selling</span>, not trading. 
+                    I don't want your life savings. I want a community of 100,000 winners. 
                     <br><br>
-                    I charge $1 for a trial because **I want to prove it first.** I don't need your life savings; I need your execution. I am building the largest community of funded traders in Africa. **Volume is my power, Results are my marketing.**
+                    By keeping the entry at <span class="dynamic-price text-white">5,000 NGN</span>, I ensure every serious trader in Africa can access institutional-grade data. **I win when you win.**
                 </p>
             </div>
 
             <div class="section-card border-white/10 bg-gradient-to-br from-white/5 to-transparent">
                 <h3 class="text-2xl font-black text-white italic mb-4 uppercase">No Rented Lambos. Just Raw Data.</h3>
                 <p class="text-gray-400 text-sm leading-relaxed">
-                    I didn't start with a million-dollar account. I started exactly where you are: **with a phone, an internet connection, and the hunger to win.** <br><br>
-                    I built my reputation by posting every single trade on TikTok <span class="text-[var(--gold)] font-bold italic">BEFORE</span> it hit Take Profit. No hindsight. No "trust me" stories. Just timestamped evidence. 
+                    I didn't start with a million-dollar account. I started exactly where you are. 
+                    <br><br>
+                    I built my reputation by posting every single trade on TikTok <span class="text-[var(--gold)] font-bold italic">BEFORE</span> it hit Take Profit. No hindsight. 
                     <br><br>
                     <span class="text-white font-bold">I am not a teacher. I am an executioner. And you’re invited to follow the blade.</span>
                 </p>
             </div>
         </section>
 
-        <!-- 5. YOUR EDGE -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div class="order-2 md:order-1">
-                <img src="tradingview-results.png" class="rounded-2xl border border-[var(--gold)]/20 shadow-2xl" alt="Technical Edge">
+        <!-- 5. FINAL CALL TO ACTION -->
+        <section class="text-center space-y-12 pb-20">
+            <div class="max-w-2xl mx-auto space-y-6">
+                <h2 class="text-5xl font-bold italic">Will you keep guessing — or start following a system?</h2>
             </div>
-            <div class="order-1 md:order-2 space-y-6">
-                <h2 class="text-4xl font-bold">Repeatable Structure.</h2>
-                <p class="text-xl text-gray-300 font-light italic">"I don’t guess direction. I wait for the market to reveal its hand."</p>
-                <div class="space-y-4">
-                    <div class="p-4 bg-white/5 rounded-xl border-l-4 border-[var(--gold)]">
-                        <h4 class="font-bold">Liquidity Sweeps</h4>
-                        <p class="text-sm text-gray-400">Entering exactly where retail stop-losses provide the exit liquidity for big players.</p>
-                    </div>
-                    <div class="p-4 bg-white/5 rounded-xl border-l-4 border-[var(--gold)]">
-                        <h4 class="font-bold">Session Timing</h4>
-                        <p class="text-sm text-gray-400">Only trading the peaks of London & NY sessions when volatility is real.</p>
-                    </div>
-                    <div class="p-4 bg-white/5 rounded-xl border-l-4 border-[var(--gold)]">
-                        <h4 class="font-bold">RR Asymmetry</h4>
-                        <p class="text-sm text-gray-400">Minimum 1:2 RR. We allow the numbers to do the heavy lifting.</p>
-                    </div>
+
+            <div class="inline-block border-2 border-[var(--gold)] p-10 md:p-20 rounded-[3rem] bg-black shadow-[0_0_100px_rgba(212,175,55,0.25)] relative overflow-hidden">
+                <h3 class="text-4xl md:text-6xl font-bold mb-4 italic">Start My Trial</h3>
+                <p class="text-gray-400 mb-6">Get full access for 3 days for just <span class="dynamic-price text-white font-bold">5,000 NGN</span>. Cancel anytime.</p>
+                <div class="flex flex-col gap-4 items-center">
+                    <a href="https://selar.com/51555l6229" class="cta-button py-6 px-24 rounded-full text-2xl inline-block w-full md:w-auto">
+                        Unlock Next Trade →
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- 6. FINAL CALL TO ACTION -->
-        <section class="text-center space-y-12 pb-32">
-            <div class="max-w-2xl mx-auto space-y-6">
-                <h2 class="text-5xl font-bold italic">Will you keep guessing — or start following a system?</h2>
-                <p class="text-xl text-gray-400 font-light">The next trade setup is already being analyzed.</p>
-            </div>
-
-            <div class="inline-block border-2 border-[var(--gold)] p-10 md:p-20 rounded-[3rem] bg-black shadow-[0_0_100px_rgba(212,175,55,0.25)] relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 bg-red-600 text-white font-black text-[10px] rotate-12 translate-x-6 -translate-y-2">LIMITED CAPACITY PER CYCLE</div>
-                <h3 class="text-4xl md:text-6xl font-bold mb-4 italic">Start My $1 Trial</h3>
-                <p class="text-gray-400 mb-6">Get full access for 3 days. No commitment. Cancel anytime.</p>
-                <p class="text-[10px] text-gray-500 max-w-sm mx-auto mb-10 uppercase tracking-tighter">
-                    Limited capacity to maintain execution quality and avoid entry slippage for all members.
-                </p>
-                <div class="flex flex-col gap-4 items-center">
-                    <a href="https://selar.com/51555l6229" class="cta-button py-6 px-24 rounded-full text-2xl inline-block w-full md:w-auto">
-                        Unlock Next Trade → $1
-                    </a>
-                    <p class="text-red-500 font-bold text-sm tracking-widest uppercase">Next trade alert dropping soon</p>
-                </div>
-            </div>
+        <!-- 6. AFFILIATE HOOK -->
+        <section class="text-center py-10 border-t border-white/5">
+            <p class="text-[var(--gold)] font-bold text-sm uppercase tracking-widest">Want to trade for free?</p>
+            <h4 class="text-white text-xl font-bold italic mt-2">Become an Affiliate & Earn 50% Commission</h4>
+            <p class="text-gray-500 text-xs mt-2">Earn 50% on every friend you refer. Paid instantly via Selar.</p>
+            <a href="https://selar.com/affiliates" class="text-[var(--gold)] underline text-[10px] font-black mt-4 inline-block uppercase">Register as Partner →</a>
         </section>
 
     </main>
 
     <footer class="bg-black border-t border-white/5 py-12 text-center px-6 pb-32 md:pb-12">
-        <div class="max-w-4xl mx-auto space-y-4">
-            <p class="text-[10px] text-gray-600 uppercase tracking-widest font-bold">VOULA ALPHA | Professional Trading Systems</p>
-            <p class="text-[9px] text-gray-700 leading-relaxed uppercase">
-                RISK WARNING: Trading leveraged financial instruments involves high risk. Some weeks will be negative. Past performance is not a guarantee of future success.
-            </p>
-        </div>
+        <p class="text-[10px] text-gray-600 uppercase tracking-widest font-bold">VOULA ALPHA | Professional Trading Systems 2026</p>
     </footer>
 
-    <!-- LIVE PROOF POPUP SCRIPT -->
+    <!-- DYNAMIC PRICING SCRIPT -->
     <script>
-        const names = ['Kofi', 'Olatunji', 'Chinedu', 'Blessing', 'Kwame', 'Sani'];
-        const countries = ['NG', 'GH', 'KE', 'ZA'];
+        function localizePricing() {
+            const priceElements = document.querySelectorAll('.dynamic-price');
+            const currencyNote = document.getElementById('currency-note');
+            
+            // Ανίχνευση Timezone (Πολύ ακριβές για Αφρική)
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            
+            let price = "5,000 NGN"; // Default
+            let methods = "MTN MoMo, Airtel & Bank Transfer";
+
+            if (timezone.includes('Johannesburg') || timezone.includes('Harare')) {
+                price = "100 ZAR";
+                methods = "Instant EFT, Card & Capitec Pay";
+            } else if (timezone.includes('Nairobi') || timezone.includes('Kampala')) {
+                price = "550 KES";
+                methods = "M-Pesa & Airtel Money";
+            } else if (timezone.includes('Accra')) {
+                price = "55 GHS";
+                methods = "MTN Mobile Money & Vodafone Cash";
+            }
+
+            // Ενημέρωση όλων των στοιχείων με την κλάση .dynamic-price
+            priceElements.forEach(el => {
+                el.innerText = price;
+            });
+            
+            // Ενημέρωση των μεθόδων πληρωμής
+            if (currencyNote) {
+                currencyNote.innerHTML = `<span class="text-green-500">●</span> Instant Access: ${methods} via Selar`;
+            }
+        }
+
+        // LIVE PROOF POPUP SCRIPT (Adapted)
+        const names = ['Kofi', 'Olatunji', 'Chinedu', 'Blessing', 'Kwame', 'Sani', 'Thabo', 'Lerato'];
+        const countries = ['NG', 'GH', 'KE', 'ZA', 'BW'];
         
         function showPopup() {
             const name = names[Math.floor(Math.random() * names.length)];
             const country = countries[Math.floor(Math.random() * countries.length)];
             const popup = document.createElement('div');
             popup.className = 'fixed bottom-24 left-4 bg-white/10 backdrop-blur-xl border border-white/20 p-3 rounded-lg z-50 text-[10px] animate-bounce notification-popup';
-            popup.innerHTML = `🔥 <strong>${name}</strong> from ${country} just joined the $1 Trial`;
+            
+            // Check dynamic price for popup text
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            let displayPrice = "R100"; 
+            if (timezone.includes('Lagos')) displayPrice = "5,000 NGN";
+            
+            popup.innerHTML = `🔥 <strong>${name}</strong> from ${country} just joined the Trial`;
             document.body.appendChild(popup);
             setTimeout(() => {
                 popup.classList.add('opacity-0', 'transition-opacity', 'duration-1000');
                 setTimeout(() => popup.remove(), 1000);
             }, 4000);
         }
-        
-        // Start showing popups after a short delay
-        setTimeout(() => {
-            showPopup();
-            setInterval(showPopup, 8000);
-        }, 3000);
+
+        window.onload = function() {
+            localizePricing();
+            setTimeout(() => {
+                showPopup();
+                setInterval(showPopup, 8000);
+            }, 3000);
+        };
     </script>
 
 </body>
