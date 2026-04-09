@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOULA ALPHA | Professional Trading Systems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #D4AF37; --dark-gold: #996515; --bg-card: rgba(255, 255, 255, 0.03); }
+        body { font-family: 'Inter', sans-serif; background-color: #000; color: white; margin: 0; overflow-x: hidden; }
+        h1, h2, h3, .gold-text { font-family: 'Playfair Display', serif; color: var(--gold); }
+        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; object-fit: cover; filter: contrast(1.1) brightness(0.6); opacity: 0.5; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, #000 100%); z-index: -1; }
+        .cta-button { background: linear-gradient(135deg, var(--gold), var(--dark-gold)); color: black; transition: all 0.4s ease; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); text-align: center; }
+        .cta-button:hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5); }
+        .section-card { background: var(--bg-card); border: 1px solid rgba(212, 175, 55, 0.1); backdrop-filter: blur(12px); border-radius: 24px; padding: 2.5rem; }
+        .trade-row { border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 0; }
+        .notification-popup { box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+        .proof-img { border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.3s ease; }
+        .proof-img:hover { transform: scale(1.02); border-color: var(--gold); }
+        .profile-frame { border: 2px solid var(--gold); border-radius: 30px; overflow: hidden; position: relative; }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="voulaalpha.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <!-- STICKY CTA FOR MOBILE -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full p-4 z-50 bg-black/90 backdrop-blur-lg border-t border-[var(--gold)]/20 text-center">
+        <a href="https://selar.com/51555l6229" class="cta-button block w-full py-4 rounded-xl text-center text-lg">
+            JOIN FOR <span class="dynamic-price">5,000 NGN</span> NOW
+        </a>
+    </div>
+
+    <!-- 1. HERO SECTION -->
+    <header class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-10">
+        <div class="max-w-4xl space-y-6">
+            <div class="inline-block px-4 py-1 bg-red-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest animate-bounce">
+                Active Setup Found - Join Now
+            </div>
+            
+            <h1 class="text-5xl md:text-8xl font-black leading-tight italic">
+                STOP GUESSING. <br>
+                <span class="text-white">START WINNING.</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-400 font-medium max-w-2xl mx-auto">
+                I don't sell "luck". I share my exact high-probability trades every week. 
+                <span class="text-[var(--gold)] block mt-2 font-bold">130+ Public Wins. No Edits. No Lies.</span>
+            </p>
+
+            <div class="bg-white/5 border border-[var(--gold)]/30 p-8 rounded-[2rem] backdrop-blur-md">
+                <h3 class="text-2xl font-bold mb-4 italic text-white font-playfair">
+                    Test My Edge for <span class="dynamic-price text-[var(--gold)] text-3xl">5,000 NGN</span>
+                </h3>
+                <a href="https://selar.com/51555l6229" class="cta-button py-5 px-14 rounded-full text-2xl w-full inline-block">
+                    GET THE NEXT SIGNAL →
+                </a>
+                <p id="currency-note" class="mt-4 text-[11px] text-gray-400 font-bold uppercase flex items-center justify-center gap-2">
+                    <span class="text-green-500">●</span> Instant Access: EFT, Card, & Mobile Pay via Selar
+                </p>
+                <div class="mt-4 pt-4 border-t border-white/5">
+                    <p class="text-[10px] text-gray-500 tracking-tighter uppercase font-bold">
+                        Audit Trail: All trades are timestamped publicly before execution on TikTok
+                    </p>
+                    <a href="https://www.tiktok.com/@voulaedge" target="_blank" class="text-xs text-[var(--gold)] underline font-bold hover:text-white transition-colors block mt-1">
+                        View full verified track record →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-20 space-y-32">
+        
+        <!-- 2. REAL RESULTS GRID (PROOF) -->
+        <section class="space-y-12">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold italic text-[var(--gold)]">Real Results. Real Accounts.</h2>
+                <p class="text-gray-400 mt-2 italic">Unfiltered execution from our community members.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+                <div class="proof-img overflow-hidden aspect-[9/16] bg-gray-900">
+                    <img src="6.jpg" alt="Proof 1" class="w-full h-full object-cover">
+                </div>
+                <div class="proof-img overflow-hidden aspect-[9/16] bg-gray-900">
+                    <img src="2.jpg" alt="Proof 2" class="w-full h-full object-cover">
+                </div>
+                <div class="proof-img overflow-hidden aspect-[9/16] bg-gray-900 hidden md:block">
+                    <img src="5.jpg" alt="Proof 3" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. WHO IS BEHIND THE SIGNALS -->
+        <section class="section-card bg-white/5 border-[var(--gold)]/20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 space-y-8">
+                    <h2 class="text-4xl font-bold italic leading-tight text-white">Who Is Behind <br><span class="text-[var(--gold)]">The Signals.</span></h2>
+                    <div class="space-y-4 text-gray-300 text-lg leading-relaxed">
+                        <p class="italic font-bold text-white border-l-2 border-[var(--gold)] pl-4">"I didn’t start by selling signals."</p>
+                        <p>I spent years learning how to survive the market first. My focus was always on building a system that works, before even thinking of sharing it.</p>
+                        <p class="text-sm font-semibold text-gray-400">All trades are shared publicly before execution on TikTok.</p>
+                    </div>
+                    <div class="pt-4 border-t border-white/5">
+                         <a href="https://www.tiktok.com/@voulaedge" target="_blank" class="flex items-center gap-3 text-white hover:text-[var(--gold)] transition font-bold group">
+                            <span class="bg-white/10 p-3 rounded-full group-hover:bg-[var(--gold)] group-hover:text-black transition">
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.13-1.47-.13-.08-.26-.17-.38-.26v5.48c.01 1.89-.4 3.81-1.39 5.43-1.14 1.82-3.05 3.12-5.18 3.58-2.03.46-4.3-.02-5.96-1.26C3.89 20.33 2.78 18.25 2.61 16.06c-.25-2.13.53-4.38 2.1-5.83 1.49-1.4 3.67-2.12 5.74-1.93.03 1.39.03 2.8 0 4.2-1.22-.36-2.65-.05-3.53.82-.78.75-1.14 1.86-1.03 2.89.13 1.1.81 2.13 1.84 2.63 1.13.58 2.5.49 3.5-.32.95-.74 1.37-2.05 1.29-3.26V.02z"/></svg>
+                            </span>
+                            VIEW THE TRACK RECORD ON TIKTOK
+                        </a>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="profile-frame">
+                        <img src="voulaalpha (1).jpg" alt="Voula Alpha Founder" class="w-full">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. EA REACTION BLOCK (BADGE REMOVED FOR BETTER ALIGNMENT) -->
+        <section class="section-card border-[var(--gold)]/20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-center md:text-left">
+                    <h2 class="text-4xl font-bold italic leading-tight text-white">Why People <br><span class="text-[var(--gold)]">Stay For Months.</span></h2>
+                    <p class="text-gray-400 text-lg">
+                        It’s about the results hitting the dashboard. When the system works, the results speak for themselves.
+                    </p>
+                </div>
+                <div class="relative flex justify-center">
+                    <div class="relative inline-block w-full max-w-[420px]">
+                        <img src="7.jpg" alt="User Result Feedback" class="w-full rounded-2xl border border-white/10 shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. PERFORMANCE TRACKER -->
+        <section class="space-y-8">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 italic text-[var(--gold)]">Transparency Audit</h2>
+                <p class="text-gray-400">Every trade is publicly timestamped on TikTok before execution.</p>
+            </div>
+            
+            <div class="section-card overflow-hidden">
+                <div class="trade-row grid grid-cols-2 md:grid-cols-4 items-center">
+                    <div class="font-bold text-white uppercase tracking-tighter">NAS100 <span class="text-green-500">Long</span></div>
+                    <div><span class="bg-green-600 text-white text-[10px] px-3 py-1 rounded-full font-black animate-pulse">PROFIT +$1,420*</span></div>
+                    <div class="hidden md:block text-gray-400 italic text-center">Mar 24, 2026</div>
+                    <div class="text-right text-green-500 font-bold">+2.4R</div>
+                </div>
+                <div class="trade-row grid grid-cols-2 md:grid-cols-4 items-center opacity-70">
+                    <div class="font-bold text-white uppercase tracking-tighter">XAUUSD <span class="text-red-500">Short</span></div>
+                    <div><span class="bg-red-500/20 text-red-500 text-[10px] px-2 py-1 rounded">SL HIT</span></div>
+                    <div class="hidden md:block text-gray-400 italic text-center">Mar 22, 2026</div>
+                    <div class="text-right text-red-500 font-bold">-1.0R</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. DYNAMIC PRICING IDENTITY -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="section-card border-[var(--gold)]/20 bg-black/40">
+                <h3 class="text-2xl font-black text-[var(--gold)] italic mb-4 uppercase">
+                    Why only <span class="dynamic-price text-white">5,000 NGN</span>?
+                </h3>
+                <p class="text-gray-300 text-sm leading-relaxed font-medium">
+                    I don't want your life savings. I want a community of winners. By keeping the entry low, I ensure every serious trader in Africa can access institutional-grade data. **I win when you win.**
+                </p>
+            </div>
+            <div class="section-card border-white/10 bg-gradient-to-br from-white/5 to-transparent">
+                <h3 class="text-2xl font-black text-white italic mb-4 uppercase">No Rented Lambos. Just Raw Data.</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    I didn't start with a million-dollar account. I started exactly where you are. I build my reputation by posting every single trade <span class="text-[var(--gold)] font-bold italic">BEFORE</span> it hits Take Profit.
+                </p>
+            </div>
+        </section>
+
+        <!-- 7. FINAL CALL TO ACTION -->
+        <section class="text-center space-y-12 pb-20">
+            <div class="inline-block border-2 border-[var(--gold)] p-10 md:p-20 rounded-[3rem] bg-black shadow-[0_0_100px_rgba(212,175,55,0.25)] relative overflow-hidden w-full max-w-4xl">
+                <h3 class="text-4xl md:text-6xl font-bold mb-4 italic">Start My Trial</h3>
+                <p class="text-gray-400 mb-6">Get full access for 3 days for just <span class="dynamic-price text-white font-bold">5,000 NGN</span>. Cancel anytime.</p>
+                <div class="flex flex-col gap-4 items-center">
+                    <a href="https://selar.com/51555l6229" class="cta-button py-6 px-24 rounded-full text-2xl inline-block w-full md:w-auto relative z-10">
+                        Unlock Next Trade →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. AFFILIATE HOOK -->
+        <section class="text-center py-10 border-t border-white/5">
+            <p class="text-[var(--gold)] font-bold text-sm uppercase tracking-widest">Want to trade for free?</p>
+            <h4 class="text-white text-xl font-bold italic mt-2">Become an Affiliate & Earn 50% Commission</h4>
+            <p class="text-gray-500 text-xs mt-2">Earn 50% on every friend you refer. Paid instantly via Selar.</p>
+            <a href="https://selar.com/affiliates" target="_blank" class="text-[var(--gold)] underline text-[10px] font-black mt-4 inline-block uppercase">Register as Partner →</a>
+        </section>
+
+    </main>
+
+    <footer class="bg-black border-t border-white/5 py-12 text-center px-6 pb-32 md:pb-12">
+        <p class="text-[10px] text-gray-600 uppercase tracking-widest font-bold">VOULA ALPHA | Professional Trading Systems 2026</p>
+    </footer>
+
+    <script>
+        function localizePricing() {
+            const priceElements = document.querySelectorAll('.dynamic-price');
+            const currencyNote = document.getElementById('currency-note');
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            
+            let price = "5,000 NGN"; 
+            let methods = "MTN MoMo, Airtel & Bank Transfer";
+
+            if (timezone.includes('Johannesburg') || timezone.includes('Harare')) {
+                price = "100 ZAR";
+                methods = "Instant EFT, Card & Capitec Pay";
+            } else if (timezone.includes('Nairobi') || timezone.includes('Kampala')) {
+                price = "550 KES";
+                methods = "M-Pesa & Airtel Money";
+            } else if (timezone.includes('Accra')) {
+                price = "55 GHS";
+                methods = "MTN Mobile Money & Vodafone Cash";
+            }
+
+            priceElements.forEach(el => { el.innerText = price; });
+            if (currencyNote) {
+                currencyNote.innerHTML = `<span class="text-green-500">●</span> Instant Access: ${methods} via Selar`;
+            }
+        }
+
+        const names = ['Kofi', 'Olatunji', 'Chinedu', 'Blessing', 'Kwame', 'Sani', 'Thabo', 'Lerato'];
+        const actions = ['just joined the Alpha Group', 'just hit TP2 on Gold! 🔥', 'just joined the Trial', 'is up 12% this week 📈'];
+        
+        function showPopup() {
+            const name = names[Math.floor(Math.random() * names.length)];
+            const action = actions[Math.floor(Math.random() * actions.length)];
+            const popup = document.createElement('div');
+            popup.className = 'fixed bottom-24 left-4 bg-white/10 backdrop-blur-xl border border-white/20 p-3 rounded-lg z-50 text-[10px] animate-bounce notification-popup';
+            popup.innerHTML = `🔥 <strong>${name}</strong> ${action}`;
+            document.body.appendChild(popup);
+            setTimeout(() => {
+                popup.classList.add('opacity-0', 'transition-opacity', 'duration-1000');
+                setTimeout(() => popup.remove(), 1000);
+            }, 4000);
+        }
+
+        window.onload = function() {
+            localizePricing();
+            setTimeout(() => { showPopup(); setInterval(showPopup, 9000); }, 3000);
+        };
+    </script>
+</body>
+</html>
