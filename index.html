@@ -3,329 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VOULA ALPHA | Pre-Session Trade Levels</title>
+    <title>Verified Trading Stats</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #D4AF37; --dark-gold: #996515; --bg-card: rgba(255, 255, 255, 0.03); }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #000; 
-            color: white; 
-            margin: 0; 
-            overflow-x: hidden; 
-            opacity: 0; 
-            transition: opacity 0.8s ease-in;
-            padding-bottom: 100px; 
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
         }
-        h1, h2, h3, .gold-text { font-family: 'Playfair Display', serif; color: var(--gold); }
-        
-        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; object-fit: cover; filter: contrast(1.1) brightness(0.25); opacity: 0.3; }
-        .overlay-grad { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, #000 100%); z-index: -1; }
-        
-        .cta-button { background: linear-gradient(135deg, var(--gold), var(--dark-gold)); color: black; transition: all 0.4s ease; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); text-align: center; cursor: pointer; border: none; }
-        .cta-button:hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5); }
+
+        /* Fullscreen Video Background */
+        .video-bg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        /* Stats Panel - Small & Discrete */
+        .stats-panel {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            display: flex;
+            gap: 20px;
+            z-index: 50;
+            color: white;
+        }
+
+        /* Half-Moon Pricing Badge with new color #CCAEE2 */
+        .pricing-badge {
+            position: fixed;
+            bottom: 0; 
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #CCAEE2; /* Updated color */
+            color: white;
+            padding: 20px 50px 10px 50px; 
+            border-radius: 150px 150px 0 0;
+            font-weight: 700;
+            font-size: 1.1rem; 
+            box-shadow: 0 -6px 20px rgba(0,0,0,0.4);
+            z-index: 60;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Disclaimer Panel - Small & Discrete */
+        .disclaimer-panel {
+            position: fixed;
+            bottom: 30px;
+            left: 20px;
+            z-index: 50;
+            color: white;
+            max-width: 200px; 
+        }
+
+        .item-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .item-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 1.5px;
+            background-color: white;
+        }
+
+        .label-text {
+            font-size: 0.55rem; 
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            opacity: 0.6;
+            margin-bottom: 1px;
+        }
+
+        .value-text {
+            font-size: 1.4rem; 
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .disclaimer-text {
+            font-size: 0.6rem; 
+            line-height: 1.2;
+            opacity: 0.6;
+            font-weight: 400;
+        }
+
+        /* Speech Bubble Style - Smaller */
+        .speech-bubble {
+            position: relative;
+            background: #ffffff;
+            color: #000000;
+            border-radius: 0.8rem;
+            padding: 0.5rem 0.9rem;
+            font-size: 0.85rem; 
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            max-width: fit-content;
+            transform-origin: 20% 100%; 
+            opacity: 0;
+            transform: scale(0) translateY(20px);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -7px;
+            left: 15px;
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 9px solid #ffffff;
+        }
+
+        .speech-bubble.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        /* Layout Container */
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bubble-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding-bottom: 25%; 
+            align-items: flex-start;
+        }
     </style>
 </head>
 <body>
 
-    <video autoplay muted loop playsinline id="bg-video">
-        <source src="voulaalpha.mp4" type="video/mp4">
+    <!-- Video Background -->
+    <video autoplay loop muted playsinline class="video-bg">
+        <source src="YouCut_20260412_150201306~3.mp4" type="video/mp4">
     </video>
-    <div class="overlay-grad"></div>
 
-    <!-- STICKY CTA FOR MOBILE -->
-    <div class="md:hidden fixed bottom-0 left-0 w-full p-4 z-50 bg-black/95 backdrop-blur-lg border-t border-[var(--gold)]/30 text-center">
-        <a href="https://selar.com/51555l6229" class="cta-button block w-full py-4 rounded-xl text-center text-lg">
-            SEE TODAY’S LEVELS →
-        </a>
-        <p class="text-[8px] text-gray-500 mt-1 uppercase font-bold tracking-tighter italic">No setup reached = No Trade</p>
+    <!-- Half-Moon Pricing Badge with updated HEX #CCAEE2 -->
+    <div class="pricing-badge">
+        6€ One Day Access
     </div>
 
-    <!-- 1. HERO SECTION -->
-    <header class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-10">
-        <div class="max-w-5xl space-y-6">
-            <div class="inline-block px-4 py-1 bg-white/10 text-[var(--gold)] border border-[var(--gold)]/30 rounded-full text-[10px] font-black uppercase tracking-widest">
-                Professional Execution Reference
-            </div>
-            
-            <h1 class="text-5xl md:text-7xl font-black leading-tight italic uppercase">
-                Know where Forex will react <br>
-                <span class="text-white text-4xl md:text-6xl">BEFORE London Open.</span>
-            </h1>
-
-            <div class="max-w-2xl mx-auto space-y-4">
-                <p class="text-xl md:text-2xl text-gray-300 font-medium italic">
-                    No guesswork. No overtrading.
-                </p>
-                <p class="text-[var(--gold)] text-sm md:text-base uppercase font-black tracking-widest bg-black/50 py-2 rounded-lg border border-[var(--gold)]/20 px-4">
-                    If price doesn’t hit our level → you DON’T trade.
-                </p>
-                <p class="text-xs text-gray-500 uppercase font-bold">
-                    Used daily by traders who are tired of random entries.
-                </p>
-            </div>
-
-            <!-- QUICK "HOW IT WORKS" -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mt-8 bg-white/5 p-6 rounded-3xl border border-white/10 backdrop-blur-md">
-                <div class="space-y-1">
-                    <p class="text-[var(--gold)] font-black text-xs uppercase">Step 1</p>
-                    <p class="text-[10px] text-white font-bold uppercase">Get levels before London open</p>
-                </div>
-                <div class="space-y-1 md:border-x border-white/10">
-                    <p class="text-[var(--gold)] font-black text-xs uppercase">Step 2</p>
-                    <p class="text-[10px] text-white font-bold uppercase">Wait for price to reach the zone</p>
-                </div>
-                <div class="space-y-1">
-                    <p class="text-[var(--gold)] font-black text-xs uppercase">Step 3</p>
-                    <p class="text-[10px] text-white font-bold uppercase">Trade only if setup is valid</p>
-                </div>
-            </div>
-
-            <!-- CHECKOUT BOX -->
-            <div class="bg-white/5 border border-[var(--gold)]/30 p-8 rounded-[2rem] backdrop-blur-md mt-10 max-w-xl mx-auto w-full">
-                <div class="flex flex-col items-center mb-6">
-                    <p class="text-gray-500 line-through text-sm">€49 ACCESS</p>
-                    <h3 class="text-2xl font-bold italic text-white">
-                        Access Today's Setup for <span class="dynamic-price text-[var(--gold)] text-3xl">€9</span>
-                    </h3>
-                </div>
-
-                <div class="space-y-4">
-                    <a href="https://selar.com/51555l6229" class="cta-button py-5 px-14 rounded-full text-2xl w-full inline-block">
-                        SEE TODAY’S LEVELS →
-                    </a>
-
-                    <div class="space-y-2">
-                        <p class="text-[9px] text-white uppercase font-black text-center tracking-tighter">
-                            You will know exactly where you’re wrong before entering
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- NEW SECTION: COMPARISON (WITHOUT VS WITH US) -->
-    <section class="max-w-4xl mx-auto px-6 mt-24">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold italic text-white uppercase tracking-tight">The Execution Gap:</h2>
-        </div>
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- WITHOUT US -->
-            <div class="bg-red-900/10 border border-red-500/20 p-8 rounded-3xl backdrop-blur-sm">
-                <h4 class="text-red-500 font-black uppercase text-sm mb-6 flex items-center gap-2">
-                    <span class="text-xl">❌</span> Without Levels
-                </h4>
-                <ul class="space-y-4 text-gray-400 font-bold uppercase text-xs tracking-wide">
-                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 bg-red-500 rounded-full"></span> Random Entries & FOMO</li>
-                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 bg-red-500 rounded-full"></span> Constant Stop Loss Hunting</li>
-                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 bg-red-500 rounded-full"></span> Destructive Overtrading</li>
-                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 bg-red-500 rounded-full"></span> Trading on Hope, not Logic</li>
-                </ul>
-            </div>
-            <!-- WITH US -->
-            <div class="bg-[var(--gold)]/5 border border-[var(--gold)]/30 p-8 rounded-3xl backdrop-blur-sm relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-[var(--gold)] text-black text-[8px] font-black px-3 py-1 uppercase tracking-tighter">Recommended</div>
-                <h4 class="text-[var(--gold)] font-black uppercase text-sm mb-6 flex items-center gap-2">
-                    <span class="text-xl">✅</span> With Voula Alpha
-                </h4>
-                <ul class="space-y-4 text-white font-bold uppercase text-xs tracking-wide">
-                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 bg-[var(--gold)] rounded-full"></span> Pre-defined Reaction Zones</li>
-                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 bg-[var(--gold)] rounded-full"></span> Fixed & Known Invalidation</li>
-                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 bg-[var(--gold)] rounded-full"></span> No Setup = No Trade Discipline</li>
-                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 bg-[var(--gold)] rounded-full"></span> Clinical Session Execution</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. RISK FRAMEWORK & CONSISTENCY -->
-    <section class="max-w-4xl mx-auto px-6 mt-24 text-center">
-        <div class="inline-block px-4 py-1 bg-[var(--gold)]/10 text-[var(--gold)] border border-[var(--gold)]/30 rounded-full text-[9px] font-black uppercase tracking-widest mb-6">
-            Execution Guardrails
-        </div>
-        <h2 class="text-3xl font-bold italic text-white mb-8 uppercase tracking-tight">The Controlled Exposure Model:</h2>
-        
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
-                <p class="text-[var(--gold)] font-black text-xl mb-1">1:2+</p>
-                <p class="text-[9px] text-gray-500 uppercase font-bold">Hard R:R Minimum</p>
-            </div>
-            <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
-                <p class="text-[var(--gold)] font-black text-xl mb-1">1.8%</p>
-                <p class="text-[9px] text-gray-500 uppercase font-bold">Avg Session Risk</p>
-            </div>
-            <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
-                <p class="text-[var(--gold)] font-black text-xl mb-1">Fixed</p>
-                <p class="text-[9px] text-gray-500 uppercase font-bold">Invalidation Points</p>
-            </div>
-            <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
-                <p class="text-[var(--gold)] font-black text-xl mb-1">Selective</p>
-                <p class="text-[9px] text-gray-500 uppercase font-bold">No setup = No Trade</p>
-            </div>
-        </div>
-
-        <!-- 2.1 EXECUTION CONSISTENCY SNAPSHOT -->
-        <div class="mt-12 bg-white/5 border border-white/10 p-8 rounded-3xl max-w-2xl mx-auto text-left">
-            <h4 class="text-[var(--gold)] font-black uppercase text-xs tracking-widest mb-4 italic">Execution Consistency Snapshot:</h4>
-            <div class="space-y-4 text-xs md:text-sm text-gray-300 font-medium">
-                <div class="flex justify-between border-b border-white/5 pb-2">
-                    <span class="text-gray-500 uppercase tracking-tighter">Max historical drawdown:</span>
-                    <span class="text-white font-black">13%</span>
-                </div>
-                <div class="flex justify-between border-b border-white/5 pb-2">
-                    <span class="text-gray-500 uppercase tracking-tighter">Average per session:</span>
-                    <span class="text-white font-black">1.8%</span>
-                </div>
-                <div class="flex justify-between border-b border-white/5 pb-2">
-                    <span class="text-gray-500 uppercase tracking-tighter">Exposure Model:</span>
-                    <span class="text-[var(--gold)] font-black uppercase tracking-widest">Controlled</span>
-                </div>
-            </div>
-            <p class="text-[8px] text-gray-600 mt-4 uppercase font-bold italic leading-tight">
-                *Data derived from internal session logs. Methodology focuses on capital preservation during high volatility.
+    <!-- Disclaimer Panel -->
+    <div class="disclaimer-panel">
+        <div class="item-container">
+            <span class="label-text">Disclaimer</span>
+            <p class="disclaimer-text">
+                Past performance does not guarantee future results. 
+                Trading involves significant risk of loss. 
+                Invest responsibly.
             </p>
         </div>
-    </section>
+    </div>
 
-    <!-- 3. "WHAT YOU GET" SECTION -->
-    <section class="max-w-4xl mx-auto px-6 mt-24">
-        <div class="bg-white/5 border border-white/10 rounded-[2.5rem] p-8 md:p-12 backdrop-blur-sm">
-            <h2 class="text-3xl font-bold italic text-white mb-8 text-center uppercase tracking-tight">Today's Execution Blueprint:</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="space-y-4">
-                    <div class="flex items-start gap-3">
-                        <span class="text-[var(--gold)] text-xl">✔</span>
-                        <div>
-                            <p class="font-bold text-gray-200 uppercase text-sm">Exact Entry Points</p>
-                            <p class="text-xs text-gray-500">Based on intraday liquidity cycles.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <span class="text-[var(--gold)] text-xl">✔</span>
-                        <div>
-                            <p class="font-bold text-gray-200 uppercase text-sm">Hard Invalidation</p>
-                            <p class="text-xs text-gray-500">The precise price where the thesis fails.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <div class="flex items-start gap-3">
-                        <span class="text-[var(--gold)] text-xl">✔</span>
-                        <div>
-                            <p class="font-bold text-gray-200 uppercase text-sm">Volume Bias</p>
-                            <p class="text-xs text-gray-500">Alignment with the real session move.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <span class="text-[var(--gold)] text-xl">✔</span>
-                        <div>
-                            <p class="font-bold text-gray-200 uppercase text-sm">Take Profit Clusters</p>
-                            <p class="text-xs text-gray-500">Logical exit zones before reversals.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Stats Panel -->
+    <div class="stats-panel">
+        <div class="item-container">
+            <span class="label-text">Wins</span>
+            <span class="value-text">209</span>
         </div>
-    </section>
-
-    <!-- 4. FEATURED RESULT: TRADINGVIEW SNAPSHOT -->
-    <section class="max-w-4xl mx-auto px-6 mt-24 text-center">
-        <p class="text-[12px] text-[var(--gold)] uppercase font-black mb-4 tracking-[0.2em]">
-            Visualizing The "Wrong Zone"
-        </p>
-
-        <div class="bg-white/5 p-6 rounded-3xl border border-[var(--gold)]/20 shadow-[0_0_40px_rgba(212,175,55,0.15)] overflow-hidden">
-            <img src="tradingview-results.png" alt="Trading structure example"
-            class="mx-auto rounded-xl max-w-full h-auto transition-transform duration-500 hover:scale-105">
+        <div class="item-container">
+            <span class="label-text">Losses</span>
+            <span class="value-text">5</span>
         </div>
-
-        <div class="max-w-xl mx-auto mt-6 space-y-2">
-            <p class="text-[10px] text-gray-400 uppercase font-bold leading-relaxed">
-                Notice the pre-defined invalidation level (Red Zone). <br>
-                Success comes from knowing exactly when to exit.
-            </p>
+        <div class="item-container">
+            <span class="label-text">Drawdown</span>
+            <span class="value-text">7%</span>
         </div>
-    </section>
+    </div>
 
-    <!-- 5. SOCIAL PROOF -->
-    <section class="max-w-4xl mx-auto px-6 mt-24 text-center">
-        <p class="text-[11px] text-white uppercase font-black mb-6 tracking-[0.2em]">
-            Real-time session feedback
-        </p>
-        <div class="bg-white/5 p-4 rounded-3xl border border-white/5 inline-block">
-            <img src="voulaalpha (1).jpg" alt="User feedback interaction" class="mx-auto rounded-2xl opacity-90 hover:opacity-100 transition-all max-w-full h-auto">
+    <!-- Main Viewport for Speech Bubbles -->
+    <div class="content-overlay">
+        <div id="bubble-container" class="bubble-grid">
+            <!-- Dynamic Bubbles will appear here -->
         </div>
-    </section>
-
-    <!-- 6. AUTHORITY -->
-    <section class="max-w-3xl mx-auto px-6 mt-24 text-center">
-        <img src="voulaalpha (2).jpg" alt="Voula Alpha Profile" class="w-44 h-44 object-cover rounded-full mx-auto mb-6 border-2 border-[var(--gold)]/30 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
-        <h3 class="text-2xl font-bold text-[var(--gold)] uppercase italic">Voula Alpha</h3>
-        <p class="text-[12px] text-gray-400 mt-4 leading-relaxed max-w-xl mx-auto">
-            Specializing in risk-defined execution models for Gold and Major FX. 
-            The goal isn't to be "right" every day—it's to be "cheaply wrong" and "expensively right".
-        </p>
-    </section>
-
-    <!-- 7. FINAL CALL TO ACTION -->
-    <section class="text-center space-y-12 pb-20 mt-32">
-        <div class="inline-block border-2 border-[var(--gold)] p-10 md:p-20 rounded-[3rem] bg-black shadow-[0_0_100px_rgba(212,175,55,0.25)] relative overflow-hidden w-full max-w-4xl mx-auto">
-            <p class="text-white font-mono text-xl font-black mb-2 uppercase tracking-widest italic">Trade with a Plan, Not a Guess.</p>
-            <p class="text-[10px] text-gray-500 mb-6 uppercase font-bold tracking-widest">
-                Daily Professional Level Reference
-            </p>
-            <h3 class="text-4xl md:text-6xl font-bold mb-8 italic uppercase text-white">Know Your Risk</h3>
-            
-            <div class="flex flex-col gap-4 items-center">
-                <div class="flex flex-col items-center mb-2">
-                    <p class="text-gray-500 line-through text-xs uppercase font-bold">Standard Access €49</p>
-                    <p class="text-white text-lg font-black uppercase">Session Entry: <span class="dynamic-price">€9</span></p>
-                </div>
-                <a href="https://selar.com/51555l6229" class="cta-button py-6 px-24 rounded-full text-2xl inline-block w-full md:w-auto relative z-10">
-                    SEE TODAY’S LEVELS →
-                </a>
-
-                <div class="space-y-1 mt-4">
-                    <p class="text-[9px] text-gray-400 uppercase font-bold text-center italic">
-                        If price doesn't reach our levels, we don't trade. Period.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- RISK DISCLAIMER -->
-        <div class="space-y-4 px-6">
-            <p class="text-[9px] text-gray-600 mt-4 text-center max-w-lg mx-auto uppercase font-bold leading-relaxed">
-                *Trading is inherently risky. Defining invalidation does not guarantee success but manages exposure. Past stats do not predict future returns.
-            </p>
-        </div>
-    </section>
-
-    <footer class="bg-black border-t border-white/5 py-12 text-center px-6 pb-32 md:pb-12">
-        <p class="text-[10px] text-gray-600 uppercase tracking-widest font-bold">VOULA ALPHA | Execution Intelligence 2026</p>
-    </footer>
+    </div>
 
     <script>
-        function localizePricing() {
-            const priceElements = document.querySelectorAll('.dynamic-price');
-            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            let price = "€9"; 
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('bubble-container');
 
-            if (timezone.includes('London')) price = "£8";
-            else if (timezone.includes('Lagos')) price = "₦3,500"; 
-            else if (timezone.includes('Dubai')) price = "AED 35";
-            else if (timezone.includes('Tokyo')) price = "¥1,500";
-            else if (timezone.includes('America/')) price = "$10";
+            const messages = [
+                "214 trades documented publicly",
+                "All trades posted in real-time",
+                "No deletions. No edits"
+            ];
 
-            priceElements.forEach(el => { el.innerText = price; });
-        }
+            let delay = 800;
 
-        window.onload = function() {
-            localizePricing();
-            document.body.style.opacity = "1";
-        };
+            messages.forEach((text) => {
+                setTimeout(() => {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'speech-bubble';
+                    bubble.textContent = text;
+                    container.appendChild(bubble);
+
+                    requestAnimationFrame(() => {
+                        bubble.classList.add('show');
+                    });
+                }, delay);
+
+                delay += 1500;
+            });
+        });
     </script>
 </body>
 </html>
