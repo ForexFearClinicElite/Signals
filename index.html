@@ -21,17 +21,10 @@
         h1, h2, h3, .gold-text { font-family: 'Playfair Display', serif; color: var(--gold); }
         
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; object-fit: cover; filter: contrast(1.1) brightness(0.25); opacity: 0.3; }
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, #000 100%); z-index: -1; }
+        .overlay-grad { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, #000 100%); z-index: -1; }
         
         .cta-button { background: linear-gradient(135deg, var(--gold), var(--dark-gold)); color: black; transition: all 0.4s ease; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); text-align: center; cursor: pointer; border: none; }
         .cta-button:hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5); }
-        
-        .stats-box { border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.02); border-radius: 16px; padding: 1rem; text-align: center; }
-        
-        .proof-img { border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); position: relative; overflow: hidden; }
-        .proof-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); padding: 15px 10px; font-size: 10px; font-weight: 900; text-transform: uppercase; color: var(--gold); }
-        
-        #timer { font-variant-numeric: tabular-nums; }
     </style>
 </head>
 <body>
@@ -39,36 +32,47 @@
     <video autoplay muted loop playsinline id="bg-video">
         <source src="voulaalpha.mp4" type="video/mp4">
     </video>
-    <div class="overlay"></div>
+    <div class="overlay-grad"></div>
 
     <!-- STICKY CTA FOR MOBILE -->
     <div class="md:hidden fixed bottom-0 left-0 w-full p-4 z-50 bg-black/95 backdrop-blur-lg border-t border-[var(--gold)]/30 text-center">
         <a href="https://selar.com/51555l6229" class="cta-button block w-full py-4 rounded-xl text-center text-lg">
-            GET TODAY’S LEVELS NOW →
+            SEE TODAY’S LEVELS →
         </a>
-        <p class="text-[8px] text-gray-500 mt-1 uppercase font-bold tracking-tighter">Educational reference • Instant access after purchase</p>
+        <p class="text-[8px] text-gray-500 mt-1 uppercase font-bold tracking-tighter italic">If price doesn’t reach our levels → No Trade</p>
     </div>
 
     <!-- 1. HERO SECTION -->
     <header class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-10">
         <div class="max-w-5xl space-y-6">
             <div class="inline-block px-4 py-1 bg-white/10 text-[var(--gold)] border border-[var(--gold)]/30 rounded-full text-[10px] font-black uppercase tracking-widest">
-                Professional Trade Execution Data
+                Professional Execution Reference
             </div>
             
             <h1 class="text-5xl md:text-7xl font-black leading-tight italic uppercase">
-                Know Your Trade Levels <br>
-                <span class="text-white">Before The Session Opens.</span>
+                Stop guessing your <br>
+                <span class="text-white">Gold entries.</span>
             </h1>
 
-            <p class="text-lg md:text-xl text-gray-300 font-medium max-w-2xl mx-auto">
-                Stop guessing entries. Get pre-defined trade levels for London & NY sessions used for structured execution.
+            <p class="text-xl md:text-2xl text-gray-300 font-medium max-w-2xl mx-auto">
+                Know where to enter — or stay out. <br>
+                <span class="text-[var(--gold)] text-lg md:text-xl uppercase font-black tracking-tight">Levels mapped before London session open.</span>
             </p>
 
-            <div class="flex flex-col items-center gap-2 mt-4">
-                <p class="text-[10px] text-[var(--gold)] uppercase font-black tracking-widest bg-[var(--gold)]/10 px-3 py-1 rounded">
-                    1368+ traders accessed session data in the last 30 days
-                </p>
+            <!-- QUICK "HOW IT WORKS" (CONVERSION BOOSTER) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto mt-8 bg-white/5 p-6 rounded-3xl border border-white/10 backdrop-blur-md">
+                <div class="space-y-1">
+                    <p class="text-[var(--gold)] font-black text-xs uppercase">Step 1</p>
+                    <p class="text-[10px] text-white font-bold uppercase">Get levels before London open</p>
+                </div>
+                <div class="space-y-1 md:border-x border-white/10">
+                    <p class="text-[var(--gold)] font-black text-xs uppercase">Step 2</p>
+                    <p class="text-[10px] text-white font-bold uppercase">Wait for price to reach the zone</p>
+                </div>
+                <div class="space-y-1">
+                    <p class="text-[var(--gold)] font-black text-xs uppercase">Step 3</p>
+                    <p class="text-[10px] text-white font-bold uppercase">Trade only if setup is valid</p>
+                </div>
             </div>
 
             <!-- CHECKOUT BOX -->
@@ -76,21 +80,21 @@
                 <div class="flex flex-col items-center mb-6">
                     <p class="text-gray-500 line-through text-sm">€49 ACCESS</p>
                     <h3 class="text-2xl font-bold italic text-white">
-                        Get Full Access for <span class="dynamic-price text-[var(--gold)] text-3xl">€9</span>
+                        Access Today's Setup for <span class="dynamic-price text-[var(--gold)] text-3xl">€9</span>
                     </h3>
                 </div>
 
                 <div class="space-y-4">
                     <a href="https://selar.com/51555l6229" class="cta-button py-5 px-14 rounded-full text-2xl w-full inline-block">
-                        GET TODAY’S LEVELS →
+                        SEE TODAY’S LEVELS →
                     </a>
 
                     <div class="space-y-2">
-                        <p class="text-[9px] text-gray-600 uppercase font-bold text-center">
-                            No login • No setup • Instant access after payment
+                        <p class="text-[9px] text-white uppercase font-black text-center tracking-tighter">
+                            You will know exactly where you’re wrong before entering
                         </p>
-                        <p class="text-[9px] text-gray-500 uppercase font-bold text-center">
-                            ✔ Secure checkout via Selar • ✔ Instant delivery • ✔ No subscriptions
+                        <p class="text-[10px] text-red-500 uppercase font-black text-center italic mt-2">
+                            If price doesn’t reach our levels → NO TRADE
                         </p>
                     </div>
                 </div>
@@ -98,24 +102,73 @@
         </div>
     </header>
 
-    <!-- 2. "WHAT YOU GET" SECTION -->
-    <section class="max-w-4xl mx-auto px-6 mt-20">
+    <!-- 2. RISK FRAMEWORK & CONSISTENCY -->
+    <section class="max-w-4xl mx-auto px-6 mt-20 text-center">
+        <div class="inline-block px-4 py-1 bg-[var(--gold)]/10 text-[var(--gold)] border border-[var(--gold)]/30 rounded-full text-[9px] font-black uppercase tracking-widest mb-6">
+            Execution Guardrails
+        </div>
+        <h2 class="text-3xl font-bold italic text-white mb-8 uppercase tracking-tight">The Controlled Exposure Model:</h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+                <p class="text-[var(--gold)] font-black text-xl mb-1">1:2+</p>
+                <p class="text-[9px] text-gray-500 uppercase font-bold">Hard R:R Minimum</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+                <p class="text-[var(--gold)] font-black text-xl mb-1">1.8%</p>
+                <p class="text-[9px] text-gray-500 uppercase font-bold">Avg Session Risk</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+                <p class="text-[var(--gold)] font-black text-xl mb-1">Fixed</p>
+                <p class="text-[9px] text-gray-500 uppercase font-bold">Invalidation Points</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+                <p class="text-[var(--gold)] font-black text-xl mb-1">Selective</p>
+                <p class="text-[9px] text-gray-500 uppercase font-bold">No setup = No Trade</p>
+            </div>
+        </div>
+
+        <!-- 2.1 EXECUTION CONSISTENCY SNAPSHOT -->
+        <div class="mt-12 bg-white/5 border border-white/10 p-8 rounded-3xl max-w-2xl mx-auto text-left">
+            <h4 class="text-[var(--gold)] font-black uppercase text-xs tracking-widest mb-4 italic">Execution Consistency Snapshot:</h4>
+            <div class="space-y-4 text-xs md:text-sm text-gray-300 font-medium">
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                    <span class="text-gray-500 uppercase tracking-tighter">Max historical drawdown:</span>
+                    <span class="text-white font-black">13%</span>
+                </div>
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                    <span class="text-gray-500 uppercase tracking-tighter">Average per session:</span>
+                    <span class="text-white font-black">1.8%</span>
+                </div>
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                    <span class="text-gray-500 uppercase tracking-tighter">Exposure Model:</span>
+                    <span class="text-[var(--gold)] font-black uppercase tracking-widest">Controlled</span>
+                </div>
+            </div>
+            <p class="text-[8px] text-gray-600 mt-4 uppercase font-bold italic leading-tight">
+                *Data derived from internal session logs. Methodology focuses on capital preservation during high volatility.
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. "WHAT YOU GET" SECTION -->
+    <section class="max-w-4xl mx-auto px-6 mt-24">
         <div class="bg-white/5 border border-white/10 rounded-[2.5rem] p-8 md:p-12 backdrop-blur-sm">
-            <h2 class="text-3xl font-bold italic text-white mb-8 text-center uppercase tracking-tight">What You Get Today:</h2>
+            <h2 class="text-3xl font-bold italic text-white mb-8 text-center uppercase tracking-tight">Today's Execution Blueprint:</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="space-y-4">
                     <div class="flex items-start gap-3">
                         <span class="text-[var(--gold)] text-xl">✔</span>
                         <div>
-                            <p class="font-bold text-gray-200">Pre-session Trade Levels</p>
-                            <p class="text-xs text-gray-500">XAUUSD & Major FX Pairs structure.</p>
+                            <p class="font-bold text-gray-200 uppercase text-sm">Exact Entry Points</p>
+                            <p class="text-xs text-gray-500">Based on intraday liquidity cycles.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
                         <span class="text-[var(--gold)] text-xl">✔</span>
                         <div>
-                            <p class="font-bold text-gray-200">Key Liquidity Zones</p>
-                            <p class="text-xs text-gray-500">Identifying where institutional orders sit.</p>
+                            <p class="font-bold text-gray-200 uppercase text-sm">Hard Invalidation</p>
+                            <p class="text-xs text-gray-500">The precise price where the thesis fails.</p>
                         </div>
                     </div>
                 </div>
@@ -123,15 +176,15 @@
                     <div class="flex items-start gap-3">
                         <span class="text-[var(--gold)] text-xl">✔</span>
                         <div>
-                            <p class="font-bold text-gray-200">Session Bias (London / NY)</p>
-                            <p class="text-xs text-gray-500">Directional alignment based on range analysis.</p>
+                            <p class="font-bold text-gray-200 uppercase text-sm">Volume Bias</p>
+                            <p class="text-xs text-gray-500">Alignment with the real session move.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
                         <span class="text-[var(--gold)] text-xl">✔</span>
                         <div>
-                            <p class="font-bold text-gray-200">Instant Digital Access</p>
-                            <p class="text-xs text-gray-500">Get the PDF/Link immediately after payment.</p>
+                            <p class="font-bold text-gray-200 uppercase text-sm">Take Profit Clusters</p>
+                            <p class="text-xs text-gray-500">Logical exit zones before reversals.</p>
                         </div>
                     </div>
                 </div>
@@ -139,94 +192,84 @@
         </div>
     </section>
 
-    <!-- 3. FEATURED RESULT: TRADINGVIEW SNAPSHOT -->
-    <section class="max-w-4xl mx-auto px-6 mt-20 text-center">
+    <!-- 4. FEATURED RESULT: TRADINGVIEW SNAPSHOT -->
+    <section class="max-w-4xl mx-auto px-6 mt-24 text-center">
         <p class="text-[12px] text-[var(--gold)] uppercase font-black mb-4 tracking-[0.2em]">
-            Example of session levels in action
+            Visualizing The "Wrong Zone"
         </p>
 
         <div class="bg-white/5 p-6 rounded-3xl border border-[var(--gold)]/20 shadow-[0_0_40px_rgba(212,175,55,0.15)] overflow-hidden">
-            <img src="tradingview-results.png" alt="Trading performance snapshot"
+            <img src="tradingview-results.png" alt="Trading structure example"
             class="mx-auto rounded-xl max-w-full h-auto transition-transform duration-500 hover:scale-105">
         </div>
 
-        <p class="text-[9px] text-gray-600 mt-4 uppercase font-bold italic">
-            Sample verified trading snapshot • Based on platform recorded results
-        </p>
+        <div class="max-w-xl mx-auto mt-6 space-y-2">
+            <p class="text-[10px] text-gray-400 uppercase font-bold leading-relaxed">
+                Notice the pre-defined invalidation level (Red Zone). <br>
+                Success comes from knowing exactly when to exit.
+            </p>
+        </div>
     </section>
 
-    <!-- 4. SOCIAL PROOF -->
+    <!-- 5. SOCIAL PROOF -->
     <section class="max-w-4xl mx-auto px-6 mt-24 text-center">
         <p class="text-[11px] text-white uppercase font-black mb-6 tracking-[0.2em]">
-            User feedback from recent sessions
+            Real-time session feedback
         </p>
         <div class="bg-white/5 p-4 rounded-3xl border border-white/5 inline-block">
             <img src="voulaalpha (1).jpg" alt="User feedback interaction" class="mx-auto rounded-2xl opacity-90 hover:opacity-100 transition-all max-w-full h-auto">
         </div>
-        <p class="text-[9px] text-gray-600 mt-4 uppercase font-bold italic">
-            Observed sentiment across active trading communities
-        </p>
     </section>
 
-    <!-- 5. AUTHORITY -->
+    <!-- 6. AUTHORITY -->
     <section class="max-w-3xl mx-auto px-6 mt-24 text-center">
         <img src="voulaalpha (2).jpg" alt="Voula Alpha Profile" class="w-44 h-44 object-cover rounded-full mx-auto mb-6 border-2 border-[var(--gold)]/30 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
         <h3 class="text-2xl font-bold text-[var(--gold)] uppercase italic">Voula Alpha</h3>
         <p class="text-[12px] text-gray-400 mt-4 leading-relaxed max-w-xl mx-auto">
-            Independent trader specializing in structured execution and session-based models. 
-            Developing rule-based systems for modern liquid markets.
+            Specializing in risk-defined execution models for Gold and Major FX. 
+            The goal isn't to be "right" every day—it's to be "cheaply wrong" and "expensively right".
         </p>
     </section>
 
-    <!-- 6. FINAL CALL TO ACTION -->
+    <!-- 7. FINAL CALL TO ACTION -->
     <section class="text-center space-y-12 pb-20 mt-32">
         <div class="inline-block border-2 border-[var(--gold)] p-10 md:p-20 rounded-[3rem] bg-black shadow-[0_0_100px_rgba(212,175,55,0.25)] relative overflow-hidden w-full max-w-4xl mx-auto">
-            <p id="timer" class="text-white/60 font-mono text-xl font-black mb-2 uppercase"></p>
-            <p class="text-[10px] text-gray-500 mb-6 uppercase font-bold">
-                Access window depends on current session timing
+            <p class="text-white font-mono text-xl font-black mb-2 uppercase tracking-widest italic">Trade with a Plan, Not a Guess.</p>
+            <p class="text-[10px] text-gray-500 mb-6 uppercase font-bold tracking-widest">
+                Daily Professional Level Reference
             </p>
-            <h3 class="text-4xl md:text-6xl font-bold mb-8 italic uppercase">Get Today’s Trading Levels</h3>
+            <h3 class="text-4xl md:text-6xl font-bold mb-8 italic uppercase text-white">Know Your Risk</h3>
             
             <div class="flex flex-col gap-4 items-center">
                 <div class="flex flex-col items-center mb-2">
-                    <p class="text-gray-500 line-through text-xs uppercase font-bold">Standard €49</p>
-                    <p class="text-white text-lg font-black uppercase">Trial Access: <span class="dynamic-price">€9</span></p>
+                    <p class="text-gray-500 line-through text-xs uppercase font-bold">Standard Access €49</p>
+                    <p class="text-white text-lg font-black uppercase">Session Entry: <span class="dynamic-price">€9</span></p>
                 </div>
                 <a href="https://selar.com/51555l6229" class="cta-button py-6 px-24 rounded-full text-2xl inline-block w-full md:w-auto relative z-10">
-                    ACCESS TODAY’S LEVELS NOW →
+                    SEE TODAY’S LEVELS →
                 </a>
 
                 <div class="space-y-1 mt-4">
-                    <p class="text-[9px] text-gray-600 uppercase font-bold text-center">
-                        Instant access after payment • No setup needed
-                    </p>
-                    <p class="text-[9px] text-gray-500 uppercase font-bold text-center">
-                        ✔ Secure checkout via Selar • ✔ Instant delivery
+                    <p class="text-[9px] text-gray-400 uppercase font-bold text-center italic">
+                        If price doesn't reach our levels, we don't trade. Period.
                     </p>
                 </div>
-                
-                <p class="text-[11px] text-red-500 uppercase font-black mt-6">
-                    Distribution is limited to ensure data quality
-                </p>
             </div>
         </div>
 
         <!-- RISK DISCLAIMER -->
         <div class="space-y-4 px-6">
             <p class="text-[9px] text-gray-600 mt-4 text-center max-w-lg mx-auto uppercase font-bold leading-relaxed">
-                *Performance outcomes and accuracy claims based on selected historical log periods. Trading involves significant risk. No financial advice provided.
+                *Trading is inherently risky. Defining invalidation does not guarantee success but manages exposure. Past stats do not predict future returns.
             </p>
         </div>
     </section>
 
     <footer class="bg-black border-t border-white/5 py-12 text-center px-6 pb-32 md:pb-12">
-        <p class="text-[10px] text-gray-600 uppercase tracking-widest font-bold">VOULA ALPHA | Professional Trading Systems 2026</p>
+        <p class="text-[10px] text-gray-600 uppercase tracking-widest font-bold">VOULA ALPHA | Execution Intelligence 2026</p>
     </footer>
 
     <script>
-        const endTime = new Date();
-        endTime.setMinutes(endTime.getMinutes() + 19);
-
         function localizePricing() {
             const priceElements = document.querySelectorAll('.dynamic-price');
             const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -241,29 +284,9 @@
             priceElements.forEach(el => { el.innerText = price; });
         }
 
-        function startTimer() {
-            const timerEl = document.getElementById('timer');
-
-            setInterval(() => {
-                const now = new Date();
-                let diff = Math.floor((endTime - now) / 1000);
-
-                if (diff <= 0) {
-                    timerEl.innerText = "Session Access Limited";
-                    return;
-                }
-
-                let m = Math.floor(diff / 60);
-                let s = diff % 60;
-
-                timerEl.innerText = `Access window closes in ${m}:${s < 10 ? '0' + s : s}`;
-            }, 1000);
-        }
-
         window.onload = function() {
             localizePricing();
             document.body.style.opacity = "1";
-            startTimer();
         };
     </script>
 </body>
