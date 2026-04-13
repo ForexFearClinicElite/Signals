@@ -39,7 +39,6 @@
             height: auto;
             transform: translate(-50%, -50%);
             object-fit: cover;
-            /* Αφαιρούμε το opacity: 0 για να φαίνεται το βίντεο ή το poster αμέσως */
             opacity: 1; 
         }
 
@@ -61,26 +60,25 @@
             z-index: 50;
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
-            gap: 15px;
+            align-items: center; /* Ευθυγράμμιση στο κέντρο για Desktop */
+            gap: 8px;
         }
 
         .time-frame-label {
-            font-size: 0.8rem;
-            color: #CCAEE2;
+            font-size: 0.85rem;
+            color: #FFFFFF; /* Εντελώς λευκό */
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 4px 12px;
-            border-radius: 4px;
-            margin-right: 2px;
+            letter-spacing: 4px;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
         }
 
         .stats-panel {
             display: flex;
             gap: 40px;
             color: white;
+            justify-content: center;
         }
 
         /* Half-Moon Pricing Badge */
@@ -226,16 +224,23 @@
 
             .stats-wrapper {
                 bottom: auto;
-                top: 20px; 
-                right: 20px;
-                left: 20px;
-                align-items: center;
+                top: 25px; 
+                right: 0;
+                left: 0;
+                width: 100%;
+                align-items: center; /* Κεντράρισμα στο κινητό */
+            }
+
+            .time-frame-label {
+                font-size: 0.7rem;
+                letter-spacing: 3px;
+                margin-bottom: 5px;
             }
 
             .stats-panel {
-                justify-content: space-between;
+                justify-content: center;
                 width: 100%;
-                gap: 10px;
+                gap: 20px;
             }
 
             .disclaimer-panel {
@@ -243,29 +248,40 @@
                 left: 20px;
                 right: 20px;
                 max-width: none;
+                display: flex;
+                justify-content: center;
+            }
+
+            .disclaimer-text {
+                text-align: left;
             }
 
             .value-text {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
 
             .label-text {
                 font-size: 0.6rem;
-                letter-spacing: 1px;
             }
 
             .speech-bubble {
-                font-size: 0.95rem;
+                font-size: 1rem;
                 padding: 0.6rem 1rem;
             }
 
             .bubble-grid {
-                padding-bottom: 40%; 
+                padding-bottom: 30%; 
                 width: 90%;
+                align-items: center; /* Κεντράρισμα bubbles στο κινητό */
             }
             
             .item-container {
                 padding-left: 12px;
+                align-items: center;
+            }
+            
+            .item-container::before {
+                left: 0;
             }
         }
     </style>
@@ -274,7 +290,6 @@
 
     <!-- Video Background Container -->
     <div class="video-container">
-        <!-- Χρησιμοποιούμε preload="auto" για να ξεκινήσει το κατέβασμα αμέσως -->
         <video autoplay loop muted playsinline preload="auto" class="video-bg" id="bgVideo">
             <source src="voulaalpha.mp4" type="video/mp4">
         </video>
@@ -292,7 +307,7 @@
             <span class="label-text">Disclaimer</span>
             <p class="disclaimer-text">
                 Past performance does not guarantee future results. 
-                Trading involves significant risk of loss. 
+                Trading involves significant risk. 
                 Invest responsibly.
             </p>
         </div>
