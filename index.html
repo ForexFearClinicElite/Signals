@@ -53,14 +53,33 @@
             z-index: 1;
         }
 
-        /* Stats Panel */
-        .stats-panel {
+        /* Stats Panel Container */
+        .stats-wrapper {
             position: fixed;
             bottom: 40px;
             right: 40px;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+        }
+
+        .time-frame-label {
+            font-size: 0.8rem;
+            color: #CCAEE2;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-right: 2px;
+        }
+
+        .stats-panel {
             display: flex;
             gap: 40px;
-            z-index: 50;
             color: white;
         }
 
@@ -205,12 +224,17 @@
                 border-radius: 100px 100px 0 0;
             }
 
-            .stats-panel {
+            .stats-wrapper {
                 bottom: auto;
                 top: 20px; 
                 right: 20px;
                 left: 20px;
+                align-items: center;
+            }
+
+            .stats-panel {
                 justify-content: space-between;
+                width: 100%;
                 gap: 10px;
             }
 
@@ -274,19 +298,22 @@
         </div>
     </div>
 
-    <!-- Stats Panel -->
-    <div class="stats-panel">
-        <div class="item-container">
-            <span class="label-text">Wins</span>
-            <span class="value-text">209</span>
-        </div>
-        <div class="item-container">
-            <span class="label-text">Losses</span>
-            <span class="value-text">5</span>
-        </div>
-        <div class="item-container">
-            <span class="label-text">Drawdown</span>
-            <span class="value-text">7%</span>
+    <!-- Stats Wrapper -->
+    <div class="stats-wrapper">
+        <div class="time-frame-label">Last 2 Months</div>
+        <div class="stats-panel">
+            <div class="item-container">
+                <span class="label-text">Wins</span>
+                <span class="value-text">209</span>
+            </div>
+            <div class="item-container">
+                <span class="label-text">Losses</span>
+                <span class="value-text">5</span>
+            </div>
+            <div class="item-container">
+                <span class="label-text">Drawdown</span>
+                <span class="value-text">7%</span>
+            </div>
         </div>
     </div>
 
@@ -304,8 +331,6 @@
             const bubbleContainer = document.getElementById('bubble-container');
 
             // --- Άμεση έναρξη ---
-            // Δεν περιμένουμε πλέον το event 'playing' για να δείξουμε το container
-            // Ξεκινάμε τα bubbles σχεδόν αμέσως
             startBubbles();
 
             // --- Dynamic Pricing Strategy ---
@@ -339,7 +364,6 @@
                     { text: "Join Now", type: "cta" }
                 ];
 
-                // Μικρό delay για να "αναπνεύσει" η σελίδα, αλλά πολύ πιο γρήγορο από πριν
                 let initialDelay = 300; 
                 let intervalBetween = 1800;
 
