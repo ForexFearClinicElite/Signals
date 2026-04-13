@@ -16,7 +16,7 @@
             background-color: #000;
         }
 
-        /* Fullscreen Video Background */
+        /* Fullscreen Video Background Container */
         .video-container {
             position: fixed;
             top: 0;
@@ -25,27 +25,42 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
-            /* Προσθήκη ελαφρώς γκρι φόντου αντί για απόλυτο μαύρο για πιο ομαλή μετάβαση */
             background-color: #0a0a0a;
         }
 
-        .video-bg {
+        /* Iframe styling to cover the screen like background-size: cover */
+        .video-container iframe {
             position: absolute;
             top: 50%;
             left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
+            width: 100vw;
+            height: 100vh;
             transform: translate(-50%, -50%);
-            object-fit: cover;
-            /* Ξεκινάει κρυφό και εμφανίζεται μόλις είναι έτοιμο */
+            pointer-events: none;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 1.2s ease-in-out;
         }
 
-        .video-bg.loaded {
+        /* Fix for different aspect ratios to ensure no black bars */
+        @media (min-aspect-ratio: 16/9) {
+            .video-container iframe { height: 56.25vw; }
+        }
+        @media (max-aspect-ratio: 16/9) {
+            .video-container iframe { width: 177.78vh; }
+        }
+
+        .video-container iframe.loaded {
             opacity: 1;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.15); /* Ελαφρύ σκοτείνιασμα για να διαβάζονται τα κείμενα */
+            z-index: 1;
         }
 
         /* Stats Panel */
@@ -130,7 +145,7 @@
             font-weight: 400;
         }
 
-        /* Speech Bubble Style - Animated Entry */
+        /* Speech Bubble Style */
         .speech-bubble {
             position: relative;
             background: #ffffff;
@@ -160,7 +175,6 @@
             border-top: 12px solid #ffffff;
         }
 
-        /* Highlight CTA Bubble differently */
         .speech-bubble.cta {
             background: #CCAEE2;
             color: white;
@@ -175,7 +189,6 @@
             transform: scale(1) translateY(0);
         }
 
-        /* Layout Container */
         .content-overlay {
             position: relative;
             z-index: 10;
@@ -196,13 +209,6 @@
 
         /* --- Mobile Responsive Fixes --- */
         @media (max-width: 768px) {
-            .video-bg {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
-            }
-
             .pricing-badge {
                 font-size: 1.2rem;
                 padding: 20px 40px 15px 40px;
@@ -254,11 +260,8 @@
 
     <!-- Video Background Container -->
     <div class="video-container">
-        <!-- Προσθήκη preload="auto" για πιο γρήγορο φόρτωμα -->
-        <video autoplay loop muted playsinline preload="auto" class="video-bg" id="bgVideo">
-            <source src="voulaalpha.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <div id="player"></div>
+        <div class="video-overlay"></div>
     </div>
 
     <!-- Half-Moon Pricing Badge -->
@@ -301,16 +304,54 @@
         </div>
     </div>
 
+    <!-- YouTube Iframe API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
     <script>
+        let player;
+        const videoId = 'J5PqYHEkmzw'; // Updated with your provided YouTube ID
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                videoId: videoId,
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 0,
+                    'showinfo': 0,
+                    'rel': 0,
+                    'loop': 1,
+                    'playlist': videoId,
+                    'mute': 1,
+                    'modestbranding': 1,
+                    'playsinline': 1,
+                    'enablejsapi': 1,
+                    'iv_load_policy': 3,
+                    'start': 0
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+            // Show video once it's actually playing to avoid black flicker
+            setTimeout(() => {
+                document.querySelector('#player').classList.add('loaded');
+            }, 500);
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+                player.playVideo();
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('bubble-container');
-            const video = document.getElementById('bgVideo');
             const pricingElement = document.getElementById('dynamic-pricing');
-
-            // Έλεγχος αν το βίντεο έχει αρχίσει να παίζει για να το εμφανίσουμε ομαλά
-            video.onplaying = function() {
-                video.classList.add('loaded');
-            };
 
             // --- Dynamic Pricing Strategy ---
             const updatePricing = () => {
@@ -332,13 +373,6 @@
             };
             updatePricing();
 
-            if (video) {
-                video.play().catch(() => {
-                    console.log("Autoplay prevented.");
-                });
-            }
-
-            // Updated Messages from user request
             const messages = [
                 { text: "While you hesitate… others are already in winning trades.", type: "normal" },
                 { text: "Voula Alpha members get signals BEFORE the move.", type: "normal" },
@@ -347,8 +381,8 @@
                 { text: "Join Now", type: "cta" }
             ];
 
-            let initialDelay = 1000;
-            let intervalBetween = 1800; // Slightly longer for people to read longer text
+            let initialDelay = 2000; // Delay to let the video load a bit
+            let intervalBetween = 1800;
 
             messages.forEach((msg, index) => {
                 setTimeout(() => {
