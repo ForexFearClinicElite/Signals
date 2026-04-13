@@ -25,7 +25,13 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
-            background-color: #0a0a0a;
+            background-color: #000;
+            opacity: 0; /* Ξεκινάει αόρατο για να μη φαίνεται το φόρτωμα του YouTube */
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .video-container.visible {
+            opacity: 1;
         }
 
         /* Iframe styling to cover the screen like background-size: cover */
@@ -37,8 +43,6 @@
             height: 100vh;
             transform: translate(-50%, -50%);
             pointer-events: none;
-            opacity: 0;
-            transition: opacity 1.2s ease-in-out;
         }
 
         /* Fix for different aspect ratios to ensure no black bars */
@@ -49,17 +53,13 @@
             .video-container iframe { width: 177.78vh; }
         }
 
-        .video-container iframe.loaded {
-            opacity: 1;
-        }
-
         .video-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.15); /* Ελαφρύ σκοτείνιασμα για να διαβάζονται τα κείμενα */
+            background: rgba(0,0,0,0.15); 
             z-index: 1;
         }
 
@@ -259,7 +259,7 @@
 <body>
 
     <!-- Video Background Container -->
-    <div class="video-container">
+    <div class="video-container" id="videoContainer">
         <div id="player"></div>
         <div class="video-overlay"></div>
     </div>
@@ -309,7 +309,8 @@
 
     <script>
         let player;
-        const videoId = 'J5PqYHEkmzw'; // Updated with your provided YouTube ID
+        const videoId = 'J5PqYHEkmzw'; 
+        const container = document.getElementById('videoContainer');
 
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
@@ -337,20 +338,62 @@
 
         function onPlayerReady(event) {
             event.target.playVideo();
-            // Show video once it's actually playing to avoid black flicker
-            setTimeout(() => {
-                document.querySelector('#player').classList.add('loaded');
-            }, 500);
         }
 
         function onPlayerStateChange(event) {
+            // Μόλις το βίντεο αρχίσει να παίζει πραγματικά (PLAYING)
+            if (event.data === YT.PlayerState.PLAYING) {
+                container.classList.add('visible');
+                startBubbles(); // Ξεκινάμε τα συννεφάκια μόνο αφού δούμε εικόνα
+            }
+            
             if (event.data === YT.PlayerState.ENDED) {
                 player.playVideo();
             }
         }
 
+        function startBubbles() {
+            const bubbleContainer = document.getElementById('bubble-container');
+            // Αν έχουν ήδη μπει, μην τα ξαναβάζεις
+            if (bubbleContainer.children.length > 0) return;
+
+            const messages = [
+                { text: "While you hesitate… others are already in winning trades.", type: "normal" },
+                { text: "Voula Alpha members get signals BEFORE the move.", type: "normal" },
+                { text: "Question is: are you in — or watching again?", type: "normal" },
+                { text: "Don’t Miss the Next Trade", type: "headline" },
+                { text: "Join Now", type: "cta" }
+            ];
+
+            let initialDelay = 800; 
+            let intervalBetween = 1800;
+
+            messages.forEach((msg, index) => {
+                setTimeout(() => {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'speech-bubble';
+                    
+                    if (msg.type === 'headline') {
+                        bubble.style.fontSize = '1.4rem';
+                        bubble.style.border = '2px solid #CCAEE2';
+                    }
+                    
+                    if (msg.type === 'cta') {
+                        bubble.classList.add('cta');
+                        bubble.style.fontSize = '1.6rem';
+                    }
+                    
+                    bubble.textContent = msg.text;
+                    bubbleContainer.appendChild(bubble);
+
+                    requestAnimationFrame(() => {
+                        bubble.classList.add('show');
+                    });
+                }, initialDelay + (index * intervalBetween));
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('bubble-container');
             const pricingElement = document.getElementById('dynamic-pricing');
 
             // --- Dynamic Pricing Strategy ---
@@ -372,41 +415,6 @@
                 }
             };
             updatePricing();
-
-            const messages = [
-                { text: "While you hesitate… others are already in winning trades.", type: "normal" },
-                { text: "Voula Alpha members get signals BEFORE the move.", type: "normal" },
-                { text: "Question is: are you in — or watching again?", type: "normal" },
-                { text: "Don’t Miss the Next Trade", type: "headline" },
-                { text: "Join Now", type: "cta" }
-            ];
-
-            let initialDelay = 2000; // Delay to let the video load a bit
-            let intervalBetween = 1800;
-
-            messages.forEach((msg, index) => {
-                setTimeout(() => {
-                    const bubble = document.createElement('div');
-                    bubble.className = 'speech-bubble';
-                    
-                    if (msg.type === 'headline') {
-                        bubble.style.fontSize = '1.4rem';
-                        bubble.style.border = '2px solid #CCAEE2';
-                    }
-                    
-                    if (msg.type === 'cta') {
-                        bubble.classList.add('cta');
-                        bubble.style.fontSize = '1.6rem';
-                    }
-                    
-                    bubble.textContent = msg.text;
-                    container.appendChild(bubble);
-
-                    requestAnimationFrame(() => {
-                        bubble.classList.add('show');
-                    });
-                }, initialDelay + (index * intervalBetween));
-            });
         });
     </script>
 </body>
