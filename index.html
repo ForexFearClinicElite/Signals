@@ -26,31 +26,25 @@
             z-index: -1;
             overflow: hidden;
             background-color: #000;
-            opacity: 0; /* Ξεκινάει αόρατο για να μη φαίνεται το φόρτωμα του YouTube */
-            transition: opacity 1.5s ease-in-out;
         }
 
-        .video-container.visible {
-            opacity: 1;
-        }
-
-        /* Iframe styling to cover the screen like background-size: cover */
-        .video-container iframe {
+        /* local video element styling */
+        .video-bg {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100vw;
-            height: 100vh;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
             transform: translate(-50%, -50%);
-            pointer-events: none;
+            object-fit: cover;
+            opacity: 0; /* Ξεκινάει κρυφό */
+            transition: opacity 1s ease-in-out;
         }
 
-        /* Fix for different aspect ratios to ensure no black bars */
-        @media (min-aspect-ratio: 16/9) {
-            .video-container iframe { height: 56.25vw; }
-        }
-        @media (max-aspect-ratio: 16/9) {
-            .video-container iframe { width: 177.78vh; }
+        .video-bg.loaded {
+            opacity: 1;
         }
 
         .video-overlay {
@@ -259,8 +253,10 @@
 <body>
 
     <!-- Video Background Container -->
-    <div class="video-container" id="videoContainer">
-        <div id="player"></div>
+    <div class="video-container">
+        <video autoplay loop muted playsinline class="video-bg" id="bgVideo">
+            <source src="voulaalpha.mp4" type="video/mp4">
+        </video>
         <div class="video-overlay"></div>
     </div>
 
@@ -304,97 +300,26 @@
         </div>
     </div>
 
-    <!-- YouTube Iframe API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
-
     <script>
-        let player;
-        const videoId = 'J5PqYHEkmzw'; 
-        const container = document.getElementById('videoContainer');
-
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                videoId: videoId,
-                playerVars: {
-                    'autoplay': 1,
-                    'controls': 0,
-                    'showinfo': 0,
-                    'rel': 0,
-                    'loop': 1,
-                    'playlist': videoId,
-                    'mute': 1,
-                    'modestbranding': 1,
-                    'playsinline': 1,
-                    'enablejsapi': 1,
-                    'iv_load_policy': 3,
-                    'start': 0
-                },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            event.target.playVideo();
-        }
-
-        function onPlayerStateChange(event) {
-            // Μόλις το βίντεο αρχίσει να παίζει πραγματικά (PLAYING)
-            if (event.data === YT.PlayerState.PLAYING) {
-                container.classList.add('visible');
-                startBubbles(); // Ξεκινάμε τα συννεφάκια μόνο αφού δούμε εικόνα
-            }
-            
-            if (event.data === YT.PlayerState.ENDED) {
-                player.playVideo();
-            }
-        }
-
-        function startBubbles() {
-            const bubbleContainer = document.getElementById('bubble-container');
-            // Αν έχουν ήδη μπει, μην τα ξαναβάζεις
-            if (bubbleContainer.children.length > 0) return;
-
-            const messages = [
-                { text: "While you hesitate… others are already in winning trades.", type: "normal" },
-                { text: "Voula Alpha members get signals BEFORE the move.", type: "normal" },
-                { text: "Question is: are you in — or watching again?", type: "normal" },
-                { text: "Don’t Miss the Next Trade", type: "headline" },
-                { text: "Join Now", type: "cta" }
-            ];
-
-            let initialDelay = 800; 
-            let intervalBetween = 1800;
-
-            messages.forEach((msg, index) => {
-                setTimeout(() => {
-                    const bubble = document.createElement('div');
-                    bubble.className = 'speech-bubble';
-                    
-                    if (msg.type === 'headline') {
-                        bubble.style.fontSize = '1.4rem';
-                        bubble.style.border = '2px solid #CCAEE2';
-                    }
-                    
-                    if (msg.type === 'cta') {
-                        bubble.classList.add('cta');
-                        bubble.style.fontSize = '1.6rem';
-                    }
-                    
-                    bubble.textContent = msg.text;
-                    bubbleContainer.appendChild(bubble);
-
-                    requestAnimationFrame(() => {
-                        bubble.classList.add('show');
-                    });
-                }, initialDelay + (index * intervalBetween));
-            });
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('bgVideo');
             const pricingElement = document.getElementById('dynamic-pricing');
+            const bubbleContainer = document.getElementById('bubble-container');
+
+            // --- Video Loaded Logic ---
+            // Το event 'playing' εξασφαλίζει ότι το βίντεο έχει ξεκινήσει να δείχνει εικόνα
+            video.addEventListener('playing', () => {
+                video.classList.add('loaded');
+                startBubbles(); // Ξεκινάμε τα μηνύματα μόνο όταν έχουμε εικόνα
+            });
+
+            // Fallback: Αν το βίντεο αργήσει πολύ, εμφάνισέ το ούτως ή άλλως μετά από 3 δευτερόλεπτα
+            setTimeout(() => {
+                if (!video.classList.contains('loaded')) {
+                    video.classList.add('loaded');
+                    startBubbles();
+                }
+            }, 3000);
 
             // --- Dynamic Pricing Strategy ---
             const updatePricing = () => {
@@ -415,6 +340,45 @@
                 }
             };
             updatePricing();
+
+            function startBubbles() {
+                if (bubbleContainer.children.length > 0) return;
+
+                const messages = [
+                    { text: "While you hesitate… others are already in winning trades.", type: "normal" },
+                    { text: "Voula Alpha members get signals BEFORE the move.", type: "normal" },
+                    { text: "Question is: are you in — or watching again?", type: "normal" },
+                    { text: "Don’t Miss the Next Trade", type: "headline" },
+                    { text: "Join Now", type: "cta" }
+                ];
+
+                let initialDelay = 500; 
+                let intervalBetween = 1800;
+
+                messages.forEach((msg, index) => {
+                    setTimeout(() => {
+                        const bubble = document.createElement('div');
+                        bubble.className = 'speech-bubble';
+                        
+                        if (msg.type === 'headline') {
+                            bubble.style.fontSize = '1.4rem';
+                            bubble.style.border = '2px solid #CCAEE2';
+                        }
+                        
+                        if (msg.type === 'cta') {
+                            bubble.classList.add('cta');
+                            bubble.style.fontSize = '1.6rem';
+                        }
+                        
+                        bubble.textContent = msg.text;
+                        bubbleContainer.appendChild(bubble);
+
+                        requestAnimationFrame(() => {
+                            bubble.classList.add('show');
+                        });
+                    }, initialDelay + (index * intervalBetween));
+                });
+            }
         });
     </script>
 </body>
