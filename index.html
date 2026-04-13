@@ -188,6 +188,14 @@
             border-top: 12px solid #ffffff;
         }
 
+        /* Mini Highlight Bubble Style */
+        .speech-bubble.mini {
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            background: #f8f9fa;
+            border: 1px solid #CCAEE2;
+        }
+
         .speech-bubble.cta {
             background: #CCAEE2;
             color: white;
@@ -267,6 +275,10 @@
                 padding: 0.6rem 1rem;
             }
 
+            .speech-bubble.mini {
+                font-size: 0.85rem;
+            }
+
             .bubble-grid {
                 padding-bottom: 30%; 
                 width: 90%;
@@ -289,9 +301,9 @@
         <div class="video-overlay"></div>
     </div>
 
-    <!-- Το κουμπί πλέον λέει παντού 3-Day VIP Access — 2$ -->
+    <!-- Το κουμπί με το Action CTA -->
     <a href="https://selar.com/51555l6229" id="dynamic-pricing" class="pricing-badge" target="_blank">
-        3-Day VIP Access — 2$
+        Get 3-Day VIP Access — Only $2
     </a>
 
     <div class="disclaimer-panel">
@@ -334,21 +346,18 @@
 
             startBubbles();
 
-            // Ενημέρωση τιμών με βάση τη νέα οδηγία για 2$ / 3-Day Access
+            // Ενημέρωση τιμών
             const updatePricing = () => {
                 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
                 
-                // Προεπιλεγμένο κείμενο για όλες τις χώρες πλέον είναι το 3-Day Access / 2$
-                let priceText = "3-Day VIP Access — 2$";
+                let priceText = "Get 3-Day VIP Access — Only $2";
 
-                // Διατηρούμε τις ειδικές τιμές για Νιγηρία κλπ αν χρειάζεται, 
-                // αλλά προσαρμοσμένες στο 3-Day VIP Access
                 if (timeZone.includes('Africa/Lagos')) {
-                    priceText = "3-Day VIP Access — 2,000 NGN";
+                    priceText = "Get 3-Day VIP Access — Only 2,000 NGN";
                 } else if (timeZone.includes('Asia/Tokyo')) {
-                    priceText = "3-Day VIP Access — 300 JPY"; // Περίπου 2$
+                    priceText = "Get 3-Day VIP Access — Only 300 JPY";
                 } else if (timeZone.includes('Asia/Dubai')) {
-                    priceText = "3-Day VIP Access — 8 AED"; // Περίπου 2$
+                    priceText = "Get 3-Day VIP Access — Only 8 AED";
                 }
 
                 pricingElement.textContent = priceText;
@@ -359,8 +368,7 @@
                 if (bubbleContainer.children.length > 0) return;
 
                 const messages = [
-                    { text: "Over 220 Free Signals Shared Publicly", type: "normal" },
-                    { text: "Now imagine what VIP members get.", type: "normal" },
+                    { text: "Includes exact entry, stop loss & take profit", type: "mini" },
                     { text: "While you hesitate… others are already in winning trades.", type: "normal" },
                     { text: "Voula Alpha members get signals BEFORE the move.", type: "normal" },
                     { text: "Question is: are you in — or watching again?", type: "normal" },
@@ -376,6 +384,10 @@
                         const bubble = document.createElement('div');
                         bubble.className = 'speech-bubble';
                         
+                        if (msg.type === 'mini') {
+                            bubble.classList.add('mini');
+                        }
+
                         if (msg.type === 'headline') {
                             bubble.style.fontSize = '1.4rem';
                             bubble.style.border = '2px solid #CCAEE2';
