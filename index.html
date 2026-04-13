@@ -60,13 +60,13 @@
             z-index: 50;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Ευθυγράμμιση στο κέντρο για Desktop */
+            align-items: center; 
             gap: 8px;
         }
 
         .time-frame-label {
             font-size: 0.85rem;
-            color: #FFFFFF; /* Εντελώς λευκό */
+            color: #FFFFFF; 
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 4px;
@@ -81,7 +81,7 @@
             justify-content: center;
         }
 
-        /* Half-Moon Pricing Badge */
+        /* Half-Moon Pricing Badge as Link */
         .pricing-badge {
             position: fixed;
             bottom: 0; 
@@ -101,6 +101,12 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            text-decoration: none; 
+        }
+
+        .pricing-badge:hover {
+            padding-bottom: 30px; 
+            background-color: #b999d4;
         }
 
         /* Disclaimer Panel */
@@ -228,7 +234,7 @@
                 right: 0;
                 left: 0;
                 width: 100%;
-                align-items: center; /* Κεντράρισμα στο κινητό */
+                align-items: center; 
             }
 
             .time-frame-label {
@@ -252,16 +258,8 @@
                 justify-content: center;
             }
 
-            .disclaimer-text {
-                text-align: left;
-            }
-
             .value-text {
                 font-size: 1.6rem;
-            }
-
-            .label-text {
-                font-size: 0.6rem;
             }
 
             .speech-bubble {
@@ -272,23 +270,18 @@
             .bubble-grid {
                 padding-bottom: 30%; 
                 width: 90%;
-                align-items: center; /* Κεντράρισμα bubbles στο κινητό */
+                align-items: center; 
             }
             
             .item-container {
                 padding-left: 12px;
                 align-items: center;
             }
-            
-            .item-container::before {
-                left: 0;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Video Background Container -->
     <div class="video-container">
         <video autoplay loop muted playsinline preload="auto" class="video-bg" id="bgVideo">
             <source src="voulaalpha.mp4" type="video/mp4">
@@ -296,12 +289,11 @@
         <div class="video-overlay"></div>
     </div>
 
-    <!-- Half-Moon Pricing Badge -->
-    <div id="dynamic-pricing" class="pricing-badge">
-        6€ One Day Access
-    </div>
+    <!-- Το κουμπί πλέον λέει παντού 3-Day VIP Access — 2$ -->
+    <a href="https://selar.com/51555l6229" id="dynamic-pricing" class="pricing-badge" target="_blank">
+        3-Day VIP Access — 2$
+    </a>
 
-    <!-- Disclaimer Panel -->
     <div class="disclaimer-panel">
         <div class="item-container">
             <span class="label-text">Disclaimer</span>
@@ -313,7 +305,6 @@
         </div>
     </div>
 
-    <!-- Stats Wrapper -->
     <div class="stats-wrapper">
         <div class="time-frame-label">Last 2 Months</div>
         <div class="stats-panel">
@@ -332,39 +323,35 @@
         </div>
     </div>
 
-    <!-- Main Viewport for Speech Bubbles -->
     <div class="content-overlay">
-        <div id="bubble-container" class="bubble-grid">
-            <!-- Dynamic Bubbles will appear here -->
-        </div>
+        <div id="bubble-container" class="bubble-grid"></div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const video = document.getElementById('bgVideo');
             const pricingElement = document.getElementById('dynamic-pricing');
             const bubbleContainer = document.getElementById('bubble-container');
 
-            // --- Άμεση έναρξη ---
             startBubbles();
 
-            // --- Dynamic Pricing Strategy ---
+            // Ενημέρωση τιμών με βάση τη νέα οδηγία για 2$ / 3-Day Access
             const updatePricing = () => {
                 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
                 
-                if (timeZone.includes('Asia/Tokyo')) {
-                    pricingElement.textContent = "¥1000 One Day Access";
+                // Προεπιλεγμένο κείμενο για όλες τις χώρες πλέον είναι το 3-Day Access / 2$
+                let priceText = "3-Day VIP Access — 2$";
+
+                // Διατηρούμε τις ειδικές τιμές για Νιγηρία κλπ αν χρειάζεται, 
+                // αλλά προσαρμοσμένες στο 3-Day VIP Access
+                if (timeZone.includes('Africa/Lagos')) {
+                    priceText = "3-Day VIP Access — 2,000 NGN";
+                } else if (timeZone.includes('Asia/Tokyo')) {
+                    priceText = "3-Day VIP Access — 300 JPY"; // Περίπου 2$
                 } else if (timeZone.includes('Asia/Dubai')) {
-                    pricingElement.textContent = "25 AED One Day Access";
-                } else if (timeZone.includes('Africa/Lagos')) {
-                    pricingElement.textContent = "₦10,500 One Day Access";
-                } else if (timeZone.includes('Africa/Johannesburg')) {
-                    pricingElement.textContent = "R120 One Day Access";
-                } else if (timeZone.includes('America/Toronto') || timeZone.includes('America/Vancouver')) {
-                    pricingElement.textContent = "$9 CAD One Day Access";
-                } else {
-                    pricingElement.textContent = "6€ One Day Access";
+                    priceText = "3-Day VIP Access — 8 AED"; // Περίπου 2$
                 }
+
+                pricingElement.textContent = priceText;
             };
             updatePricing();
 
