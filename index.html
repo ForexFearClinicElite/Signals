@@ -173,13 +173,14 @@
             background: #ffffff;
             color: #000000;
             border-radius: 1.5rem;
-            padding: 1rem 1.8rem;
+            padding: 1.2rem 2rem;
             font-size: 1.2rem; 
             font-weight: 700;
             box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-            max-width: 450px;
+            max-width: 480px;
             text-align: left;
             z-index: 10;
+            white-space: pre-line;
         }
 
         /* Main tail on the left */
@@ -283,8 +284,8 @@
 
             .speech-bubble {
                 font-size: 1.1rem;
-                padding: 0.8rem 1.2rem;
-                max-width: 85%;
+                padding: 1rem 1.4rem;
+                max-width: 90%;
             }
 
             .bubble-grid {
@@ -341,17 +342,38 @@
             const bubbleContainer = document.getElementById('bubble-container');
 
             const messages = [
-                { text: "Don’t Miss the Next Trade", type: "headline" },
-                { text: "While you’re watching… others are already in.", type: "normal" },
-                { text: "Same trades. Same timing. Same opportunity.", type: "normal" },
-                { text: "No signals guessing. No confusion.", type: "normal" },
-                { text: "While you hesitate… others are already in profit.", type: "normal" },
-                { text: "Voula Alpha traders follow the move BEFORE it happens.", type: "normal" },
-                { text: "The question is: are you in — or watching again?", type: "normal" },
-                { text: "✔ Real-time entries, SL & TP", type: "mini" },
-                { text: "Only 50 traders per cycle. Once full — access closes.", type: "headline" },
-                { text: "“This is not signals. This is execution.”", type: "mini" },
-                { text: "Join Challenge Now", type: "cta" }
+                { 
+                    text: "Don’t Miss the Next Trade\nWhile you’re watching… others are already in.", 
+                    type: "headline" 
+                },
+                { 
+                    text: "Same trades. Same timing. Same opportunity.\nNo signals guessing. No confusion.", 
+                    type: "normal" 
+                },
+                { 
+                    text: "While you hesitate… others are already in profit.\nVoula Alpha traders follow the move BEFORE it happens.", 
+                    type: "normal" 
+                },
+                { 
+                    text: "The question is simple: are you in — or watching again?", 
+                    type: "normal" 
+                },
+                { 
+                    text: "WHAT YOU GET:\n✔ Real-time trade entries\n✔ Stop loss & take profit\n✔ Same trades for all members\n✔ Private Telegram access", 
+                    type: "mini" 
+                },
+                { 
+                    text: "⚠️ RULE\nOnly 50 traders per cycle.\nOnce full — access closes.\nIf you miss this cycle, you wait for the next one.", 
+                    type: "headline" 
+                },
+                { 
+                    text: "“This is not signals. This is execution.”", 
+                    type: "mini" 
+                },
+                { 
+                    text: "Join Challenge Now", 
+                    type: "cta" 
+                }
             ];
 
             let currentIndex = 0;
@@ -377,13 +399,11 @@
 
                 const msg = messages[currentIndex];
                 
-                // Create Wrapper for Bubble + Circles
                 const wrapper = document.createElement('div');
                 wrapper.className = 'bubble-wrapper';
                 if (msg.type === 'mini') wrapper.classList.add('mini');
                 if (msg.type === 'cta') wrapper.classList.add('cta');
 
-                // Create main bubble
                 const bubble = document.createElement('div');
                 bubble.className = 'speech-bubble';
                 if (msg.type === 'headline') {
@@ -392,7 +412,6 @@
                 }
                 bubble.textContent = msg.text;
                 
-                // Add elements to wrapper
                 wrapper.appendChild(bubble);
                 
                 const c1 = document.createElement('div');
@@ -405,12 +424,12 @@
 
                 bubbleContainer.appendChild(wrapper);
 
-                // Animation In
                 requestAnimationFrame(() => {
                     wrapper.classList.add('show');
                 });
 
-                const displayDuration = 2800; 
+                // Αυξάνουμε λίγο τη διάρκεια για τα συννεφάκια με περισσότερο κείμενο
+                const displayDuration = msg.text.length > 50 ? 3500 : 2800; 
 
                 setTimeout(() => {
                     if (currentIndex < messages.length - 1) {
