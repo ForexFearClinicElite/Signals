@@ -18,7 +18,7 @@
             background-color: #ffffff;
             color: #1f2937;
             scroll-behavior: smooth;
-            padding-bottom: 80px; /* Space for sticky button */
+            padding-bottom: 80px; /* Space for sticky button on mobile */
         }
 
         .stat-item {
@@ -41,7 +41,7 @@
         /* Floating Badge Styling */
         .floating-trust-badge {
             position: fixed;
-            bottom: 90px; /* Πάνω από το mobile CTA */
+            bottom: 90px; /* Above mobile CTA */
             right: 15px;
             z-index: 40;
             display: flex;
@@ -54,11 +54,6 @@
             border: 1px solid #e2e8f0;
             transition: all 0.3s ease;
             text-decoration: none;
-        }
-
-        .floating-trust-badge:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.22);
         }
 
         @media (min-width: 768px) {
@@ -85,21 +80,7 @@
             }
         }
 
-        .floating-trust-badge .text-box {
-            display: flex;
-            flex-direction: column;
-        }
-
         /* Lightbox functionality */
-        .zoom-img {
-            cursor: zoom-in;
-            transition: opacity 0.2s;
-        }
-        
-        .zoom-img:hover {
-            opacity: 0.9;
-        }
-
         #lightbox {
             display: none;
             position: fixed;
@@ -117,10 +98,9 @@
         #lightbox-content {
             margin: auto;
             display: block;
-            width: 90%;
+            width: 95%;
             max-width: 1200px;
-            animation-name: zoom;
-            animation-duration: 0.3s;
+            animation: zoom 0.3s;
         }
 
         @keyframes zoom {
@@ -128,40 +108,13 @@
             to {transform:scale(1); opacity: 1;}
         }
 
-        .close-lightbox {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .close-lightbox:hover {
-            color: #bbb;
-        }
-
-        /* Animation για την εγγύηση */
-        @keyframes float-guarantee {
-            0% { transform: translateY(0px) rotate(-0.5deg); }
-            50% { transform: translateY(-6px) rotate(0.5deg); }
-            100% { transform: translateY(0px) rotate(-0.5deg); }
-        }
-
-        .guarantee-box-animated {
-            animation: float-guarantee 4s ease-in-out infinite;
-            box-shadow: 0 15px 35px rgba(34, 197, 94, 0.15);
-        }
-
-        /* Video Container Styling */
+        /* Video Container Styling (Optimized for 9:16) */
         .video-container {
             position: relative;
             padding-bottom: 177.78%; /* 9:16 Aspect Ratio */
             height: 0;
             overflow: hidden;
-            border-radius: 24px;
+            border-radius: 20px;
             background: #000;
         }
 
@@ -173,380 +126,178 @@
             height: 100%;
             object-fit: cover;
         }
+
+        @keyframes float-guarantee {
+            0% { transform: translateY(0px) rotate(-0.5deg); }
+            50% { transform: translateY(-6px) rotate(0.5deg); }
+            100% { transform: translateY(0px) rotate(-0.5deg); }
+        }
+
+        .guarantee-box-animated {
+            animation: float-guarantee 4s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Modal για την μεγέθυνση εικόνων -->
+    <!-- Image Lightbox Modal -->
     <div id="lightbox" onclick="closeLightbox()">
-        <span class="close-lightbox">&times;</span>
+        <span class="absolute top-5 right-8 text-white text-4xl font-bold cursor-pointer">&times;</span>
         <img id="lightbox-content">
     </div>
 
     <!-- Floating Authority Badge -->
     <a href="https://voulatrading.gumroad.com/l/tvdoq" target="_blank" class="floating-trust-badge">
         <img src="voulaalpha (1).jpg" alt="Voula Alpha Live">
-        <div class="text-box">
+        <div class="flex flex-col">
             <span class="text-[9px] md:text-[11px] uppercase font-extrabold text-slate-400 leading-none tracking-widest">Verified Trader</span>
             <span class="text-sm md:text-lg font-black text-slate-900">Voula Alpha</span>
         </div>
     </a>
 
     <!-- Top Identity Bar -->
-    <div class="w-full bg-slate-900 text-white py-2 text-center text-xs font-bold tracking-widest uppercase">
+    <div class="w-full bg-slate-900 text-white py-2 text-center text-[10px] md:text-xs font-bold tracking-widest uppercase">
         The Proven Gold Trading System by Voula Alpha
     </div>
 
     <!-- Hero Section -->
-    <section class="pt-16 pb-12 px-6 max-w-4xl mx-auto text-center">
-        <div class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wide text-green-700 uppercase bg-green-100 rounded-full">
+    <section class="pt-10 pb-12 px-6 max-w-4xl mx-auto text-center">
+        <div class="inline-block px-4 py-1.5 mb-6 text-[10px] md:text-sm font-semibold tracking-wide text-green-700 uppercase bg-green-100 rounded-full">
             Verified Results: 77 Weeks Live
         </div>
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-slate-900">
+        <h1 class="text-3xl md:text-6xl font-extrabold leading-tight mb-6 text-slate-900">
             219% Verified Growth on Gold in 77 Weeks – Copy the System
         </h1>
         
-        <!-- Video Section (Above the fold) -->
-        <div class="mb-10 max-w-[300px] mx-auto">
-            <p class="text-slate-700 font-bold text-lg mb-4 italic leading-tight">
+        <!-- Video Section (Mobile Focused 9:16) -->
+        <div class="mb-10 max-w-[280px] md:max-w-[320px] mx-auto">
+            <p class="text-slate-700 font-bold text-base md:text-lg mb-4 italic leading-tight">
                 "I turned a small account into consistent growth trading gold. <br>This is exactly how."
             </p>
             <div class="video-container shadow-2xl border-4 border-white">
-                <video controls poster="voulaalpha (1).jpg">
+                <video 
+                    controls 
+                    autoplay 
+                    muted 
+                    loop 
+                    playsinline 
+                    poster="voulaalpha (1).jpg"
+                >
                     <source src="voulaalphavideo.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
         </div>
 
-        <p class="text-xl md:text-2xl text-slate-500 mb-6 max-w-2xl mx-auto font-medium">
+        <p class="text-lg md:text-2xl text-slate-500 mb-8 max-w-2xl mx-auto font-medium">
             Copy the exact rules, entries, and risk model behind the 219% surge. Stop guessing.
         </p>
-
-        <p class="text-sm text-slate-400 mb-10 font-bold uppercase tracking-tight">
-            Ranked Top 3% Traders Worldwide
-        </p>
         
-        <div class="max-w-md mx-auto">
-            <a href="https://voulatrading.gumroad.com/l/tvdoq" target="_blank" class="inline-block w-full px-10 py-5 bg-green-600 hover:bg-green-700 text-white font-extrabold text-xl rounded-2xl transition-all transform hover:scale-105 shadow-xl shadow-green-200">
+        <div class="max-w-md mx-auto px-2">
+            <a href="https://voulatrading.gumroad.com/l/tvdoq" target="_blank" class="inline-block w-full px-6 py-5 bg-green-600 hover:bg-green-700 text-white font-extrabold text-xl rounded-2xl transition-all transform hover:scale-105 shadow-xl shadow-green-200">
                 UNLOCK THE SYSTEM – $14
             </a>
-            <p class="text-xs text-slate-400 mt-3">
-                Secure checkout • Instant email delivery
+            <p class="text-[10px] text-slate-400 mt-3 uppercase font-bold tracking-widest">
+                Secure checkout • Instant delivery
             </p>
-        </div>
-        
-        <div class="mt-8 flex justify-center gap-4 text-slate-400 text-xs font-bold uppercase">
-            <span>✔ Secure Payment</span>
-            <span>✔ Instant Access</span>
-            <span>✔ Beginner Friendly</span>
-        </div>
-
-        <!-- HERO VISUAL PROOF -->
-        <div class="mt-12 rounded-2xl overflow-hidden shadow-2xl border-4 border-white max-w-3xl mx-auto">
-            <img src="tradingview-results.png" alt="Verified Trading Results Chart" class="w-full h-auto zoom-img" onclick="openLightbox(this)">
-        </div>
-    </section>
-
-    <!-- Identity Section -->
-    <section class="py-16 author-section border-t border-slate-100">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-10">
-                <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden shadow-2xl border-4 border-white flex-shrink-0">
-                    <img src="voulaalpha (2).jpg" alt="Voula Alpha" class="w-full h-full object-cover">
-                </div>
-                <div>
-                    <h2 class="text-3xl font-bold text-slate-900 mb-4 text-center md:text-left">Meet the trader behind the results.</h2>
-                    <p class="text-slate-600 leading-relaxed mb-4 text-center md:text-left">
-                        It wasn't luck. I spent 77 weeks live trading with this exact model, refining every mechanical rule until it became a rock-solid system for Gold.
-                    </p>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                        <span class="bg-white px-3 py-1 rounded-lg border border-slate-200 text-sm font-bold text-slate-700">✓ Verified Trader</span>
-                        <span class="bg-white px-3 py-1 rounded-lg border border-slate-200 text-sm font-bold text-slate-700">✓ 77 Weeks Live</span>
-                        <span class="bg-white px-3 py-1 rounded-lg border border-slate-200 text-sm font-bold text-slate-700">✓ Real Money</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- Proof Section -->
     <section id="proof" class="py-12 bg-slate-50 border-y border-slate-100 px-6 text-center">
         <div class="max-w-5xl mx-auto">
-            <h2 class="text-2xl font-bold mb-2 text-slate-800 uppercase tracking-wider underline decoration-green-500">What this means in real money:</h2>
-            <p class="text-3xl font-extrabold text-green-600 mb-2">Account $1,600 → $4,800</p>
-            <div class="mb-10">
-                <p class="text-slate-500 text-sm font-bold">Fully documented over 77 weeks of live trading</p>
-                <p class="text-slate-900 text-xs font-black uppercase tracking-widest mt-1">No demo. No simulations. Real money.</p>
-            </div>
+            <h2 class="text-xl md:text-2xl font-bold mb-2 text-slate-800 uppercase tracking-wider">The Real Money Proof:</h2>
+            <p class="text-2xl md:text-3xl font-extrabold text-green-600 mb-2">Account $1,600 → $4,800</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-left mb-12">
-                <div class="space-y-6">
-                    <div class="stat-item bg-white p-5 rounded-r-xl shadow-sm">
-                        <div class="text-3xl font-bold text-green-600">+219.46%</div>
-                        <div class="text-slate-500 font-medium">Total Verified Growth</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-left mt-10">
+                <div class="space-y-4">
+                    <div class="stat-item bg-white p-5 rounded-r-xl shadow-sm border-l-4 border-green-500">
+                        <div class="text-2xl md:text-3xl font-bold text-green-600">+219.46%</div>
+                        <div class="text-slate-500 text-sm font-medium">Total Verified Growth</div>
                     </div>
-                    <div class="stat-item bg-white p-5 rounded-r-xl shadow-sm">
-                        <div class="text-3xl font-bold text-green-600">72.03%</div>
-                        <div class="text-slate-500 font-medium">Win Rate Accuracy</div>
-                    </div>
-                    <div class="stat-item bg-white p-5 rounded-r-xl shadow-sm">
-                        <div class="text-3xl font-bold text-green-600">Top 3%</div>
-                        <div class="text-slate-500 font-medium">Global Ranking on TradingView</div>
+                    <div class="stat-item bg-white p-5 rounded-r-xl shadow-sm border-l-4 border-green-500">
+                        <div class="text-2xl md:text-3xl font-bold text-green-600">72.03%</div>
+                        <div class="text-slate-500 text-sm font-medium">Win Rate Accuracy</div>
                     </div>
                 </div>
-
-                <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-                    <img src="Voulaalpha1.png" alt="Detailed Stats 1" class="w-full h-auto zoom-img" onclick="openLightbox(this)">
+                <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-white">
+                    <img src="Voulaalpha1.png" alt="Verified Results" class="w-full h-auto cursor-zoom-in" onclick="openLightbox(this)">
                 </div>
             </div>
 
-            <!-- Additional Proof Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <div class="rounded-xl overflow-hidden shadow-lg border-2 border-white">
-                    <img src="Voulaalpha2.png" alt="Detailed Stats 2" class="w-full h-auto zoom-img" onclick="openLightbox(this)">
-                </div>
-                <div class="rounded-xl overflow-hidden shadow-lg border-2 border-white">
-                    <img src="Voulaalpha3.png" alt="Detailed Stats 3" class="w-full h-auto zoom-img" onclick="openLightbox(this)">
-                </div>
-            </div>
-
-            <!-- TRUST STACK SECTION -->
-            <div class="mt-16 max-w-2xl mx-auto">
-                <h3 class="text-xl font-extrabold text-slate-900 mb-6 uppercase tracking-tight">Trusted by traders worldwide</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-sm border border-slate-100">
-                        <span class="text-green-600 text-lg">✔</span>
-                        <span class="text-xs font-bold text-slate-700">Used daily on live markets</span>
-                    </div>
-                    <div class="flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-sm border border-slate-100">
-                        <span class="text-green-600 text-lg">✔</span>
-                        <span class="text-xs font-bold text-slate-700">Built over 77 weeks of real trading</span>
-                    </div>
-                    <div class="flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-sm border border-slate-100">
-                        <span class="text-green-600 text-lg">✔</span>
-                        <span class="text-xs font-bold text-slate-700">Designed for beginners & advanced traders</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DOWNLOAD DATA CALLOUT -->
-            <div class="mt-12 p-8 bg-white rounded-3xl border-2 border-dashed border-slate-200 max-w-2xl mx-auto">
-                <h3 class="text-xl font-bold text-slate-900 mb-2">Want to see every single trade?</h3>
-                <p class="text-slate-500 text-sm mb-6">Download the raw account history with the 219% gain. No hidden losses. Every entry and exit is right here.</p>
-                <a href="2265877.positions.csv" download class="inline-flex items-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    Download Trading History (CSV)
-                </a>
+            <!-- Proof Grid -->
+            <div class="grid grid-cols-2 gap-3 mt-6 max-w-4xl mx-auto">
+                <img src="Voulaalpha2.png" alt="Stats 2" class="rounded-xl shadow-md border-2 border-white cursor-zoom-in" onclick="openLightbox(this)">
+                <img src="Voulaalpha3.png" alt="Stats 3" class="rounded-xl shadow-md border-2 border-white cursor-zoom-in" onclick="openLightbox(this)">
             </div>
         </div>
     </section>
 
-    <!-- PAIN SECTION -->
+    <!-- Author Section -->
     <section class="py-16 px-6 max-w-4xl mx-auto">
-        <div class="text-center mb-10">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Why are you still stuck?</h2>
-            <p class="text-slate-500 italic">Trading without a system is just gambling with extra steps.</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="pain-card p-6 rounded-2xl flex items-start space-x-4">
-                <span class="text-2xl">❌</span>
-                <div>
-                    <h4 class="font-bold text-red-800">Blowing accounts every 2 weeks</h4>
-                    <p class="text-sm text-red-700/80">You deposit, lose it all, and repeat the cycle.</p>
-                </div>
-            </div>
-            <div class="pain-card p-6 rounded-2xl flex items-start space-x-4">
-                <span class="text-2xl">❌</span>
-                <div>
-                    <h4 class="font-bold text-red-800">Trading without knowing WHY</h4>
-                    <p class="text-sm text-red-700/80">Following random signals and hoping for the best.</p>
-                </div>
-            </div>
-            <div class="pain-card p-6 rounded-2xl flex items-start space-x-4">
-                <span class="text-2xl">❌</span>
-                <div>
-                    <h4 class="font-bold text-red-800">Watching others make money</h4>
-                    <p class="text-sm text-red-700/80">Staying stuck while everyone else seems to have the "secret".</p>
-                </div>
-            </div>
-            <div class="pain-card p-6 rounded-2xl flex items-start space-x-4">
-                <span class="text-2xl">❌</span>
-                <div>
-                    <h4 class="font-bold text-red-800">Emotional Rollercoaster</h4>
-                    <p class="text-sm text-red-700/80">Panic in the market and revenge trading at the worst moments.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOLUTION SECTION -->
-    <section class="py-16 px-6 bg-green-50 border-y border-green-100">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-extrabold text-slate-900 mb-10">This is the exact system I use every day.</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-green-100">
-                    <h4 class="font-bold text-green-600 mb-2">The Gold Blueprint</h4>
-                    <p class="text-slate-600 text-sm font-medium">Mechanical rules for XAUUSD. No more second-guessing.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-green-100">
-                    <h4 class="font-bold text-green-600 mb-2">Risk Mastery</h4>
-                    <p class="text-slate-600 text-sm font-medium">How to survive and grow even with a small deposit.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-green-100">
-                    <h4 class="font-bold text-green-600 mb-2">Entry & Exit Precision</h4>
-                    <p class="text-slate-600 text-sm font-medium">Learn exactly when to get in and where to take your profit.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-green-100">
-                    <h4 class="font-bold text-green-600 mb-2">Psychology Control</h4>
-                    <p class="text-slate-600 text-sm font-medium">Trade like a machine. Eliminate greed and fear.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CLARITY SECTION: What makes this system different? -->
-    <section class="py-16 px-6 max-w-4xl mx-auto text-center border-b border-slate-100">
-        <h2 class="text-3xl font-extrabold text-slate-900 mb-8">What makes this system different?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-            <div class="text-left space-y-4">
-                <div class="flex items-center gap-3 text-slate-500 font-bold">
-                    <span class="text-red-500">❌</span> No indicators
-                </div>
-                <div class="flex items-center gap-3 text-slate-500 font-bold">
-                    <span class="text-red-500">❌</span> No signals
-                </div>
-                <div class="flex items-center gap-3 text-slate-500 font-bold">
-                    <span class="text-red-500">❌</span> No guessing
-                </div>
-                
-                <div class="pt-6">
-                    <p class="text-slate-900 font-extrabold mb-4">This system is based on:</p>
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-3 font-medium text-slate-700">
-                            <span class="text-green-600 font-bold">→</span> Market structure
-                        </div>
-                        <div class="flex items-center gap-3 font-medium text-slate-700">
-                            <span class="text-green-600 font-bold">→</span> Liquidity zones
-                        </div>
-                        <div class="flex items-center gap-3 font-medium text-slate-700">
-                            <span class="text-green-600 font-bold">→</span> Repeatable price behavior
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-slate-900 rounded-3xl p-8 text-white text-left shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10">
-                    <svg width="100" height="100" viewBox="0 0 24 24" fill="white"><path d="M13 3l-2 5h-7l7 5-1 8 7-4 7 4-1-8 7-5h-7z"/></svg>
-                </div>
-                <p class="text-green-400 font-black text-xs uppercase tracking-widest mb-4">Mechanical Edge</p>
-                <h4 class="text-xl font-bold mb-4">Stop looking for the "Magic Candle"</h4>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Most traders fail because they look for patterns in isolation. This system teaches you how to read the <strong>logic</strong> of the market, so you know exactly why price is moving before it even happens.
+        <div class="flex flex-col md:flex-row items-center gap-8">
+            <img src="voulaalpha (2).jpg" alt="Voula Alpha" class="w-40 h-40 md:w-56 md:h-56 rounded-full shadow-2xl border-4 border-white object-cover">
+            <div class="text-center md:text-left">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">Trading is mechanical, not emotional.</h2>
+                <p class="text-slate-600 leading-relaxed">
+                    I spent 77 weeks proving this system works in the live market. No "magic indicators," just pure price logic and risk management.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- BONUS / MENTORSHIP SECTION -->
-    <section class="py-16 px-6 max-w-3xl mx-auto text-center bg-slate-50 rounded-3xl border border-slate-100 mt-10">
-        <h2 class="text-2xl font-extrabold text-slate-900 mb-4">⚠️ Only for Action Takers</h2>
-        <p class="text-slate-600 mb-8">When you get the system, you don’t just learn — you unlock a real opportunity.</p>
-        <div class="bg-white p-6 rounded-2xl shadow-sm border border-green-100 text-left space-y-4 max-w-xl mx-auto">
-            <h3 class="font-bold text-green-600 text-lg">🎁 This alone could pay for your purchase</h3>
-            <p class="text-slate-600 text-sm">Every purchase automatically enters you into a monthly selection.</p>
-            <p class="text-slate-600 text-sm">Each month, <strong>10 members</strong> are selected.</p>
-            <div class="space-y-2 text-sm text-slate-700">
-                <p>• A funded trading account (€100)</p>
-                <p>• Direct guidance applying the system live</p>
-                <p>• Real-time experience trading with me</p>
-            </div>
-            <div class="bg-slate-50 p-4 rounded-xl text-xs text-slate-500 mt-4">
-                Selection is done randomly and transparently every month. Winners are announced publicly.
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ SECTION -->
-    <section class="py-16 px-6 max-w-3xl mx-auto">
-        <h2 class="text-3xl font-extrabold text-center mb-10">Frequently Asked Questions</h2>
-        <div class="space-y-6">
-            <div class="border-b border-slate-200 pb-4">
-                <h4 class="font-bold text-slate-900 mb-2">Q: What exactly do I get?</h4>
-                <p class="text-slate-600 text-sm">A: The full trading system, entry & exit rules, risk model, and step-by-step instructions for immediate application.</p>
-            </div>
-            <div class="border-b border-slate-200 pb-4">
-                <h4 class="font-bold text-slate-900 mb-2">Q: Is it suitable for beginners?</h4>
-                <p class="text-slate-600 text-sm">A: Yes. Everything is explained simply. If you can follow basic rules, you can do this.</p>
-            </div>
-            <div class="border-b border-slate-200 pb-4">
-                <h4 class="font-bold text-slate-900 mb-2">Q: How much money do I need?</h4>
-                <p class="text-slate-600 text-sm">A: You can start with very small amounts. I will show you how to manage them.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA & GUARANTEE -->
-    <section id="access" class="py-20 px-6 bg-white text-slate-900 text-center border-t border-slate-100">
+    <!-- Final CTA Area -->
+    <section class="py-16 px-6 bg-white text-center border-t border-slate-100 mb-20 md:mb-0">
         <div class="max-w-md mx-auto">
-            
-            <!-- THE ANIMATED GUARANTEE BOX -->
-            <div class="guarantee-box-animated bg-white border-2 border-green-500 p-6 rounded-3xl text-left flex items-start gap-4 mb-12">
-                <div class="bg-green-600 text-white p-1.5 rounded-full shrink-0 shadow-lg shadow-green-100">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+            <div class="guarantee-box-animated bg-white border-2 border-green-500 p-6 rounded-3xl text-left flex items-start gap-4 mb-8 shadow-lg shadow-green-50">
+                <div class="bg-green-600 text-white p-1 rounded-full shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
                 </div>
                 <div>
-                    <p class="text-slate-900 font-black text-sm uppercase tracking-tight mb-1">Zero-Risk Performance Guarantee</p>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        <strong>Try the rules.</strong> If after 30 days you don't see how this system creates massive edge in the market, I'll refund every cent. <strong>No questions asked.</strong>
+                    <p class="text-slate-900 font-black text-xs uppercase tracking-tight mb-1">Performance Guarantee</p>
+                    <p class="text-slate-600 text-[11px] leading-relaxed">
+                        If after 30 days you don't see the edge this system provides, I'll refund your $14. No questions asked.
                     </p>
                 </div>
             </div>
-
-            <div class="mb-6">
-                <p class="text-green-600 font-bold mb-4 text-sm uppercase tracking-widest">
-                    Price goes back to $49 after this batch closes
-                </p>
-                <span class="text-slate-400 line-through text-lg">Was $49</span>
-                <span class="text-3xl font-extrabold text-green-600 ml-2">Today: $14</span>
-            </div>
-            <h2 class="text-3xl font-extrabold mb-6">Start Gold Trading with a Proven System</h2>
-            <a href="https://voulatrading.gumroad.com/l/tvdoq" target="_blank" class="inline-block w-full px-12 py-6 bg-green-600 hover:bg-green-700 text-white text-center font-extrabold text-xl rounded-2xl transition-all shadow-2xl shadow-green-500/30">
-                UNLOCK THE SYSTEM – $14
+            
+            <h2 class="text-2xl font-extrabold mb-4 text-slate-900">Ready to copy the 219% system?</h2>
+            <a href="https://voulatrading.gumroad.com/l/tvdoq" target="_blank" class="inline-block w-full px-8 py-5 bg-green-600 hover:bg-green-700 text-white font-extrabold text-xl rounded-2xl shadow-xl">
+                GET ACCESS NOW – $14
             </a>
         </div>
     </section>
 
-    <!-- Sticky Mobile CTA -->
-    <div class="fixed bottom-0 left-0 w-full bg-white p-4 border-t z-50 md:hidden sticky-cta">
-        <a href="https://voulatrading.gumroad.com/l/tvdoq" target="_blank" class="block w-full bg-green-600 text-white py-4 rounded-xl font-bold text-center text-lg shadow-lg uppercase tracking-tight">
-            GET ACCESS – $14
+    <!-- Sticky Mobile Footer Button -->
+    <div class="fixed bottom-0 left-0 w-full bg-white p-3 border-t z-50 md:hidden sticky-cta">
+        <a href="https://voulatrading.gumroad.com/l/tvdoq" target="_blank" class="block w-full bg-green-600 text-white py-4 rounded-xl font-black text-center text-base shadow-lg uppercase tracking-wider">
+            GET THE GOLD SYSTEM – $14
         </a>
     </div>
 
-    <!-- Footer -->
-    <footer class="py-12 text-center text-slate-500 text-xs px-6 border-t border-slate-200 bg-slate-50">
-        <p>© 2024 Voula Alpha. Trading involves risk. All results are verified, but past performance does not guarantee future results.</p>
+    <footer class="py-10 text-center text-slate-400 text-[10px] px-6 bg-slate-50">
+        <p>© 2024 Voula Alpha. Risk Warning: Trading involves significant risk. Results are verified but past performance is not a guarantee of future gains.</p>
     </footer>
 
-    <!-- Scripts για το Lightbox -->
     <script>
         function openLightbox(element) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-content');
-            lightbox.style.display = 'block';
+            lightbox.style.display = 'flex';
             lightboxImg.src = element.src;
-            document.body.style.overflow = 'hidden'; // Stop scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
+            document.body.style.overflow = 'auto';
         }
-    </script>
 
+        // Handle video playback
+        window.addEventListener('load', () => {
+            const video = document.querySelector('video');
+            if (video) video.play().catch(() => console.log("Manual play required"));
+        });
+    </script>
 </body>
 </html>
