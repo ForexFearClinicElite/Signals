@@ -773,6 +773,70 @@
     max-width: 900px;
   }
 
+  /* ABOUT */
+  .about { background: var(--dark2); padding: 100px 60px; border-top: 1px solid rgba(201,168,76,0.1); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-photo-wrap { position: relative; }
+  .about-photo {
+    width: 100%;
+    display: block;
+    filter: grayscale(15%) contrast(1.05);
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+  .about-photo-caption {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold-dim);
+    text-align: center;
+    margin-top: 12px;
+    text-transform: uppercase;
+  }
+  .about-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--white-dim);
+    margin-bottom: 20px;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+  }
+  .about-stat {
+    background: var(--dark);
+    padding: 20px 16px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .about-stat-val {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .about-stat-lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .about { padding: 70px 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
   /* TRADING HISTORY */
   .history { background: var(--black); padding: 100px 60px; }
   .history-header { max-width: 600px; margin-bottom: 40px; }
@@ -1167,8 +1231,18 @@
 
     <div class="how-right reveal">
       <div class="price-display">
-        <div class="price-amount"><sup>$</sup>200</div>
-        <div class="price-period">per month · billed monthly</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:0;">
+          <div style="background:rgba(201,168,76,0.06);padding:20px 16px;text-align:center;border:1px solid rgba(201,168,76,0.3);">
+            <div style="font-family:var(--font-mono,monospace);font-size:9px;letter-spacing:0.2em;color:var(--gold-dim,#8a6d2f);margin-bottom:8px;text-transform:uppercase;">Alpha Access</div>
+            <div class="price-amount"><sup>$</sup>497</div>
+            <div class="price-period">per month</div>
+          </div>
+          <div style="background:rgba(201,168,76,0.03);padding:20px 16px;text-align:center;border:1px solid rgba(201,168,76,0.15);">
+            <div style="font-family:var(--font-mono,monospace);font-size:9px;letter-spacing:0.2em;color:var(--gold-dim,#8a6d2f);margin-bottom:8px;text-transform:uppercase;">Elite Annual</div>
+            <div class="price-amount" style="font-size:44px;"><sup style="font-size:20px;margin-top:10px;">$</sup>4,997</div>
+            <div class="price-period">per year · save $967</div>
+          </div>
+        </div>
       </div>
       <ul class="feature-list">
         <li>Real-time signals via private Telegram group</li>
@@ -1400,6 +1474,47 @@
   </div>
 </section>
 
+<!-- ABOUT US -->
+<section class="about" id="about">
+  <div class="about-grid reveal">
+    <div class="about-photo-wrap">
+      <img src="voulaalpha1.jpg" alt="Voula & Pantelis Alpha" class="about-photo">
+      <div class="about-photo-caption">Voula & Pantelis · 9 Years Together</div>
+    </div>
+    <div class="about-content">
+      <div class="section-tag">The People Behind the Signals</div>
+      <h2>A mother & son.<br><em>Nine years.</em><br>One mission.</h2>
+      <p class="about-text">
+        We are Voula and Pantelis. What started as a family passion for the markets has become one of the most consistent track records in independent trading.
+      </p>
+      <p class="about-text">
+        Voula began on the trading floor — before algorithms, before smartphones, before TikTok. 16 years of reading markets with her eyes and instincts. Pantelis brought the precision, the systems, and the data. Together, we built something rare: a methodology that works in every market condition.
+      </p>
+      <p class="about-text">
+        Nine years of trading side by side. No outside investors. No corporate backing. Just two people, one screen, and an obsession with getting it right.
+      </p>
+      <div class="about-stats">
+        <div class="about-stat">
+          <span class="about-stat-val">16</span>
+          <span class="about-stat-lbl">Years Experience</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat-val">9</span>
+          <span class="about-stat-lbl">Years Together</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat-val">+1,817%</span>
+          <span class="about-stat-lbl">Verified Gain</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat-val">Top 1%</span>
+          <span class="about-stat-lbl">TradingView Global</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WAITLIST FORM -->
 <section class="waitlist" id="waitlist">
   <div class="waitlist-inner">
@@ -1418,7 +1533,7 @@
           <input type="text" id="telegram" name="telegram" placeholder="Telegram Username (optional)" />
         </div>
         <button type="button" class="form-submit" onclick="submitForm()">
-          Request Access — $200/month
+          Request Access
         </button>
         <div class="form-disclaimer">
           By submitting, you confirm you understand that forex trading involves substantial risk of loss.
@@ -1611,12 +1726,12 @@
         document.getElementById('successMsg').style.display = 'block';
       } else {
         alert('Something went wrong. Please try again or contact us directly.');
-        btn.textContent = 'Request Access — $200/month';
+        btn.textContent = 'Request Access';
         btn.disabled = false;
       }
     } catch(e) {
       alert('Connection error. Please try again.');
-      btn.textContent = 'Request Access — $200/month';
+      btn.textContent = 'Request Access';
       btn.disabled = false;
     }
   }
